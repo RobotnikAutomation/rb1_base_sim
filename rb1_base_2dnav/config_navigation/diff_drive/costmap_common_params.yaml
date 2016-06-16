@@ -1,7 +1,7 @@
 
 #---standard pioneer footprint---
 #---(in meters)---
-robot_radius: 0.17
+robot_radius: 0.25
 
 
 transform_tolerance: 0.2
