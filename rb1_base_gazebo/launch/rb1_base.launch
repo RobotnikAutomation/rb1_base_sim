@@ -10,6 +10,7 @@
 
   <!-- rb1_base_pad launch file -->
   <include file="$(find rb1_base_pad)/launch/rb1_base_pad.launch" />
+  <remap from="/rb1/mobile_base_controller/cmd_vel" to="/rb1/cmd_vel" />
 
   <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">

@@ -4,10 +4,15 @@
   <!-- load the controllers -->
   <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
     output="screen" ns="/rb1" args="--shutdown-time 1 --namespace=/rb1
-                      joint_left_velocity_controller
-                      joint_right_velocity_controller
+					  mobile_base_controller
                       joint_read_state_controller 
                       "/>
+
+<!-- for gazebo plugin -->
+<!-- 
+                      joint_left_velocity_controller
+                      joint_right_velocity_controller
+-->
 
   <!-- Load joint controller configurations from YAcd .ML file to parameter server -->
   <rosparam file="$(find rb1_base_control)/config/rb1_base_control.yaml" command="load"/>

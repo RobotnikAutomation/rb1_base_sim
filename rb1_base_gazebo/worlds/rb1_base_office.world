@@ -6,16 +6,8 @@
       <gravity>0 0 -9.8</gravity>
       <ode>
         <solver>
-          <!--type>quick</type>
-          <dt>0.001</dt>
-          <iters>40</iters>
-          <sor>1.0</sor -->
-          <!-- type>quick</type>
-          <dt>0.01</dt>
-          <iters>20</iters>
-          <sor>1.0</sor -->
           <type>quick</type>
-          <iters>20</iters>
+          <iters>40</iters>
           <sor>1.0</sor>
         </solver>
         <constraints>
