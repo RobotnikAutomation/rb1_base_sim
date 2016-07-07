@@ -19,6 +19,7 @@
   <url type="bugtracker">https://github.com/RobotnikAutomation/rb1_base_sim/issues</url>
 
   <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>message_runtime</build_depend>
     
   <run_depend>message_runtime</run_depend>
   <run_depend>std_msgs</run_depend>
