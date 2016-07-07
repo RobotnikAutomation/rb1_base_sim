@@ -2,8 +2,8 @@
 Changelog for package rb1_base_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.1 (2016-07-07)
+------------------
 * removing builds from package xml
 * Edited xml packages and Cmake lists
 * changed control yaml and launch to use the diff_drive_controller - allows diff drive control using ros control and velocity interface

@@ -2,8 +2,8 @@
 Changelog for package rb1_base_purepursuit
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.1 (2016-07-07)
+------------------
 * removing robotnik pp planner dependencies
 * removing robotnik pp planner dependencies
 * Adding robotnik pp planner dependencies
