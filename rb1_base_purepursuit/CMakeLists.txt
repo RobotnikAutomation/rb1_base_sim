@@ -6,7 +6,7 @@ find_package(catkin REQUIRED COMPONENTS)
 
 
 
-catkin_package(CATKIN_DEPENDS	robotnik_pp_planner)
+catkin_package()
 
 
 install(DIRECTORY launch
