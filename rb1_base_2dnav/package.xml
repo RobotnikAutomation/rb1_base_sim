@@ -20,9 +20,10 @@
 
   <buildtool_depend>catkin</buildtool_depend>
   <build_depend>message_runtime</build_depend>
+  <build_depend>std_msgs</build_depend>
     
-  <run_depend>message_runtime</run_depend>
   <run_depend>std_msgs</run_depend>
+  <run_depend>message_runtime</run_depend>
   <run_depend>move_base</run_depend>
   <run_depend>gmapping</run_depend>
   <run_depend>amcl</run_depend>

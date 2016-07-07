@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(rb1_base_2dnav)
 
-find_package(catkin REQUIRED COMPONENTS 
+find_package(catkin REQUIRED COMPONENTS  
+	std_msgs
 	message_runtime 
-	std_msgs 
 	move_base
 	gmapping
 	amcl
