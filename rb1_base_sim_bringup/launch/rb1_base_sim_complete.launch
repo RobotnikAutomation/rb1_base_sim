@@ -5,9 +5,9 @@
   <include file="$(find rb1_base_gazebo)/launch/rb1_base.launch"/>
 
   <!-- rb1_base_control will provide control for TODO -->
-  <include file="$(find rb1_base_control)/launch/rb1_base_control.launch"/>
+  <!--include file="$(find rb1_base_control)/launch/rb1_base_control.launch"/-->
 
   <!-- robot_localization nodes, publishes transformation world->odom->base_footprint -->
-  <include file="$(find rb1_base_localization)/launch/robot_localization_complete.launch"/>
+  <!--include file="$(find rb1_base_localization)/launch/robot_localization_complete.launch"/-->
   
 </launch>
