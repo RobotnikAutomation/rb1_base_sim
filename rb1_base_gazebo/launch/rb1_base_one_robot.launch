@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!-- multirobot configuration -->
+  <arg name="robot_name"/>
+  <arg name="init_pose"/>
+
+  <param name="robot_description"
+         command="$(find xacro)/xacro.py '$(find rb1_base_description)/robots/rb1_base_platform_standalone.urdf.xacro'" />
+
+  <node name="urdf_spawner_rb1_model" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+     args="$(arg init_pose) -urdf -param /robot_description -model $(arg robot_name)" />
+       
+  <node pkg="robot_state_publisher" type="robot_state_publisher" 
+          name="robot_state_publisher" output="screen">
+	 <!-- remap from="/joint_states" to="/rb1/joint_states" / -->          
+  </node>
+
+
+
+
+  <!-- Call a python script to the run a service call to gazebo_ros to spawn a URDF robot -->
+  <!-- node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+        args="-urdf -model rb1 -param robot_description"/ -->
+
+</launch>
+
