@@ -1,30 +1,26 @@
 <?xml version="1.0"?>
 <package>
   <name>rb1_base_purepursuit</name>
-  <version>0.0.0</version>
+  <version>1.0.1</version>
   <description>The rb1_base_purepursuit package</description>
 
-  <maintainer email="info@robotnik.es">Robotnik</maintainer>
+   <maintainer email="rguzman@robotnik.es">Roberto Guzmán</maintainer>
+  <maintainer email="rnavarro@robotnik.es">Roman Navarro Garcia </maintainer>
+  <maintainer email="aaliques@robotnik.com">Toni Aliques</maintainer>
+
+  <author email="rguzman@robotnik.es">Roberto Guzmán</author>
 
   <license>BSD</license>
 
-  <!-- Url tags are optional, but mutiple are allowed, one per tag -->
-  <!-- Optional attribute type can be: website, bugtracker, or repository -->
-  <!-- Example: -->
-  <!-- <url type="website">http://wiki.ros.org/rb1_base_purepursuit</url> -->
+  <url type="website">http://wiki.ros.org/rb1_base_purepursuit</url>
+  <url type="repository">https://github.com/RobotnikAutomation/rb1_base_sim</url>
+  <url type="bugtracker">https://github.com/RobotnikAutomation/rb1_base_sim/issues</url>
 
-  <!-- Use run_depend for packages you need at runtime: -->
-  <!--   <run_depend>message_runtime</run_depend> -->
-  <!-- Use test_depend for packages you need only for testing: -->
-  <!--   <test_depend>gtest</test_depend> -->
+  
   <buildtool_depend>catkin</buildtool_depend>
-  <build_depend>robotnik_pp_planner</build_depend>
-  <run_depend>robotnik_pp_planner</run_depend>
 
-  <!-- The export tag contains other, unspecified, tags -->
+  
   <export>
-    <!-- You can specify that this package is a metapackage here: -->
-    <!-- <metapackage/> -->
-    <!-- Other tools can request additional information be placed here -->
+   
   </export>
 </package>

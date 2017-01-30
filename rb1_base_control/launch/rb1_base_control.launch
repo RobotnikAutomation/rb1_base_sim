@@ -8,12 +8,6 @@
                       joint_read_state_controller 
                       "/>
 
-<!-- for gazebo plugin -->
-<!-- 
-                      joint_left_velocity_controller
-                      joint_right_velocity_controller
--->
-
   <!-- Load joint controller configurations from YAcd .ML file to parameter server -->
   <rosparam file="$(find rb1_base_control)/config/rb1_base_control.yaml" command="load"/>
 
