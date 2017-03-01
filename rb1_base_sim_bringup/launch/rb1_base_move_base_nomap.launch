@@ -5,6 +5,6 @@
   <include file="$(find rb1_base_sim_bringup)/launch/rb1_base_sim_complete.launch"/>
   
   <!-- move_base -->
-  <include file="$(find rb1_base_navigation)/launch/move_base_nomap.launch"/>
+  <include file="$(find rb1_base_navigation)/launch/navigation_local/move_base_local.launch"/>
 
 </launch>
