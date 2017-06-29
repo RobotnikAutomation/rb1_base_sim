@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!-- start gazebo simulation -->
+  <include file="$(find rb1_base_sim_bringup)/launch/rb1_base_sim_complete.launch"/>
+  
+  <!-- move_base -->
+  <include file="$(find rb1_base_navigation)/launch/navigation_local/move_base_local.launch"/>
+
+</launch>
