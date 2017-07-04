@@ -1,11 +1,12 @@
 <?xml version="1.0"?>
 <package>
   <name>rb1_base_sim</name>
-  <version>1.0.2</version>
+  <version>1.0.1</version>
   <description>The rb1_base_sim metapackage</description>
 
   <maintainer email="rguzman@robotnik.es">Roberto Guzmán</maintainer>
   <maintainer email="rnavarro@robotnik.es">Roman Navarro Garcia </maintainer>
+  <maintainer email="aaliques@robotnik.com">Toni Aliques</maintainer>
 
   <author email="rguzman@robotnik.es">Roberto Guzmán</author>
 
@@ -21,8 +22,10 @@
 
   <run_depend>rb1_base_gazebo</run_depend>
   <run_depend>rb1_base_control</run_depend>
-  <run_depend>rb1_base_sim_bringup</run_depend>
+  <run_depend>rb1_base_2dnav</run_depend>
+  <run_depend>rb1_base_purepursuit</run_depend>
 
+ 
   <export>
    
     <metapackage/>

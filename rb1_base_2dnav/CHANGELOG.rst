@@ -2,9 +2,12 @@
 Changelog for package rb1_base_2dnav
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+<<<<<<< HEAD
 1.0.2 (2016-07-22)
 ------------------
 
+=======
+>>>>>>> parent of c1083fe... Merge branch 'indigo_fixes' into indigo-devel
 1.0.1 (2016-07-07)
 ------------------
 * removing builds from package xml

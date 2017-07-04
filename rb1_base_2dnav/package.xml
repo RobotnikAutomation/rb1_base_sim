@@ -1,7 +1,11 @@
 <?xml version="1.0"?>
 <package>
   <name>rb1_base_2dnav</name>
+<<<<<<< HEAD
   <version>1.0.2</version>
+=======
+  <version>1.0.1</version>
+>>>>>>> parent of c1083fe... Merge branch 'indigo_fixes' into indigo-devel
   <description>
     This package configures the move_base stack and makes use of the gmapping and amcl algorithms to
     move the rb1_base robot 
