@@ -1,27 +1,37 @@
 <?xml version="1.0"?>
 <launch>
 
-  <!-- load the controllers -->
-  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
-    output="screen" ns="/rb1" args="--shutdown-time 1 --namespace=/rb1
+	<!-- Load joint controller configurations from YAML file to parameter server -->
+	<rosparam file="$(find rb1_base_control)/config/rb1_base_control.yaml" command="load"/>
+
+	<!--TODO DUPLICITY -->                    
+	<!--
+	<node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+	output="screen" ns="/rb1" args="--> <!--/node>shutdown-time 1 --><!--namespace=/rb1
 					  mobile_base_controller
-                      joint_read_state_controller 
-                      "/>
+					  joint_read_state_controller 
+					  "/
+	-->
+	<!--TODO DUPLICITY -->
+	
+	<node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+    output="screen" args="
+						rb1
+						joint_read_state_controller
+						--shutdown-time 1
+						"/>
 
-  <!-- Load joint controller configurations from YAcd .ML file to parameter server -->
-  <rosparam file="$(find rb1_base_control)/config/rb1_base_control.yaml" command="load"/>
+	<!-- once the joint_state is published, run the robot_state_publisher, the namespace has to be adapted --> 
+	<!-- convert joint states to TF transforms for rviz, etc -->
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+		respawn="false" output="screen">
+	<!--remap from="/joint_states" to="/rb1/joint_states" /-->
+	</node>
 
-  <!-- once the joint_state is published, run the robot_state_publisher, the namespace has to be adapted --> 
-  <!-- convert joint states to TF transforms for rviz, etc -->
-  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
-    respawn="false" output="screen">
-    <remap from="/joint_states" to="/rb1/joint_states" />
-  </node>
-
-  <node pkg="twist_mux" type="twist_mux" name="twist_mux">
-    <rosparam command="load" file="$(find rb1_base_control)/config/twist_mux.yaml" />
-    <remap from="cmd_vel_out" to="/rb1/cmd_vel"/>
-  </node>
+	<node pkg="twist_mux" type="twist_mux" name="twist_mux">
+		<rosparam command="load" file="$(find rb1_base_control)/config/twist_mux.yaml" />
+		<remap from="cmd_vel_out" to="/rb1/cmd_vel"/>
+	</node>
 
 
 

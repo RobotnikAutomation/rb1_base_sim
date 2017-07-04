@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!-- roslaunch arguments --> 
+  <arg name="debug" default="false"/>
+  <arg name="gui" default="true"/>
+
+  <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find rb1_base_gazebo)/worlds/rb1_base.world"/>
+    <arg name="debug" value="$(arg debug)" />
+    <arg name="gui" value="$(arg gui)" />
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="headless" value="false"/>
+  </include>
+
+  <!-- No namespace here as we will share this description. 
+       Access with slash at the beginning -->
+  <param name="robot_description"
+    command="$(find xacro)/xacro.py '$(find rb1_base_description)/robots/rb1_base_platform_standalone_multi.urdf.xacro'" />
+
+  <!-- BEGIN ROBOT 1-->
+  <group ns="robot1">
+    <!-- param name="tf_prefix" value="robot1_tf" / -->
+    <param name="tf_prefix" value="robot1" />
+    <include file="$(find rb1_base_gazebo)/launch/rb1_base_one_robot.launch" >
+      <arg name="init_pose" value="-x 1 -y 1 -z 0" />
+      <arg name="robot_name"  value="Robot1" />
+    </include>
+
+    <!-- Load joint controller configurations from YAcd .ML file to parameter server -->
+    <rosparam file="$(find rb1_base_control)/config/rb1_base_control_multi1.yaml" command="load"/>
+
+    <!-- load the controllers -->
+    <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+       output="screen" ns="/robot1" args="--shutdown-time 1 
+                      mobile_base_controller
+                      joint_read_state_controller 
+                      "/>
+  </group>
+
+  <!-- BEGIN ROBOT 2-->
+  <group ns="robot2">
+    <!-- param name="tf_prefix" value="robot2_tf" / -->
+    <param name="tf_prefix" value="robot2" />
+    <include file="$(find rb1_base_gazebo)/launch/rb1_base_one_robot.launch" >
+      <arg name="init_pose" value="-x -1 -y 1 -z 0" />
+      <arg name="robot_name"  value="Robot2" />
+    </include>
+
+    <!-- Load joint controller configurations from YAcd .ML file to parameter server -->
+    <rosparam file="$(find rb1_base_control)/config/rb1_base_control_multi2.yaml" command="load"/>
+
+    <!-- load the controllers -->
+    <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+       output="screen" ns="/robot2" args="--shutdown-time 1 
+                      mobile_base_controller
+                      joint_read_state_controller 
+                      "/>
+  </group>
+
+  <node pkg="tf" type="static_transform_publisher" name="base_to_odom_r1" 
+      args="0.0 0.0 0.0 0.0 0.0 0.0 /map /robot1/odom 200" />
+
+  <node pkg="tf" type="static_transform_publisher" name="base_to_odom_r2" 
+      args="0.0 0.0 0.0 0.0 0.0 0.0 /map /robot2/odom 200" />
+
+</launch>
