@@ -1,11 +1,7 @@
 <?xml version="1.0"?>
 <package>
   <name>rb1_base_purepursuit</name>
-<<<<<<< HEAD
-  <version>1.0.2</version>
-=======
   <version>1.0.1</version>
->>>>>>> parent of c1083fe... Merge branch 'indigo_fixes' into indigo-devel
   <description>The rb1_base_purepursuit package</description>
 
    <maintainer email="rguzman@robotnik.es">Roberto Guzmán</maintainer>
