@@ -6,7 +6,7 @@
 	<arg name="launch_rviz" default="true"/>
 	<arg name="rviz_config_file" default="true"/>
 	<arg name="launch_robot_a" default="true"/>
-	<arg name="launch_robot_b" default="false"/>
+	<arg name="launch_robot_b" default="true"/>
 	<arg name="launch_robot_c" default="false"/>
 	<arg name="launch_navigation" default="true"/>
 	<arg name="load_map" default="willow_garage/willow_garage.yaml"/>
