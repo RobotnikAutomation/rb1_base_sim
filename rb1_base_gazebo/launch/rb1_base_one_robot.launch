@@ -11,12 +11,11 @@
 	<!-- BEGIN ROBOT-->
 	<group ns="$(arg id_robot)">
 	  
-		<arg name="prefix_frame" value="$(arg id_robot)_"/>
-		<arg name="prefix_topic" value=""/> 
+		<arg name="prefix" value="$(arg id_robot)_"/>
 		  
 		<!-- Load the URDF into the ROS Parameter Server -->
 		<param name="robot_description" 
-		command="$(find xacro)/xacro '$(find rb1_base_description)/robots/$(arg xacro_robot)' prefix_frame:=$(arg prefix_frame) prefix_topic:=$(arg prefix_topic) --inorder"/>
+		command="$(find xacro)/xacro '$(find rb1_base_description)/robots/$(arg xacro_robot)' prefix:=$(arg prefix) --inorder"/>
 
 		<!-- Spawner model into gazebo -->
 		<node name="urdf_spawner_rb1_model" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
@@ -50,7 +49,7 @@
 
 		<!-- amcl -->
 		<include if="$(arg launch_navigation)" file="$(find rb1_base_navigation)/launch/navigation_amcl/move_base_amcl.launch">
-			<arg name="prefix_frame" value="$(arg prefix_frame)"/>
+			<arg name="prefix" value="$(arg prefix)"/>
 			<arg name="x_init_pose" value="$(arg x_init_pose)"/>
 			<arg name="y_init_pose" value="$(arg y_init_pose)"/>
 			<arg name="z_init_pose" value="$(arg z_init_pose)"/>
