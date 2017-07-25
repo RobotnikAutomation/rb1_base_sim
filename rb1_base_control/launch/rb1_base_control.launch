@@ -4,7 +4,7 @@
   <!-- load the controllers -->
   <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
     output="screen" ns="/rb1" args="--shutdown-time 1 --namespace=/rb1
-					  mobile_base_controller
+					  rb1_base_control
                       joint_read_state_controller 
                       "/>
 

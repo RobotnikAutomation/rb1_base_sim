@@ -13,7 +13,7 @@
     type: joint_state_controller/JointStateController 
     publish_rate: 100.0
 
-  mobile_base_controller:
+  rb1_base_control:
     type        : "diff_drive_controller/DiffDriveController"
     left_wheel  : 'rb1_base_c_left_wheel_joint'
     right_wheel : 'rb1_base_c_right_wheel_joint'
@@ -55,6 +55,8 @@
         has_acceleration_limits: true
         max_acceleration       : 6.0  # rad/s^2
 
-
+  #elevator_controller:
+  #  type: "position_controllers/JointPositionController"
+  #  joint: rb1_base_c_elevator_platform_joint
 
 

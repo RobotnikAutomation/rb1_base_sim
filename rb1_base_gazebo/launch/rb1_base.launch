@@ -47,7 +47,7 @@
 		<!-- load the controllers -->
 		<node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
 		   output="screen" ns="/$(arg robot_a)" args="--shutdown-time 1 
-						  mobile_base_controller
+						  rb1_base_control
 						  joint_read_state_controller"/>
 					  
 		<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"

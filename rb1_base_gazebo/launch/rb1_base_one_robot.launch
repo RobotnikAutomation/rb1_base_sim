@@ -5,8 +5,9 @@
 	<arg name="x_init_pose" default="0"/>
 	<arg name="y_init_pose" default="0"/>
 	<arg name="z_init_pose" default="0"/>
-	<arg name="xacro_robot" default="rb1_base_platform_standalone_multi.urdf.xacro"/>
-	<arg name="launch_navigation" default="true"/>
+	<arg name="has_elevator" default="false"/>
+	<arg name="xacro_robot" default="rb1_base_v3_multi.urdf.xacro"/>
+	<arg name="launch_navigation" default="false"/>
   
 	<!-- BEGIN ROBOT-->
 	<group ns="$(arg id_robot)">
@@ -20,20 +21,25 @@
 		<!-- Spawner model into gazebo -->
 		<node name="urdf_spawner_rb1_model" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
 		 args="-x $(arg x_init_pose) -y $(arg y_init_pose) -z $(arg z_init_pose) -urdf -param robot_description -model $(arg id_robot)" />
-
+	
 		<!-- Load joint controller configurations from YAcd .ML file to parameter server -->
 		<rosparam file="$(find rb1_base_control)/config/$(arg id_robot)_control.yaml" command="load"/>
 
 		<!-- load the controllers -->
 		<node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
 		   output="screen" ns="/$(arg id_robot)" args="--shutdown-time 1 
-						  mobile_base_controller
+						  rb1_base_control
 						  joint_read_state_controller"/>
 					  
 		<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
 		respawn="false" output="screen">
 		<remap from="/joint_states" to="joint_states" />
 		</node>
+
+		<!-- load elevator controller -->
+		<node if="$(arg has_elevator)" name="elevator_controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+		   output="screen" ns="/$(arg id_robot)" args="--shutdown-time 1 
+						  elevator_controller"/>		
 
 		<!--node pkg="twist_mux" type="twist_mux" name="twist_mux">
 		<rosparam command="load" file="$(find rb1_base_control)/config/twist_mux.yaml" />

@@ -14,7 +14,7 @@ rb1:
     type: joint_state_controller/JointStateController 
     publish_rate: 100.0
 
-  mobile_base_controller:
+  rb1_base_control:
     type        : "diff_drive_controller/DiffDriveController"
     left_wheel  : 'joint_left_wheel'
     right_wheel : 'joint_right_wheel'
