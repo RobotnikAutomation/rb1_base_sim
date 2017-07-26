@@ -24,7 +24,7 @@
   <run_depend>rb1_base_control</run_depend>
   <run_depend>rb1_base_2dnav</run_depend>
   <run_depend>rb1_base_purepursuit</run_depend>
-
+  <run_depend>rb1_base_sim_bringup</run_depend>
  
   <export>
    
