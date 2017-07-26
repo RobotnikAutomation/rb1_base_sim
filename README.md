@@ -1,6 +1,9 @@
 # rb1_base_sim
 Packages for the simulation of the RB-1 Base robots
 
+# rb1_base_sim_bringup
+Launch files that launch the complete simulation of the robots
+
 # rb1_base_control
 This package contains the configuration files for the Gazebo controllers used by the model.
 
