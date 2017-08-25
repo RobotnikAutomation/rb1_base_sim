@@ -48,9 +48,6 @@
 		<node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="true" />
 	</group>
 	
-	<!-- Run the map server -->
-	<node if="$(arg launch_navigation)" name="map_server" pkg="map_server" type="map_server" args="$(find rb1_base_navigation)/maps/$(arg load_map)"/>
-  
 	<!--BEGIN ROBOT 1-->
 	<include if="$(arg launch_robot_a)" file="$(find rb1_base_gazebo)/launch/rb1_base_one_robot.launch">
 		<arg name="id_robot" value="$(arg id_robot_a)"/>
@@ -59,6 +56,7 @@
 		<arg name="z_init_pose" value="$(arg z_init_pose_robot_a)"/>
 		<arg name="xacro_robot" value="$(arg xacro_robot_a)"/>
 		<arg name="launch_navigation" value="$(arg launch_navigation)"/>
+		<arg name="load_map" value="$(arg load_map)"/>
 	</include>
 	
 	<!--BEGIN ROBOT 2-->
@@ -69,6 +67,7 @@
 		<arg name="z_init_pose" value="$(arg z_init_pose_robot_b)"/>
 		<arg name="xacro_robot" value="$(arg xacro_robot_b)"/>
 		<arg name="launch_navigation" value="$(arg launch_navigation)"/>
+		<arg name="load_map" value="$(arg load_map)"/>
 	</include>
 
 	<!--BEGIN ROBOT 3-->
@@ -79,6 +78,7 @@
 		<arg name="z_init_pose" value="$(arg z_init_pose_robot_c)"/>
 		<arg name="xacro_robot" value="$(arg xacro_robot_c)"/>
 		<arg name="launch_navigation" value="$(arg launch_navigation)"/>
+		<arg name="load_map" value="$(arg load_map)"/>
 	</include>
 
 </launch>

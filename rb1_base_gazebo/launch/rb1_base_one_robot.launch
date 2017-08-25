@@ -10,6 +10,7 @@
 	<arg name="launch_localization" default="false"/>
 	<arg name="launch_navigation" default="false"/>
 	<arg name="launch_gmapping" default="false"/>
+	<arg name="load_map" default="empty/map_empty.yaml"/>
   
 	<!-- BEGIN ROBOT-->
 	<group ns="$(arg id_robot)">
@@ -60,19 +61,22 @@
 		<!-- only use if you aren´t using a localization algorithm like amcl -->
 		<!--node if="$(arg fake_map_transform)" pkg="tf" type="static_transform_publisher" name="static_map_broadcaster" args="0 0 0 0 0 0 map $(arg namespace)odom 100" /-->
 
-		<!-- amcl and move base-->
-		<include if="$(arg launch_navigation)" file="$(find rb1_base_navigation)/launch/navigation_amcl/move_base_amcl.launch">
-			<arg name="prefix" value="$(arg prefix)"/>
-			<arg name="x_init_pose" value="$(arg x_init_pose)"/>
-			<arg name="y_init_pose" value="$(arg y_init_pose)"/>
-			<arg name="z_init_pose" value="$(arg z_init_pose)"/>
-		</include>
-		
-		<!-- gmapping -->
-		<include if="$(arg launch_gmapping)" file="$(find rb1_base_navigation)/launch/gmapping/rb1_base_gmapping.launch">
-			<arg name="prefix" value="$(arg prefix)"/>
-		</include>
-
 	</group>
+	
+	<!-- out from the group because inside it uses already a group -->
+	
+	<!-- map_server, amcl and move base-->
+	<include if="$(arg launch_navigation)" file="$(find rb1_base_navigation)/launch/navigation_amcl/move_base_amcl.launch">
+		<arg name="id_robot" value="$(arg id_robot)"/>
+		<arg name="x_init_pose" value="$(arg x_init_pose)"/>
+		<arg name="y_init_pose" value="$(arg y_init_pose)"/>
+		<arg name="z_init_pose" value="$(arg z_init_pose)"/>
+		<arg name="load_map" value="$(arg load_map)"/>
+	</include>
+	
+	<!-- gmapping -->
+	<include if="$(arg launch_gmapping)" file="$(find rb1_base_navigation)/launch/gmapping/rb1_base_gmapping.launch">
+		<arg name="prefix" value="$(arg id_robot)_"/>
+	</include>
 
 </launch>

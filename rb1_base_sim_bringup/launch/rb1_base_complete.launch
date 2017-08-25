@@ -81,8 +81,5 @@
 		<arg name="load_map" value="$(arg load_map)"/>
 	</include>
 
-	<!-- Run the map server -->
-	<node if="$(arg launch_navigation)" name="map_server" pkg="map_server" type="map_server" args="$(find rb1_base_navigation)/maps/$(arg load_map)"/>
-  	
   
 </launch>
