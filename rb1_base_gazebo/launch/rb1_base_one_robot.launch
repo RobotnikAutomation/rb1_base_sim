@@ -26,7 +26,11 @@
 		 args="-x $(arg x_init_pose) -y $(arg y_init_pose) -z $(arg z_init_pose) -urdf -param robot_description -model $(arg id_robot)" />
 	
 		<!-- Load joint controller configurations from YAcd .ML file to parameter server -->
-		<rosparam file="$(find rb1_base_control)/config/$(arg id_robot)_control.yaml" command="load"/>
+		<rosparam file="$(find rb1_base_control)/config/rb1_base_control.yaml" command="load"/>
+		<param name="rb1_base_control/left_wheel" value="$(arg prefix)left_wheel_joint"/>
+		<param name="rb1_base_control/right_wheel" value="$(arg prefix)right_wheel_joint"/>
+		<param name="rb1_base_control/base_frame_id" value="$(arg prefix)base_footprint"/>
+		<param name="rb1_base_control/odom_frame_id" value="$(arg prefix)odom"/>
 
 		<!-- load the controllers -->
 		<node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
