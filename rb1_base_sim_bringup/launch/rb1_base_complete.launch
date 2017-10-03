@@ -18,7 +18,7 @@
 	<arg name="z_init_pose_robot_a" default="0" />
 	<arg name="localization_robot_a" default="false"/>
 	<arg name="gmapping_robot_a" default="false"/>
-	<arg name="xacro_robot_a" default="rb1_base_v3_multi.urdf.xacro"/>
+	<arg name="xacro_robot_a" default="rb1_base_platform_standalone_multi.urdf.xacro"/>
 	
 	<!-- robot b -->
 	<arg name="id_robot_b" default="rb1_base_b"/>
@@ -27,7 +27,7 @@
 	<arg name="z_init_pose_robot_b" default="0" />
 	<arg name="localization_robot_b" default="false"/>
 	<arg name="gmapping_robot_b" default="false"/>
-	<arg name="xacro_robot_b" default="rb1_base_v3_multi.urdf.xacro"/>
+	<arg name="xacro_robot_b" default="rb1_base_platform_standalone_multi.urdf.xacro"/>
 	
 	<!-- robot c -->
 	<arg name="id_robot_c" default="rb1_base_c"/>
@@ -36,7 +36,7 @@
 	<arg name="z_init_pose_robot_c" default="0" />
 	<arg name="localization_robot_c" default="false"/>
 	<arg name="gmapping_robot_c" default="false"/>
-	<arg name="xacro_robot_c" default="rb1_base_v3_multi.urdf.xacro"/>
+	<arg name="xacro_robot_c" default="rb1_base_platform_standalone_multi.urdf.xacro"/>
 	
 	
 	<!--BEGIN ROBOT 1-->
@@ -77,8 +77,7 @@
 
 	<!-- gazebo simulation and rviz visualization-->
 	<include file="$(find rb1_base_gazebo)/launch/rb1_base_multi.launch">		
-		<arg name="launch_rviz" value="$(arg launch_rviz)"/>
-		<arg name="load_map" value="$(arg load_map)"/>
+		<arg name="launch_rviz" value="$(arg launch_rviz)"/>		
 	</include>
 
   

@@ -1,52 +1,44 @@
 <?xml version="1.0"?>
 <launch>
 
-	<!-- roslaunch arguments --> 
-	<arg name="debug" default="false"/>
+	<!-- arg to config the launch file-->
+	
+	<!--launch_navigation and launch_navigation_nomap args are exclusive
+	and they are (or not) launched for all robots-->
+	<arg name="launch_navigation" default="true"/> 
 	<arg name="launch_rviz" default="true"/>
-	<arg name="rviz_config_file" default="true"/>
+	<arg name="load_map" default="willow_garage/willow_garage.yaml"/>
+	<arg name="world_name" default="$(find rb1_base_gazebo)/worlds/rb1_base_office.world"/>
 	<arg name="launch_robot_a" default="true"/>
 	<arg name="launch_robot_b" default="true"/>
-	<arg name="launch_robot_c" default="false"/>
-	<arg name="launch_navigation" default="true"/>
-	<arg name="load_map" default="willow_garage/willow_garage.yaml"/>
-
-	<!--enumerate here the different robots-->
+	<arg name="launch_robot_c" default="false"/><!--params of the different robots-->
 	<!-- robot a -->
-	<arg name="id_robot_a" value="rb1_base_a"/>
-	<arg name="x_init_pose_robot_a" value="0" />
-	<arg name="y_init_pose_robot_a" value="0" />
-	<arg name="z_init_pose_robot_a" value="0" />
-	<arg name="xacro_robot_a" value="rb1_base_platform_standalone_multi.urdf.xacro"/>
+	<arg name="id_robot_a" default="rb1_base_a"/>
+	<arg name="x_init_pose_robot_a" default="0" />
+	<arg name="y_init_pose_robot_a" default="0" />
+	<arg name="z_init_pose_robot_a" default="0" />
+	<arg name="localization_robot_a" default="false"/>
+	<arg name="gmapping_robot_a" default="false"/>
+	<arg name="xacro_robot_a" default="rb1_base_platform_standalone_multi.urdf.xacro"/>
 	
 	<!-- robot b -->
-	<arg name="id_robot_b" value="rb1_base_b"/>
-	<arg name="x_init_pose_robot_b" value="0" />
-	<arg name="y_init_pose_robot_b" value="1" />
-	<arg name="z_init_pose_robot_b" value="0" />
-	<arg name="xacro_robot_b" value="rb1_base_platform_standalone_multi.urdf.xacro"/>
+	<arg name="id_robot_b" default="rb1_base_b"/>
+	<arg name="x_init_pose_robot_b" default="0" />
+	<arg name="y_init_pose_robot_b" default="1" />
+	<arg name="z_init_pose_robot_b" default="0" />
+	<arg name="localization_robot_b" default="false"/>
+	<arg name="gmapping_robot_b" default="false"/>
+	<arg name="xacro_robot_b" default="rb1_base_platform_standalone_multi.urdf.xacro"/>
 	
 	<!-- robot c -->
-	<arg name="id_robot_c" value="rb1_base_c"/>
-	<arg name="x_init_pose_robot_c" value="0" />
-	<arg name="y_init_pose_robot_c" value="2" />
-	<arg name="z_init_pose_robot_c" value="0" />
-	<arg name="xacro_robot_c" value="rb1_base_platform_standalone_multi.urdf.xacro"/>
-
-	<!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
-	<include file="$(find gazebo_ros)/launch/empty_world.launch">
-	<arg name="world_name" value="$(find rb1_base_gazebo)/worlds/rb1_base_office.world"/>
-	<arg name="debug" value="$(arg debug)" />
-	<arg name="paused" value="false"/>
-	<arg name="use_sim_time" value="true"/>
-	<arg name="headless" value="false"/>
-	</include>
-
-	<!-- launch rviz -->
-	<group if="$(arg launch_rviz)">
-		<arg name="rvizconfig" default="$(find rb1_base_gazebo)/rviz/office.rviz" />
-		<node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="true" />
-	</group>
+	<arg name="id_robot_c" default="rb1_base_c"/>
+	<arg name="x_init_pose_robot_c" default="0" />
+	<arg name="y_init_pose_robot_c" default="2" />
+	<arg name="z_init_pose_robot_c" default="0" />
+	<arg name="localization_robot_c" default="false"/>
+	<arg name="gmapping_robot_c" default="false"/>
+	<arg name="xacro_robot_c" default="rb1_base_platform_standalone_multi.urdf.xacro"/>
+	
 	
 	<!--BEGIN ROBOT 1-->
 	<include if="$(arg launch_robot_a)" file="$(find rb1_base_gazebo)/launch/rb1_base_one_robot.launch">
@@ -55,7 +47,9 @@
 		<arg name="y_init_pose" value="$(arg y_init_pose_robot_a)"/>
 		<arg name="z_init_pose" value="$(arg z_init_pose_robot_a)"/>
 		<arg name="xacro_robot" value="$(arg xacro_robot_a)"/>
+		<arg name="launch_localization" value="$(arg localization_robot_a)"/>
 		<arg name="launch_navigation" value="$(arg launch_navigation)"/>
+		<arg name="launch_gmapping" default="$(arg gmapping_robot_a)"/>
 		<arg name="load_map" value="$(arg load_map)"/>
 	</include>
 	
@@ -66,7 +60,9 @@
 		<arg name="y_init_pose" value="$(arg y_init_pose_robot_b)"/>
 		<arg name="z_init_pose" value="$(arg z_init_pose_robot_b)"/>
 		<arg name="xacro_robot" value="$(arg xacro_robot_b)"/>
+		<arg name="launch_localization" value="$(arg localization_robot_b)"/>
 		<arg name="launch_navigation" value="$(arg launch_navigation)"/>
+		<arg name="launch_gmapping" default="$(arg gmapping_robot_b)"/>
 		<arg name="load_map" value="$(arg load_map)"/>
 	</include>
 
@@ -77,10 +73,17 @@
 		<arg name="y_init_pose" value="$(arg y_init_pose_robot_c)"/>
 		<arg name="z_init_pose" value="$(arg z_init_pose_robot_c)"/>
 		<arg name="xacro_robot" value="$(arg xacro_robot_c)"/>
+		<arg name="launch_localization" value="$(arg localization_robot_c)"/>
 		<arg name="launch_navigation" value="$(arg launch_navigation)"/>
+		<arg name="launch_gmapping" default="$(arg gmapping_robot_c)"/>
 		<arg name="load_map" value="$(arg load_map)"/>
 	</include>
 
+	<!-- gazebo simulation and rviz visualization-->
+	<include file="$(find rb1_base_gazebo)/launch/rb1_base_multi.launch">		
+		<arg name="launch_rviz" value="$(arg launch_rviz)"/>		
+		<arg name="world_name" value="$(arg world_name)"/>
+	</include>
+
+  
 </launch>
-
-

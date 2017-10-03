@@ -4,11 +4,12 @@
 	<!-- roslaunch arguments --> 
 	<arg name="debug" default="false"/>
 	<arg name="launch_rviz" default="false"/>
-	<arg name="load_map" default="empty/map_empty.yaml"/>
+	<arg name="world_name" default="$(find rb1_base_gazebo)/worlds/rb1_base.world"/>
+	<arg name="rviz_config" default="default"/>
 
 	<!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
 	<include file="$(find gazebo_ros)/launch/empty_world.launch">
-		<arg name="world_name" value="$(find rb1_base_gazebo)/worlds/rb1_base.world"/>
+		<arg name="world_name" value="$(arg world_name)"/>
 		<arg name="debug" value="$(arg debug)" />
 		<arg name="paused" value="false"/>
 		<arg name="use_sim_time" value="true"/>
@@ -16,7 +17,8 @@
 	</include>
 	
 	<!-- launch rviz -->
-	<node if="$(arg launch_rviz)" name="rviz" pkg="rviz" type="rviz" required="true" />
+
+	<node if="$(arg launch_rviz)" name="rviz" pkg="rviz" type="rviz" args="-d $(arg rviz_config)" required="true" />
 	
 	
 </launch>
