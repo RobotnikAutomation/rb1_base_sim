@@ -6,7 +6,7 @@
   <arg name="init_pose"/>
 
   <param name="robot_description"
-         command="$(find xacro)/xacro.py '$(find rb1_base_description)/robots/rb1_base_platform_standalone.urdf.xacro'" />
+         command="$(find xacro)/xacro.py '$(find rb1_base_description)/robots/rb1_base_platform.urdf.xacro'" />
 
   <node name="urdf_spawner_rb1_model" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
      args="$(arg init_pose) -urdf -param /robot_description -model $(arg robot_name)" />
