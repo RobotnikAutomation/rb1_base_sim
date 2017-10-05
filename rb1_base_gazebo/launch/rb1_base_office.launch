@@ -7,7 +7,7 @@
 
   <!-- rb1_base_control launch file -->
   <include file="$(find rb1_base_control)/launch/rb1_base_control.launch" />
-    
+
   <!-- rb1_base_pad launch file -->
   <include file="$(find rb1_base_pad)/launch/rb1_base_pad.launch" />
   <remap from="/rb1/mobile_base_controller/cmd_vel" to="/rb1/cmd_vel" />
@@ -24,8 +24,8 @@
 
   <!-- Load the URDF into the ROS Parameter Server -->
   <param name="robot_description"
-         command="$(find xacro)/xacro.py '$(find rb1_base_description)/robots/rb1_base_platform_standalone.urdf.xacro'" />
-         
+         command="$(find xacro)/xacro.py '$(find rb1_base_description)/robots/rb1_base_platform.urdf.xacro'" />
+
   <!-- Call a python script to the run a service call to gazebo_ros to spawn a URDF robot -->
   <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
         args="-urdf -model rb1_base -param robot_description"/>
