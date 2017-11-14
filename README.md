@@ -1,5 +1,6 @@
 # rb1_base_sim
 Packages for the simulation of the RB-1 Base robots
+Dependences: gazebo_ros_pkgs (kinetic-multi-devel) https://github.com/RobotnikAutomation/gazebo_ros_pkgs
 
 # rb1_base_sim_bringup
 Launch files that launch the complete simulation of the robots
@@ -15,3 +16,5 @@ This package contains the configuration files to launch the Gazebo environment a
 
 # rb1_base_purepursuit
 This package contains the implemented pure pursuit algorithm for RB1 base.
+
+
