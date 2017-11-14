@@ -76,7 +76,7 @@
 	</include>
 
 	<!-- gazebo simulation and rviz visualization-->
-	<include file="$(find rb1_base_gazebo)/launch/rb1_base_multi.launch">		
+	<include file="$(find rb1_base_gazebo)/launch/rb1_base_visual.launch">		
 		<arg name="launch_rviz" value="$(arg launch_rviz)"/>		
 	</include>
 
