@@ -5,7 +5,7 @@
 	<arg name="debug" default="false"/>
 	<arg name="launch_rviz" default="false"/>
 	<arg name="world_name" default="$(find rb1_base_gazebo)/worlds/rb1_base.world"/>
-	<arg name="rviz_config" default="default"/>
+	<arg name="rviz_config" default="$(find rb1_base_gazebo)/rviz/rb1_base_a.rviz"/>
 
 	<!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
 	<include file="$(find gazebo_ros)/launch/empty_world.launch">
@@ -18,7 +18,7 @@
 	
 	<!-- launch rviz -->
 
-	<node if="$(arg launch_rviz)" name="rviz" pkg="rviz" type="rviz" args="-d $(arg rviz_config)" required="true" />
+	<node if="$(arg launch_rviz)" name="rviz" pkg="rviz" type="rviz" args="-d $(arg rviz_config)" required="true"/>
 	
 	
 </launch>
