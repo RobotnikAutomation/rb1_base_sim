@@ -6,7 +6,7 @@
 
    <maintainer email="rguzman@robotnik.es">Roberto Guzmán</maintainer>
   <maintainer email="rnavarro@robotnik.es">Roman Navarro Garcia </maintainer>
-  <maintainer email="aaliques@robotnik.com">Toni Aliques</maintainer>
+
 
   <author email="rguzman@robotnik.es">Roberto Guzmán</author>
 
@@ -17,6 +17,17 @@
   <url type="bugtracker">https://github.com/RobotnikAutomation/rb1_base_sim/issues</url>
 
   <buildtool_depend>catkin</buildtool_depend>
+  
+  <build_depend>gazebo_ros</build_depend>
+  <build_depend>gazebo_ros_control</build_depend>
+  <build_depend>rb1_base_control</build_depend>
+  <build_depend>rb1_base_description</build_depend>
+  <build_depend>rb1_base_pad</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <build_depend>std_srvs</build_depend>
+  <build_depend>tf</build_depend>
+  <build_depend>diff_drive_controller</build_depend>
+ 
 
   <run_depend>gazebo_ros</run_depend>
   <run_depend>gazebo_ros_control</run_depend>
@@ -26,7 +37,7 @@
   <run_depend>std_msgs</run_depend>
   <run_depend>std_srvs</run_depend>
   <run_depend>tf</run_depend>
-
+  <run_depend>diff_drive_controller</run_depend>
 
   <export>
     

@@ -3,7 +3,9 @@ project(rb1_base_gazebo)
 
 
 find_package(catkin REQUIRED COMPONENTS
-  
+  gazebo_ros
+  gazebo_ros_control
+  diff_drive_controller
 )
 
 
