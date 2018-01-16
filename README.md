@@ -1,6 +1,5 @@
 # rb1_base_sim
 Packages for the simulation of the RB-1 Base robots
-Dependences: gazebo_ros_pkgs (kinetic-multi-devel) https://github.com/RobotnikAutomation/gazebo_ros_pkgs
 
 # rb1_base_sim_bringup
 Launch files that launch the complete simulation of the robots
