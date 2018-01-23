@@ -18,7 +18,7 @@
 	<arg name="x_init_pose_robot_a" default="0" />
 	<arg name="y_init_pose_robot_a" default="0" />
 	<arg name="z_init_pose_robot_a" default="0" />
-	<arg name="localization_robot_a" default="true"/>
+	<arg name="localization_robot_a" default="false"/>
 	<arg name="gmapping_robot_a" default="false"/>
 	<arg name="move_base_robot_a" default="true"/>
 	<arg name="amcl_and_mapserver_a" default="true"/>
@@ -30,7 +30,7 @@
 	<arg name="x_init_pose_robot_b" default="0" />
 	<arg name="y_init_pose_robot_b" default="1" />
 	<arg name="z_init_pose_robot_b" default="0" />
-	<arg name="localization_robot_b" default="true"/>
+	<arg name="localization_robot_b" default="false"/>
 	<arg name="gmapping_robot_b" default="false"/>
 	<arg name="move_base_robot_b" default="true"/>
 	<arg name="amcl_and_mapserver_b" default="true"/>
