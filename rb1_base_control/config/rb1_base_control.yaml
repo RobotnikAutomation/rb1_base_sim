@@ -13,7 +13,7 @@
     type: joint_state_controller/JointStateController 
     publish_rate: 100.0
 
-  rb1_base_control:
+  robotnik_base_control:
     type        : "diff_drive_controller/DiffDriveController"
     left_wheel  : 'rb1_base_left_wheel_joint'
     right_wheel : 'rb1_base_right_wheel_joint'
