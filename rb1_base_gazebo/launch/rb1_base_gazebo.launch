@@ -7,9 +7,9 @@
 	and they are (or not) launched for all robots-->
 	<arg name="launch_rviz" default="true"/>
 	<arg name="launch_robot_a" default="true"/>
-	<arg name="launch_robot_b" default="true"/>
+	<arg name="launch_robot_b" default="false"/>
 	<arg name="launch_robot_c" default="false"/>
-	<arg name="gazebo_world" default="$(find rb1_base_gazebo)/worlds/rb1_base_office.world"/>
+	<arg name="gazebo_world" default="$(find rb1_base_gazebo)/worlds/rb1_base.world"/>
 	<arg name="debug" default="false"/>
 	
 	<!--params of the different robots-->
@@ -18,11 +18,11 @@
 	<arg name="x_init_pose_robot_a" default="0" />
 	<arg name="y_init_pose_robot_a" default="0" />
 	<arg name="z_init_pose_robot_a" default="0" />
-	<arg name="localization_robot_a" default="true"/>
+	<arg name="localization_robot_a" default="false"/>
 	<arg name="gmapping_robot_a" default="false"/>
-	<arg name="move_base_robot_a" default="true"/>
-	<arg name="amcl_and_mapserver_a" default="true"/>
-	<arg name="map_file_a" default="willow_garage/willow_garage.yaml"/>
+	<arg name="move_base_robot_a" default="false"/>
+	<arg name="amcl_and_mapserver_a" default="false"/>
+	<arg name="map_file_a" default="empty/map_empty.yaml"/>
 	<arg name="xacro_robot_a" default="rb1_base_std.urdf.xacro"/>
 	
 	<!-- robot b -->
@@ -30,11 +30,11 @@
 	<arg name="x_init_pose_robot_b" default="0" />
 	<arg name="y_init_pose_robot_b" default="1" />
 	<arg name="z_init_pose_robot_b" default="0" />
-	<arg name="localization_robot_b" default="true"/>
+	<arg name="localization_robot_b" default="false"/>
 	<arg name="gmapping_robot_b" default="false"/>
-	<arg name="move_base_robot_b" default="true"/>
-	<arg name="amcl_and_mapserver_b" default="true"/>
-	<arg name="map_file_b" default="willow_garage/willow_garage.yaml"/>
+	<arg name="move_base_robot_b" default="false"/>
+	<arg name="amcl_and_mapserver_b" default="false"/>
+	<arg name="map_file_b" default="empty/map_empty.yaml"/>
 	<arg name="xacro_robot_b" default="rb1_base_std.urdf.xacro"/>
 	
 	<!-- robot c -->
@@ -46,7 +46,7 @@
 	<arg name="gmapping_robot_c" default="false"/>
 	<arg name="move_base_robot_c" default="false"/>
 	<arg name="amcl_and_mapserver_c" default="false"/>
-	<arg name="map_file_c" default="willow_garage/willow_garage.yaml"/>
+	<arg name="map_file_c" default="empty/map_empty.yaml"/>
 	<arg name="xacro_robot_c" default="rb1_base_std.urdf.xacro"/>
 	
 	<!--BEGIN ROBOT 1-->
@@ -97,5 +97,6 @@
 		<arg name="world_name" value="$(arg gazebo_world)"/>
 		<arg name="debug" value="$(arg debug)"/>
 	</include>
-	
+
+  
 </launch>
