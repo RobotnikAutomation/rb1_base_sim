@@ -23,6 +23,7 @@
 	<arg name="move_base_robot_a" default="false"/>
 	<arg name="amcl_and_mapserver_a" default="false"/>
 	<arg name="map_file_a" default="empty/map_empty.yaml"/>
+	<arg name="map_frame_a" default="$(arg id_robot_a)_map"/>
 	<arg name="xacro_robot_a" default="rb1_base_std.urdf.xacro"/>
 	
 	<!-- robot b -->
@@ -35,6 +36,7 @@
 	<arg name="move_base_robot_b" default="false"/>
 	<arg name="amcl_and_mapserver_b" default="false"/>
 	<arg name="map_file_b" default="empty/map_empty.yaml"/>
+	<arg name="map_frame_b" default="$(arg id_robot_b)_map"/>
 	<arg name="xacro_robot_b" default="rb1_base_std.urdf.xacro"/>
 	
 	<!-- robot c -->
@@ -47,6 +49,7 @@
 	<arg name="move_base_robot_c" default="false"/>
 	<arg name="amcl_and_mapserver_c" default="false"/>
 	<arg name="map_file_c" default="empty/map_empty.yaml"/>
+	<arg name="map_frame_c" default="$(arg id_robot_c)_map"/>
 	<arg name="xacro_robot_c" default="rb1_base_std.urdf.xacro"/>
 	
 	<!--BEGIN ROBOT 1-->
@@ -61,6 +64,7 @@
 		<arg name="launch_gmapping" value="$(arg gmapping_robot_a)"/>
 		<arg name="map_file" value="$(arg map_file_a)"/>
  		<arg name="launch_move_base" value="$(arg move_base_robot_a)"/>
+		<arg name="global_frame" value="$(arg map_frame_a)"/>
 	</include>
 	
 	<!--BEGIN ROBOT 2-->
@@ -75,6 +79,7 @@
 		<arg name="launch_gmapping" value="$(arg gmapping_robot_b)"/>
 		<arg name="map_file" value="$(arg map_file_b)"/>
  		<arg name="launch_move_base" value="$(arg move_base_robot_b)"/>
+		<arg name="global_frame" value="$(arg map_frame_b)"/>
 	</include>
 
 	<!--BEGIN ROBOT 3-->
@@ -89,6 +94,7 @@
 		<arg name="launch_gmapping" value="$(arg gmapping_robot_c)"/>
 		<arg name="map_file" value="$(arg map_file_c)"/>
  		<arg name="launch_move_base" value="$(arg move_base_robot_c)"/>
+		<arg name="global_frame" value="$(arg map_frame_c)"/>
 	</include>
 
 	<!-- gazebo simulation and rviz visualization-->

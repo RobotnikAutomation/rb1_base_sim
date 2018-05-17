@@ -61,13 +61,24 @@ Launch files that launch the complete simulation of the robot/s.
   <arg name="y_init_pose_robot_a" default="0" />
   <arg name="z_init_pose_robot_a" default="0" />
   <arg name="xacro_robot_a" default="rb1_base_std.urdf.xacro"/>
+  <arg name="map_frame_a" default="$(arg id_robot_a)_map"/>
   ```
 - Example to launch simulation with 3 RB-1 Base robots:
   ```
   roslaunch rb1_base_sim_bringup rb1_base_complete.launch launch_robot_b:=true launch_robot_c:=true
   ```
-- Example to launch simulation with 1 RB-1 Base robot with navigation:
+- Example to launch simulation with 1 RB-1 Base robot with navigation and localization:
   ```
   roslaunch rb1_base_sim_bringup rb1_base_complete.launch move_base_robot_a:=true amcl_and_mapserver_a:=true
+
+- Example to launch simulation with 2 RB-1 Base robot with navigation and localization sharing the same global frame:
+  ```
+  roslaunch rb1_base_sim_bringup rb1_base_complete.launch amcl_and_mapserver_a:=true move_base_robot_a:=true map_frame_a:=/map launch_robot_b:=true amcl_and_mapserver_b:=true move_base_robot_b:=true map_frame_b:=/map
+
+  ```
+- Example to launch simulation with 3 RB-1 Base robot with navigation and localization sharing the same global frame:
+  ```
+ roslaunch rb1_base_sim_bringup rb1_base_complete.launch amcl_and_mapserver_a:=true move_base_robot_a:=true map_frame_a:=/map launch_robot_b:=true amcl_and_mapserver_b:=true move_base_robot_b:=true map_frame_b:=/map launch_robot_c:=true amcl_and_mapserver_c:=true move_base_robot_c:=true map_frame_c:=/map
+
   ```
 3. Enjoy! You can use the topic "${id_robot}/robotnik_base_control/cmd_vel" to control the RB-1 Base robot or send simple goals using "/${id_robot}/move_base_simple/goal"
