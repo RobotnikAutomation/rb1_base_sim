@@ -22,7 +22,7 @@
 	<arg name="gmapping_robot_a" default="false"/>
 	<arg name="move_base_robot_a" default="false"/>
 	<arg name="amcl_and_mapserver_a" default="false"/>
-	<arg name="map_file_a" default="empty/map_empty.yaml"/>
+	<arg name="map_file_a" default="$(find rb1_base_localization)/maps/empty/map_empty.yaml"/>
 	<arg name="map_frame_a" default="$(arg id_robot_a)_map"/>
 	<arg name="xacro_robot_a" default="rb1_base_std.urdf.xacro"/>
 	
@@ -35,7 +35,7 @@
 	<arg name="gmapping_robot_b" default="false"/>
 	<arg name="move_base_robot_b" default="false"/>
 	<arg name="amcl_and_mapserver_b" default="false"/>
-	<arg name="map_file_b" default="empty/map_empty.yaml"/>
+	<arg name="map_file_b" default="$(find rb1_base_localization)/maps/empty/map_empty.yaml"/>
 	<arg name="map_frame_b" default="$(arg id_robot_b)_map"/>
 	<arg name="xacro_robot_b" default="rb1_base_std.urdf.xacro"/>
 	
@@ -48,7 +48,7 @@
 	<arg name="gmapping_robot_c" default="false"/>
 	<arg name="move_base_robot_c" default="false"/>
 	<arg name="amcl_and_mapserver_c" default="false"/>
-	<arg name="map_file_c" default="empty/map_empty.yaml"/>
+	<arg name="map_file_c" default="$(find rb1_base_localization)/maps/empty/map_empty.yaml"/>
 	<arg name="map_frame_c" default="$(arg id_robot_c)_map"/>
 	<arg name="xacro_robot_c" default="rb1_base_std.urdf.xacro"/>
 	

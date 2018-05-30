@@ -11,7 +11,7 @@
 	<!-- arguments robot a -->
 	<arg name="id_robot_a" default="rb1_base_a"/>
 	<arg name="launch_robot_a" default="true"/>
-	<arg name="map_file_a" default="willow_garage/willow_garage.yaml"/>
+	<arg name="map_file_a" default="$(find rb1_base_localization)/maps/willow_garage/willow_garage.yaml"/>
 	<arg name="localization_robot_a" default="true"/>
 	<arg name="gmapping_robot_a" default="false"/>
 	<arg name="move_base_robot_a" default="false"/>
@@ -21,7 +21,7 @@
 	<!-- arguments robot b -->
 	<arg name="id_robot_b" default="rb1_base_b"/>
 	<arg name="launch_robot_b" default="false"/>
-	<arg name="map_file_b" default="willow_garage/willow_garage.yaml"/>
+	<arg name="map_file_b" default="$(find rb1_base_localization)/maps/willow_garage/willow_garage.yaml"/>
 	<arg name="localization_robot_b" default="true"/>
 	<arg name="gmapping_robot_b" default="false"/>
 	<arg name="move_base_robot_b" default="false"/>
@@ -31,7 +31,7 @@
 	<!-- arguments robot c -->
 	<arg name="id_robot_c" default="rb1_base_c"/>
 	<arg name="launch_robot_c" default="false"/>
-	<arg name="map_file_c" default="willow_garage/willow_garage.yaml"/>
+	<arg name="map_file_c" default="$(find rb1_base_localization)/maps/willow_garage/willow_garage.yaml"/>
 	<arg name="localization_robot_c" default="true"/>
 	<arg name="gmapping_robot_c" default="false"/>
 	<arg name="move_base_robot_c" default="false"/>
