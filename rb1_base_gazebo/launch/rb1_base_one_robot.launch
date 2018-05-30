@@ -71,6 +71,7 @@
 		<!-- move base -->
 		<include if="$(arg launch_move_base)" file="$(find rb1_base_navigation)/launch/navigation_amcl/move_base.launch">
 			<arg name="prefix" value="$(arg prefix)"/>
+			<arg name="global_frame" value="$(arg global_frame)"/>
 		</include>		
 		
 		<!-- gmapping -->
