@@ -7,6 +7,8 @@
 	and they are (or not) launched for all robots-->
 	<arg name="launch_rviz" default="true"/>
 	<arg name="gazebo_world" default="$(find rb1_base_gazebo)/worlds/rb1_base_office.world"/>
+	<arg name="launch_base_hw_sim" default="false"/>
+        <arg name="launch_elevator_fake_pickup_gazebo" default="false"/>
 	
 	<!-- arguments robot a -->
 	<arg name="id_robot_a" default="rb1_base_a"/>
@@ -42,6 +44,8 @@
 		<!-- general args -->
 		<arg name="launch_rviz" value="$(arg launch_rviz)"/>
 		<arg name="gazebo_world" value="$(arg gazebo_world)"/>
+		<arg name="launch_base_hw_sim" value="false"/>
+        	<arg name="launch_elevator_fake_pickup_gazebo" value="$(arg launch_elevator_fake_pickup_gazebo)"/>
 		<!-- robot_a args -->
 		<arg name="id_robot_a" default="$(arg id_robot_a)"/>
 		<arg name="launch_robot_a" value="$(arg launch_robot_a)"/>

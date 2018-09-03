@@ -11,6 +11,8 @@
 	<arg name="launch_robot_c" default="false"/>
 	<arg name="gazebo_world" default="$(find rb1_base_gazebo)/worlds/rb1_base.world"/>
 	<arg name="debug" default="false"/>
+        <arg name="launch_base_hw_sim" default="false"/>
+        <arg name="launch_elevator_fake_pickup_gazebo" default="false"/> 
 	
 	<!--params of the different robots-->
 	<!-- robot a -->
@@ -25,6 +27,7 @@
 	<arg name="map_file_a" default="$(find rb1_base_localization)/maps/empty/map_empty.yaml"/>
 	<arg name="map_frame_a" default="$(arg id_robot_a)_map"/>
 	<arg name="xacro_robot_a" default="rb1_base_std.urdf.xacro"/>
+        <arg name="has_elevator_robot_a" default="true"/>
 	
 	<!-- robot b -->
 	<arg name="id_robot_b" default="rb1_base_b"/>
@@ -38,6 +41,7 @@
 	<arg name="map_file_b" default="$(find rb1_base_localization)/maps/empty/map_empty.yaml"/>
 	<arg name="map_frame_b" default="$(arg id_robot_b)_map"/>
 	<arg name="xacro_robot_b" default="rb1_base_std.urdf.xacro"/>
+	<arg name="has_elevator_robot_b" default="true"/>
 	
 	<!-- robot c -->
 	<arg name="id_robot_c" default="rb1_base_c"/>
@@ -51,6 +55,7 @@
 	<arg name="map_file_c" default="$(find rb1_base_localization)/maps/empty/map_empty.yaml"/>
 	<arg name="map_frame_c" default="$(arg id_robot_c)_map"/>
 	<arg name="xacro_robot_c" default="rb1_base_std.urdf.xacro"/>
+	<arg name="has_elevator_robot_c" default="true"/>
 	
 	<!--BEGIN ROBOT 1-->
 	<include if="$(arg launch_robot_a)" file="$(find rb1_base_gazebo)/launch/rb1_base_one_robot.launch">
@@ -65,6 +70,9 @@
 		<arg name="map_file" value="$(arg map_file_a)"/>
  		<arg name="launch_move_base" value="$(arg move_base_robot_a)"/>
 		<arg name="global_frame" value="$(arg map_frame_a)"/>
+		<arg name="launch_base_hw_sim" value="$(arg launch_base_hw_sim)"/>
+		<arg name="has_elevator" value="$(arg has_elevator_robot_a)"/>	
+		<arg name="fake_elevator_physics" value="$(arg launch_elevator_fake_pickup_gazebo)"/>	
 	</include>
 	
 	<!--BEGIN ROBOT 2-->
@@ -80,6 +88,9 @@
 		<arg name="map_file" value="$(arg map_file_b)"/>
  		<arg name="launch_move_base" value="$(arg move_base_robot_b)"/>
 		<arg name="global_frame" value="$(arg map_frame_b)"/>
+		<arg name="launch_base_hw_sim" value="$(arg launch_base_hw_sim)"/>
+		<arg name="has_elevator" value="$(arg has_elevator_robot_b)"/>	
+		<arg name="fake_elevator_physics" value="$(arg launch_elevator_fake_pickup_gazebo)"/>		
 	</include>
 
 	<!--BEGIN ROBOT 3-->
@@ -95,6 +106,9 @@
 		<arg name="map_file" value="$(arg map_file_c)"/>
  		<arg name="launch_move_base" value="$(arg move_base_robot_c)"/>
 		<arg name="global_frame" value="$(arg map_frame_c)"/>
+		<arg name="launch_base_hw_sim" value="$(arg launch_base_hw_sim)"/>
+		<arg name="has_elevator" value="$(arg has_elevator_robot_c)"/>	
+		<arg name="fake_elevator_physics" value="$(arg launch_elevator_fake_pickup_gazebo)"/>		
 	</include>
 
 	<!-- gazebo simulation and rviz visualization-->
@@ -102,6 +116,11 @@
 		<arg name="launch_rviz" value="$(arg launch_rviz)"/>
 		<arg name="world_name" value="$(arg gazebo_world)"/>
 		<arg name="debug" value="$(arg debug)"/>
+	</include>
+
+        <!-- avoids Gazebo physics to pickup carts -->
+	<include if="$(arg launch_elevator_fake_pickup_gazebo)" file="$(find robotnik_base_hw_sim)/launch/elevator_fake_pickup_gazebo.launch">
+		<arg name="config_yaml" value="$(find rb1_base_sim_bringup)/config/elevator_fake_pickup_gazebo.yaml"/>
 	</include>
 
   
