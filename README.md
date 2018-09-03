@@ -29,6 +29,7 @@ Launch files that launch the complete simulation of the robot/s.
   - rb1_base_common [link](https://github.com/RobotnikAutomation/rb1_base_common)
   - robotnik_msgs [link](https://github.com/RobotnikAutomation/robotnik_msgs)
   - robotnik_sensors [link](https://github.com/RobotnikAutomation/robotnik_sensors)
+  - robotnik_base_hw_sim [link](https://github.com/RobotnikAutomation/robotnik_base_hw_sim)
 
     In the workspace install the packages dependencies:
     ```
@@ -62,6 +63,8 @@ Launch files that launch the complete simulation of the robot/s.
   <arg name="z_init_pose_robot_a" default="0" />
   <arg name="xacro_robot_a" default="rb1_base_std.urdf.xacro"/>
   <arg name="map_frame_a" default="$(arg id_robot_a)_map"/>
+  <arg name="launch_base_hw_sim" default="false"/> <!-- Emulates Robotnik Base HW -->
+  <arg name="launch_elevator_fake_pickup_gazebo" default="false"/> <!-- avoids Gazebo physics to pick carts-->
   ```
 - Example to launch simulation with 3 RB-1 Base robots:
   ```
