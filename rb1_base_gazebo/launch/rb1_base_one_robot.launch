@@ -55,7 +55,7 @@
 		</include>
 
 		<!-- pad -->
-		<!--include file="$(find rb1_base_pad)/launch/rb1_base_pad.launch"/-->
+		<include file="$(find rb1_base_pad)/launch/rb1_base_pad.launch"/>
 
 		<!-- use static_transform_publisher to define map->odom transform    -->
 		<!-- only use if you aren´t using a localization algorithm like amcl -->
