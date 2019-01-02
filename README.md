@@ -30,6 +30,7 @@ Launch files that launch the complete simulation of the robot/s.
   - robotnik_msgs [link](https://github.com/RobotnikAutomation/robotnik_msgs)
   - robotnik_sensors [link](https://github.com/RobotnikAutomation/robotnik_sensors)
   - robotnik_base_hw_sim [link](https://github.com/RobotnikAutomation/robotnik_base_hw_sim)
+  - robot_localization_utils [link](https://github.com/RobotnikAutomation/robot_localization_utils)
 
     In the workspace install the packages dependencies:
     ```
