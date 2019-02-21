@@ -2,7 +2,7 @@
 <launch>
 
 	<!-- arg to config the launch file-->
-	
+
 	<!--launch_navigation and launch_navigation_nomap args are exclusive
 	and they are (or not) launched for all robots-->
 	<arg name="launch_rviz" default="true"/>
@@ -12,9 +12,9 @@
 	<arg name="launch_robot_c" default="false"/>
 	<arg name="gazebo_world" default="$(find rb1_base_gazebo)/worlds/rb1_base.world"/>
 	<arg name="debug" default="false"/>
-        <arg name="launch_base_hw_sim" default="false"/>
-        <arg name="launch_elevator_fake_pickup_gazebo" default="false"/> 
-	
+    <arg name="launch_base_hw_sim" default="false"/>
+    <arg name="launch_elevator_fake_pickup_gazebo" default="false"/>
+
 	<!--params of the different robots-->
 	<!-- robot a -->
 	<arg name="id_robot_a" default="rb1_base_a"/>
@@ -28,8 +28,9 @@
 	<arg name="map_file_a" default="$(find rb1_base_localization)/maps/empty/map_empty.yaml"/>
 	<arg name="map_frame_a" default="$(arg id_robot_a)_map"/>
 	<arg name="xacro_robot_a" default="rb1_base_std.urdf.xacro"/>
-        <arg name="has_elevator_robot_a" default="true"/>
-	
+    <arg name="has_elevator_robot_a" default="true"/>
+    <arg name="move_robot_a" default="false"/>
+
 	<!-- robot b -->
 	<arg name="id_robot_b" default="rb1_base_b"/>
 	<arg name="x_init_pose_robot_b" default="0" />
@@ -43,7 +44,8 @@
 	<arg name="map_frame_b" default="$(arg id_robot_b)_map"/>
 	<arg name="xacro_robot_b" default="rb1_base_std.urdf.xacro"/>
 	<arg name="has_elevator_robot_b" default="true"/>
-	
+    <arg name="move_robot_b" default="false"/>
+
 	<!-- robot c -->
 	<arg name="id_robot_c" default="rb1_base_c"/>
 	<arg name="x_init_pose_robot_c" default="0" />
@@ -57,7 +59,8 @@
 	<arg name="map_frame_c" default="$(arg id_robot_c)_map"/>
 	<arg name="xacro_robot_c" default="rb1_base_std.urdf.xacro"/>
 	<arg name="has_elevator_robot_c" default="true"/>
-	
+    <arg name="move_robot_c" default="false"/>
+
 	<!--BEGIN ROBOT 1-->
 	<include if="$(arg launch_robot_a)" file="$(find rb1_base_gazebo)/launch/rb1_base_one_robot.launch">
 		<arg name="id_robot" value="$(arg id_robot_a)"/>
@@ -72,10 +75,11 @@
  		<arg name="launch_move_base" value="$(arg move_base_robot_a)"/>
 		<arg name="global_frame" value="$(arg map_frame_a)"/>
 		<arg name="launch_base_hw_sim" value="$(arg launch_base_hw_sim)"/>
-		<arg name="has_elevator" value="$(arg has_elevator_robot_a)"/>	
-		<arg name="fake_elevator_physics" value="$(arg launch_elevator_fake_pickup_gazebo)"/>	
+		<arg name="has_elevator" value="$(arg has_elevator_robot_a)"/>
+		<arg name="fake_elevator_physics" value="$(arg launch_elevator_fake_pickup_gazebo)"/>
+		<arg name="launch_move" value="$(arg move_robot_a)"/>
 	</include>
-	
+
 	<!--BEGIN ROBOT 2-->
 	<include if="$(arg launch_robot_b)" file="$(find rb1_base_gazebo)/launch/rb1_base_one_robot.launch">
 		<arg name="id_robot" value="$(arg id_robot_b)"/>
@@ -90,8 +94,9 @@
  		<arg name="launch_move_base" value="$(arg move_base_robot_b)"/>
 		<arg name="global_frame" value="$(arg map_frame_b)"/>
 		<arg name="launch_base_hw_sim" value="$(arg launch_base_hw_sim)"/>
-		<arg name="has_elevator" value="$(arg has_elevator_robot_b)"/>	
-		<arg name="fake_elevator_physics" value="$(arg launch_elevator_fake_pickup_gazebo)"/>		
+		<arg name="has_elevator" value="$(arg has_elevator_robot_b)"/>
+		<arg name="fake_elevator_physics" value="$(arg launch_elevator_fake_pickup_gazebo)"/>
+        <arg name="launch_move" value="$(arg move_robot_b)"/>
 	</include>
 
 	<!--BEGIN ROBOT 3-->
@@ -108,12 +113,13 @@
  		<arg name="launch_move_base" value="$(arg move_base_robot_c)"/>
 		<arg name="global_frame" value="$(arg map_frame_c)"/>
 		<arg name="launch_base_hw_sim" value="$(arg launch_base_hw_sim)"/>
-		<arg name="has_elevator" value="$(arg has_elevator_robot_c)"/>	
-		<arg name="fake_elevator_physics" value="$(arg launch_elevator_fake_pickup_gazebo)"/>		
+		<arg name="has_elevator" value="$(arg has_elevator_robot_c)"/>
+		<arg name="fake_elevator_physics" value="$(arg launch_elevator_fake_pickup_gazebo)"/>
+        <arg name="launch_move" value="$(arg move_robot_c)"/>
 	</include>
 
 	<!-- gazebo simulation and rviz visualization-->
-	<include file="$(find rb1_base_gazebo)/launch/gazebo_rviz.launch">		
+	<include file="$(find rb1_base_gazebo)/launch/gazebo_rviz.launch">
 		<arg name="launch_rviz" value="$(arg launch_rviz)"/>
 		<arg name="world_name" value="$(arg gazebo_world)"/>
 		<arg name="debug" value="$(arg debug)"/>
@@ -125,5 +131,5 @@
 		<arg name="config_yaml" value="$(find rb1_base_sim_bringup)/config/elevator_fake_pickup_gazebo.yaml"/>
 	</include>
 
-  
+
 </launch>

@@ -7,7 +7,7 @@ Packages for the simulation of the RB-1 Base
   <img src="https://www.roscomponents.com/760-big_default/rb-1-base.jpg" width="275" />
   <img src="  https://www.roscomponents.com/761-thickbox_default/rb-1-base.jpg
 " width="275" />
-  <img src="https://www.roscomponents.com/759-thickbox_default/rb-1-base.jpg" width="275" /> 
+  <img src="https://www.roscomponents.com/759-thickbox_default/rb-1-base.jpg" width="275" />
 </p>
 
 
@@ -65,7 +65,8 @@ Launch files that launch the complete simulation of the robot/s.
   <arg name="xacro_robot_a" default="rb1_base_std.urdf.xacro"/>
   <arg name="map_frame_a" default="$(arg id_robot_a)_map"/>
   <arg name="launch_base_hw_sim" default="false"/> <!-- Emulates Robotnik Base HW -->
-  <arg name="launch_elevator_fake_pickup_gazebo" default="false"/> <!-- avoids Gazebo physics to pick carts-->
+  <arg name="launch_elevator_fake_pickup_gazebo" default="false"/> <!-- avoids Gazebo physics to pick carts--
+  <arg name="move_robot_a" default="false"/> <!-- as long as robotnik_navigation pkg is installed -->
   ```
 - Example to launch simulation with 3 RB-1 Base robots:
   ```
