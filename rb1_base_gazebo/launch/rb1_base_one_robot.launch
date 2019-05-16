@@ -26,9 +26,9 @@
 
 		<!-- Load the URDF into the ROS Parameter Server -->
 		<param unless="$(arg has_elevator)" name="robot_description"
-		command="$(find xacro)/xacro '$(find rb1_base_description)/robots/$(arg xacro_robot)' prefix:=$(arg prefix) --inorder"/>
+		command="$(find xacro)/xacro '$(find rb1_base_description)/robots/$(arg xacro_robot)' prefix:=$(arg prefix)"/>
 		<param if="$(arg has_elevator)" name="robot_description"
-		command="$(find xacro)/xacro '$(find rb1_base_description)/robots/$(arg xacro_robot_elevator)' prefix:=$(arg prefix) --inorder"/>
+		command="$(find xacro)/xacro '$(find rb1_base_description)/robots/$(arg xacro_robot_elevator)' prefix:=$(arg prefix)"/>
 
 
 		<!-- Spawner model into gazebo -->
