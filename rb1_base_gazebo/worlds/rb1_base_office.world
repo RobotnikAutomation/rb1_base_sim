@@ -29,7 +29,7 @@
 		</include>
 		<include>
 			<uri>model://willowgarage</uri>
-			<pose>-16 -18 0 0 0 0</pose>
+			<pose>-16 -18 0.001 0 0 0</pose>
 		</include>
 		<include>
 			<uri>model://rb2_simple_cart</uri>
