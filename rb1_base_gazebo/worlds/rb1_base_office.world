@@ -31,9 +31,5 @@
 			<uri>model://willowgarage</uri>
 			<pose>-16 -18 0.001 0 0 0</pose>
 		</include>
-		<include>
-			<uri>model://rb2_simple_cart</uri>
-			<pose>-5.94345 1.09039 0.025 0 -0 8e-06</pose>
-		</include>
 	</world>
 </sdf>
