@@ -28,7 +28,7 @@
 	<arg name="map_file_a" default="$(find rb1_base_localization)/maps/empty/map_empty.yaml"/>
 	<arg name="map_frame_a" default="$(arg id_robot_a)_map"/>
 	<arg name="xacro_robot_a" default="rb1_base_std.urdf.xacro"/>
-    <arg name="has_elevator_robot_a" default="false"/>
+    <arg name="has_elevator_robot_a" default="true"/>
     <arg name="move_robot_a" default="false"/>
 
 	<!-- robot b -->
