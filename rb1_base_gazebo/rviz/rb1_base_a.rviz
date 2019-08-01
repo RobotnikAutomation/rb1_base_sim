@@ -176,9 +176,9 @@ Visualization Manager:
       Enabled: true
       Invert Rainbow: false
       Max Color: 255; 255; 255
-      Max Intensity: 999999
+      Max Intensity: 1.79366203e-43
       Min Color: 0; 0; 0
-      Min Intensity: 999999
+      Min Intensity: 1.79366203e-43
       Name: front laser
       Position Transformer: XYZ
       Queue Size: 10
@@ -239,7 +239,7 @@ Visualization Manager:
       Draw Behind: false
       Enabled: true
       Name: Map
-      Topic: /rb1/map
+      Topic: /rb1_base/map
       Unreliable: false
       Use Timestamp: false
       Value: true
@@ -365,25 +365,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 16.3898392
+      Distance: 12.6922913
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.0599999987
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0.336953789
-        Y: 0.400345623
-        Z: -0.0864977464
+        X: 1.60743785
+        Y: 0.665754974
+        Z: 0.0972093493
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.0500000007
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.00999999978
-      Pitch: 0.47539866
+      Pitch: 0.48539865
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 4.84540415
+      Yaw: 4.80040312
     Saved: ~
 Window Geometry:
   Displays:
