@@ -38,7 +38,6 @@
   <run_depend>std_srvs</run_depend>
   <run_depend>tf</run_depend>
   <run_depend>diff_drive_controller</run_depend>
-  <run_depend>rviz</run_depend> 
 
   <export>
     
