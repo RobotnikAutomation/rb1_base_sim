@@ -4,20 +4,20 @@
 
 objects:
  -
-  model: rb2_simple_cart
+  model: rb1_simple_cart
   default_link: link_0
 robots:
 -
-  model: rb1_base
-  default_link: rb1_base_base_footprint
+  model: robot
+  default_link: robot_base_footprint
   elevation_z: 0.05
 -
-  model: rb1_base_b
-  default_link: rb1_base_b_base_footprint
+  model: robot_b
+  default_link: robot_b_base_footprint
   elevation_z: 0.05
 -
-  model: rb1_base_c
-  default_link: rb1_base_c_base_footprint
+  model: robot_c
+  default_link: robot_c_base_footprint
   elevation_z: 0.05
 
 config:
