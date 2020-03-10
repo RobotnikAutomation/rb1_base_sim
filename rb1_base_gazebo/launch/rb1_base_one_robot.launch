@@ -8,7 +8,6 @@
 	<arg name="has_elevator" default="false"/>
 	<arg name="xacro_robot" default="rb1_base_std.urdf.xacro"/>
 	<arg name="xacro_robot_elevator" default="rb1_base_std_elevator.urdf.xacro"/>
-	<arg name="launch_robot_localization" default="false"/>
 	<arg name="launch_amcl_and_mapserver" default="false"/>
 	<arg name="launch_gmapping" default="false"/>
 	<arg name="launch_move_base" default="false"/>
@@ -42,7 +41,6 @@
 			<arg name="prefix" value="$(arg prefix)"/>
 			<arg name="id_robot" value="$(arg id_robot)"/>
 			<arg name="sim" value="true"/>
-			<arg name="launch_robot_localization" value="$(arg launch_robot_localization)"/>
 			<arg name="has_elevator" value="$(arg has_elevator)"/>
 			<arg name="fake_elevator_physics" default="$(arg fake_elevator_physics)"/>
 		</include>
