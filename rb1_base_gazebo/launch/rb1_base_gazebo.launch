@@ -6,7 +6,7 @@
 	<!--launch_navigation and launch_navigation_nomap args are exclusive
 	and they are (or not) launched for all robots-->
 	<arg name="launch_rviz" default="true"/>
-	<arg name="rviz_config" default="$(find rb1_base_gazebo)/rviz/rb1_base_a.rviz"/>
+	<arg name="rviz_config" default="$(find rb1_base_gazebo)/rviz/rb1_base.rviz"/>
 	<arg name="launch_robot_a" default="true"/>
 	<arg name="launch_robot_b" default="false"/>
 	<arg name="launch_robot_c" default="false"/>
