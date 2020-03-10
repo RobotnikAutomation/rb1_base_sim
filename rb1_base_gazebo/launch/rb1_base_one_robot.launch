@@ -15,6 +15,7 @@
 	<arg name="map_file" default="$(find rb1_base_localization)/maps/empty/empty.yaml"/>
 	<arg name="prefix" value="$(arg id_robot)_"/>
 	<arg name="global_frame" default="$(arg prefix)map"/>
+	<arg name="launch_pad" default="false"/>
 	<arg name="launch_base_hw_sim" default="false"/>
 	<arg name="fake_elevator_physics" default="false"/>
 
@@ -51,7 +52,7 @@
 		</include>
 
 		<!-- pad -->
-		<include file="$(find rb1_base_pad)/launch/rb1_base_pad.launch"/>
+		<include if="$(arg launch_pad)" file="$(find rb1_base_pad)/launch/rb1_base_pad.launch"/>
 
 		<!-- use static_transform_publisher to define map->odom transform    -->
 		<!-- only use if you aren´t using a localization algorithm like amcl -->
