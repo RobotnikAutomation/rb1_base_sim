@@ -17,17 +17,23 @@
 	<arg name="global_frame" default="$(arg prefix)map"/>
 	<arg name="launch_pad" default="false"/>
 	<arg name="launch_base_hw_sim" default="false"/>
-	<arg name="fake_elevator_physics" default="false"/>
+
+	<!-- internal params, not coming from previous launch files -->
+	<arg name="launch_perception" default="true"/>
+	<arg name="launch_navigation" default="true"/>
+	<arg name="launch_rlc" default="true"/>
+	<arg name="launch_rlc_rostful" default="true"/>
+	<arg name="rlc_rostful_host" default="172.16.18.131"/>
+	<arg name="rlc_rostful_port" default="8080"/>
+	<arg name="fake_elevator_physics" default="true"/>
+
 
 	<!-- BEGIN ROBOT-->
 	<group ns="$(arg id_robot)">
 
-
-
 		<!-- Load the URDF into the ROS Parameter Server -->
 		<param unless="$(arg has_elevator)" name="robot_description" command="$(find xacro)/xacro '$(find rb1_base_description)/robots/$(arg xacro_robot)' prefix:=$(arg prefix) --inorder"/>
 		<param if="$(arg has_elevator)" name="robot_description" command="$(find xacro)/xacro '$(find rb1_base_description)/robots/$(arg xacro_robot_elevator)' prefix:=$(arg prefix) --inorder"/>
-
 
 		<!-- Spawner model into gazebo -->
 		<node name="urdf_spawner_rb1_model" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-x $(arg x_init_pose) -y $(arg y_init_pose) -z $(arg z_init_pose) -urdf -param robot_description -model $(arg id_robot)" />
@@ -74,7 +80,7 @@
 		</include>
 
 		<!-- move base -->
-		<include if="$(arg launch_move_base)" file="$(find rb1_base_navigation)/launch/navigation_amcl/move_base.launch">
+		<include if="$(arg launch_move_base)" file="$(find rb1_base_navigation)/launch/move_base.launch">
 			<arg name="prefix" value="$(arg prefix)"/>
 			<arg name="global_frame" value="$(arg global_frame)"/>
 		</include>
@@ -89,9 +95,30 @@
 			<arg name="prefix" value="$(arg prefix)"/>
 		</include>
 
-		<!-- move  -->
-		<include if="$(arg launch_move)" file="$(find rb1_base_navigation)/launch/move.launch">
+	</group>
+
+
+	<include if="$(arg launch_perception)" file="$(find rb1_base_perception)/launch/perception_complete.launch">
+		<arg name="id_robot" value="$(arg id_robot)"/>
+		<arg name="run_reflector_locator" value="true"/>
+		<arg name="run_ar_locator" value="true"/>
+	</include>
+
+	<include if="$(arg launch_navigation)" file="$(find rb1_base_navigation)/launch/navigation_complete.launch">
+		<arg name="id_robot" value="$(arg id_robot)"/>
+		<arg name="has_docker" value="true"/>
+		<arg name="run_laser_docker" value="true"/>
+	</include>
+
+	<group if="$(arg launch_rlc)">
+		<include file="$(find rb1_base_robot_local_control)/launch/robot_local_control.launch">
 			<arg name="id_robot" value="$(arg id_robot)"/>
+		</include>
+
+		<include if="$(arg launch_rlc_rostful)" file="$(find rb1_base_robot_local_control)/launch/rostful_server.launch">
+			<arg name="id_robot" value="$(arg id_robot)"/>
+			<arg name="host" value="$(arg rlc_rostful_host)"/>
+			<arg name="port" value="$(arg rlc_rostful_port)"/>
 		</include>
 
 	</group>
