@@ -5,6 +5,7 @@
 	<arg name="x_init_pose" default="0"/>
 	<arg name="y_init_pose" default="0"/>
 	<arg name="z_init_pose" default="0"/>
+	<arg name="init_yaw" default="0"/>
 	<arg name="has_elevator" default="false"/>
 	<arg name="xacro_robot" default="rb1_base_std.urdf.xacro"/>
 	<arg name="xacro_robot_elevator" default="rb1_base_std_elevator.urdf.xacro"/>
@@ -36,7 +37,7 @@
 		<param if="$(arg has_elevator)" name="robot_description" command="$(find xacro)/xacro '$(find rb1_base_description)/robots/$(arg xacro_robot_elevator)' prefix:=$(arg prefix) --inorder"/>
 
 		<!-- Spawner model into gazebo -->
-		<node name="urdf_spawner_rb1_model" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-x $(arg x_init_pose) -y $(arg y_init_pose) -z $(arg z_init_pose) -urdf -param robot_description -model $(arg id_robot)" />
+		<node name="urdf_spawner_rb1_model" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-x $(arg x_init_pose) -y $(arg y_init_pose) -z $(arg z_init_pose) -Y $(arg init_yaw) -urdf -param robot_description -model $(arg id_robot)" />
 
 		<!-- Robot state publisher -->
 		<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
@@ -77,6 +78,7 @@
 			<arg name="x_init_pose" value="$(arg x_init_pose)"/>
 			<arg name="y_init_pose" value="$(arg y_init_pose)"/>
 			<arg name="z_init_pose" value="$(arg z_init_pose)"/>
+			<arg name="init_yaw" value="$(arg init_yaw)"/>
 		</include>
 
 		<!-- move base -->

@@ -21,6 +21,7 @@
 	<arg name="x_init_pose_robot_a" default="0" />
 	<arg name="y_init_pose_robot_a" default="0" />
 	<arg name="z_init_pose_robot_a" default="0" />
+	<arg name="init_yaw_robot_a" default="1.57" />
 	<arg name="gmapping_robot_a" default="false"/>
 	<arg name="move_base_robot_a" default="false"/>
 	<arg name="amcl_and_mapserver_a" default="false"/>
@@ -36,6 +37,7 @@
 	<arg name="x_init_pose_robot_b" default="0" />
 	<arg name="y_init_pose_robot_b" default="1" />
 	<arg name="z_init_pose_robot_b" default="0" />
+	<arg name="init_yaw_robot_b" default="0" />
 	<arg name="gmapping_robot_b" default="false"/>
 	<arg name="move_base_robot_b" default="false"/>
 	<arg name="amcl_and_mapserver_b" default="false"/>
@@ -51,6 +53,7 @@
 	<arg name="x_init_pose_robot_c" default="0" />
 	<arg name="y_init_pose_robot_c" default="2" />
 	<arg name="z_init_pose_robot_c" default="0" />
+	<arg name="init_yaw_robot_c" default="0" />
 	<arg name="gmapping_robot_c" default="false"/>
 	<arg name="move_base_robot_c" default="false"/>
 	<arg name="amcl_and_mapserver_c" default="false"/>
@@ -67,6 +70,7 @@
 		<arg name="x_init_pose" value="$(arg x_init_pose_robot_a)"/>
 		<arg name="y_init_pose" value="$(arg y_init_pose_robot_a)"/>
 		<arg name="z_init_pose" value="$(arg z_init_pose_robot_a)"/>
+		<arg name="init_yaw" value="$(arg init_yaw_robot_a)"/>
 		<arg name="xacro_robot" value="$(arg xacro_robot_a)"/>
 		<arg name="launch_amcl_and_mapserver" value="$(arg amcl_and_mapserver_a)"/>
 		<arg name="launch_gmapping" value="$(arg gmapping_robot_a)"/>
@@ -86,6 +90,7 @@
 		<arg name="x_init_pose" value="$(arg x_init_pose_robot_b)"/>
 		<arg name="y_init_pose" value="$(arg y_init_pose_robot_b)"/>
 		<arg name="z_init_pose" value="$(arg z_init_pose_robot_b)"/>
+		<arg name="init_yaw" value="$(arg init_yaw_robot_b)"/>
 		<arg name="xacro_robot" value="$(arg xacro_robot_b)"/>
 		<arg name="launch_amcl_and_mapserver" value="$(arg amcl_and_mapserver_b)"/>
 		<arg name="launch_gmapping" value="$(arg gmapping_robot_b)"/>
@@ -105,6 +110,7 @@
 		<arg name="x_init_pose" value="$(arg x_init_pose_robot_c)"/>
 		<arg name="y_init_pose" value="$(arg y_init_pose_robot_c)"/>
 		<arg name="z_init_pose" value="$(arg z_init_pose_robot_c)"/>
+		<arg name="init_yaw" value="$(arg init_yaw_robot_c)"/>
 		<arg name="xacro_robot" value="$(arg xacro_robot_c)"/>
 		<arg name="launch_amcl_and_mapserver" value="$(arg amcl_and_mapserver_c)"/>
 		<arg name="launch_gmapping" value="$(arg gmapping_robot_c)"/>
