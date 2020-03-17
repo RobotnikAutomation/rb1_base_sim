@@ -7,18 +7,18 @@
 	and they are (or not) launched for all robots-->
 	<arg name="launch_rviz" default="true"/>
 	<arg name="gazebo_world" default="$(find rb1_base_gazebo)/worlds/rb1_base_office.world"/>
-	<arg name="launch_base_hw_sim" default="false"/>
-	<arg name="launch_elevator_fake_pickup_gazebo" default="false"/>
+	<arg name="launch_base_hw_sim" default="true"/>
+	<arg name="launch_elevator_fake_pickup_gazebo" default="true"/>
 
 	<!-- arguments robot a -->
 	<arg name="id_robot_a" default="robot"/>
 	<arg name="launch_robot_a" default="true"/>
 	<arg name="map_file_a" default="$(find rb1_base_localization)/maps/willow_garage/willow_garage.yaml"/>
 	<arg name="gmapping_robot_a" default="false"/>
-	<arg name="move_base_robot_a" default="false"/>
-	<arg name="amcl_and_mapserver_a" default="false"/>
+	<arg name="move_base_robot_a" default="true"/>
+	<arg name="amcl_and_mapserver_a" default="true"/>
 	<arg name="map_frame_a" default="$(arg id_robot_a)_map"/>
-	<arg name="move_robot_a" default="false"/>
+	<arg name="move_robot_a" default="true"/>
 	<arg name="launch_pad_a" default="true"/>
 
 	<!-- arguments robot b -->
