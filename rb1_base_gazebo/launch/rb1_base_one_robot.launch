@@ -93,9 +93,17 @@
 		</include>
 
 		<!-- base_hw_sim -->
-		<include if="$(arg launch_base_hw_sim)" file="$(find robotnik_base_hw_sim)/launch/rb1_hw_sim.launch">
-			<arg name="prefix" value="$(arg prefix)"/>
-		</include>
+		<group if="$(arg launch_rlc)">
+
+			<include file="$(find robotnik_base_hw_sim)/launch/rb1_hw_sim.launch">
+				<arg name="prefix" value="$(arg prefix)"/>
+			</include>
+
+			<include file="$(find battery_estimation)/launch/table_battery.launch"/>
+
+			<include file="$(find charge_manager)/launch/charge_manager.launch"/>
+
+		</group>
 
 	</group>
 
