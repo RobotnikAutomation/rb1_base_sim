@@ -6,6 +6,9 @@ objects:
  -
   model: rb1_simple_cart
   default_link: link_0
+ -
+  model: rb1_rblog_cart
+  default_link: link_0
 robots:
 -
   model: robot
