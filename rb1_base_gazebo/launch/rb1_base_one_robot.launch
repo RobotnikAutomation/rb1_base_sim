@@ -101,7 +101,9 @@
 
 			<include file="$(find battery_estimation)/launch/table_battery.launch"/>
 
-			<include file="$(find charge_manager)/launch/charge_manager.launch"/>
+			<include file="$(find charge_manager)/launch/charge_manager.launch">
+				<arg name="inverted_contact_relay_input" value="false" />
+			</include>
 
 		</group>
 
