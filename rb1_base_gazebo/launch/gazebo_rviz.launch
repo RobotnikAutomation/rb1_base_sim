@@ -6,6 +6,7 @@
 	<arg name="launch_rviz" default="false"/>
 	<arg name="world_name" default="$(find rb1_base_gazebo)/worlds/rb1_base.world"/>
 	<arg name="rviz_config" default="$(find rb1_base_gazebo)/rviz/rb1_base_a.rviz"/>
+	<arg name="gazebo_gui" default="true"/>
 
 	<!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
 	<include file="$(find gazebo_ros)/launch/empty_world.launch">
@@ -14,6 +15,7 @@
 		<arg name="paused" value="false"/>
 		<arg name="use_sim_time" value="true"/>
 		<arg name="headless" value="false"/>
+		<arg name="gui" value="$(arg gazebo_gui)"/>
 	</include>
 	
 	<!-- launch rviz -->
