@@ -47,26 +47,33 @@ Launch files that launch the complete simulation of the robot/s.
   ```
   <arg name="launch_rviz" default="true"/>
   <arg name="gazebo_world" default="$(find rb1_base_gazebo)/worlds/rb1_base_office.world"/>
+  <arg name="launch_base_hw_sim" default="true"/> <!-- Emulates Robotnik Base HW -->
+  <arg name="launch_elevator_fake_pickup_gazebo" default="true"/> <!-- avoids Gazebo physics to pick carts-->
 
   ```
   Optional robot arguments:
   ```
   <!--arguments for each robot (example for robot A)-->
-  <arg name="id_robot_a" default="rb1_base_a"/>
+  <arg name="id_robot_a" default="robot"/>
   <arg name="launch_robot_a" default="true"/>
-  <arg name="map_file_a" default="$(find rb1_base_localization)/maps/willow_garage/willow_garage.yaml""/>
-  <arg name="localization_robot_a" default="true"/>
+  <arg name="has_elevator_robot_a" default="true"/>
+  <arg name="x_init_pose_robot_a" default="0.0" />
+  <arg name="y_init_pose_robot_a" default="0.0" />
+  <arg name="z_init_pose_robot_a" default="0.0" />
+  <arg name="init_yaw_robot_a" default="0.0" />
   <arg name="gmapping_robot_a" default="false"/>
-  <arg name="move_base_robot_a" default="false"/>
-  <arg name="amcl_and_mapserver_a" default="false"/>
-  <arg name="x_init_pose_robot_a" default="0" />
-  <arg name="y_init_pose_robot_a" default="0" />
-  <arg name="z_init_pose_robot_a" default="0" />
-  <arg name="xacro_robot_a" default="rb1_base_std.urdf.xacro"/>
-  <arg name="map_frame_a" default="$(arg id_robot_a)_map"/>
-  <arg name="launch_base_hw_sim" default="false"/> <!-- Emulates Robotnik Base HW -->
-  <arg name="launch_elevator_fake_pickup_gazebo" default="false"/> <!-- avoids Gazebo physics to pick carts--
-  <arg name="move_robot_a" default="false"/> <!-- as long as robotnik_navigation pkg is installed -->
+  <arg name="amcl_and_mapserver_robot_a" default="true"/>
+  <arg name="map_frame_robot_a" default="$(arg id_robot_a)_map"/>
+  <arg name="map_file_robot_a" default="$(find rb1_base_localization)/maps/willow_garage/willow_garage.yaml"/>
+  <arg name="move_base_robot_a" default="true"/>
+  <arg name="navigation_robot_a" default="true"/> <!-- Launch robotnik_navigation nodes (move, docking, etc.) -->
+  <arg name="pad_robot_a" default="true"/>
+  <arg name="perception_robot_a" default="true"/> <!-- Launch robotnik perception nodes (camera locator, pose filter, etc.) -->
+  <arg name="reflector_locator_robot_a" default="true"/> <!-- Use reflector laser locator to improve objects detection -->
+  <arg name="rlc_robot_a" default="true"/>
+  <arg name="rostful_robot_a" default="true"/>
+  <arg name="rostful_host_robot_a" default="192.168.0.200"/>
+  <arg name="rostful_port_robot_a" default="8080"/>
   ```
 - Example to launch simulation with 3 RB-1 Base robots:
   ```
