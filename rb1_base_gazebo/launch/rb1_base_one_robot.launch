@@ -2,30 +2,28 @@
 <launch>
 
 	<arg name="id_robot" default="robot"/>
+	<arg name="prefix" value="$(arg id_robot)_"/>
+	<arg name="xacro_robot" default="rb1_base_std.urdf.xacro"/>
+	<arg name="has_elevator" default="false"/>
+	<arg name="xacro_robot_elevator" default="rb1_base_std_elevator.urdf.xacro"/>
 	<arg name="x_init_pose" default="0"/>
 	<arg name="y_init_pose" default="0"/>
 	<arg name="z_init_pose" default="0"/>
 	<arg name="init_yaw" default="0"/>
-	<arg name="has_elevator" default="false"/>
-	<arg name="xacro_robot" default="rb1_base_std.urdf.xacro"/>
-	<arg name="xacro_robot_elevator" default="rb1_base_std_elevator.urdf.xacro"/>
-	<arg name="launch_amcl_and_mapserver" default="false"/>
 	<arg name="launch_gmapping" default="false"/>
-	<arg name="launch_move_base" default="false"/>
-	<arg name="launch_move" default="false"/>
-	<arg name="map_file" default="$(find rb1_base_localization)/maps/empty/empty.yaml"/>
-	<arg name="prefix" value="$(arg id_robot)_"/>
+	<arg name="launch_amcl_and_mapserver" default="false"/>
 	<arg name="global_frame" default="$(arg prefix)map"/>
-	<arg name="launch_pad" default="false"/>
-	<arg name="launch_base_hw_sim" default="false"/>
-
-	<!-- internal params, not coming from previous launch files -->
-	<arg name="launch_perception" default="true"/>
+	<arg name="map_file" default="$(find rb1_base_localization)/maps/empty/empty.yaml"/>
+	<arg name="launch_move_base" default="false"/>
 	<arg name="launch_navigation" default="true"/>
+	<arg name="launch_pad" default="false"/>
+	<arg name="launch_perception" default="true"/>
+	<arg name="launch_reflector_locator" default="true"/>
 	<arg name="launch_rlc" default="true"/>
-	<arg name="launch_rlc_rostful" default="true"/>
-	<arg name="rlc_rostful_host" default="172.16.18.131"/>
-	<arg name="rlc_rostful_port" default="8080"/>
+	<arg name="launch_rostful" default="true"/>
+	<arg name="rostful_host" default="192.168.0.200"/>
+	<arg name="rostful_port" default="8080"/>
+	<arg name="launch_base_hw_sim" default="false"/>
 	<arg name="fake_elevator_physics" default="true"/>
 
 
@@ -54,9 +52,7 @@
 		</include>
 
 		<!-- robot_localization nodes, publishes transformation world->odom->base_footprint -->
-		<include file="$(find rb1_base_localization)/launch/rb1_base_localization_basic.launch">
-			<!--arg name="prefix" value="$(arg prefix)"/-->
-		</include>
+		<include file="$(find rb1_base_localization)/launch/rb1_base_localization_basic.launch"/>
 
 		<!-- pad -->
 		<include if="$(arg launch_pad)" file="$(find rb1_base_pad)/launch/rb1_base_pad.launch"/>
@@ -93,7 +89,7 @@
 		</include>
 
 		<!-- base_hw_sim -->
-		<group if="$(arg launch_rlc)">
+		<group if="$(arg launch_base_hw_sim)">
 
 			<include file="$(find robotnik_base_hw_sim)/launch/rb1_hw_sim.launch">
 				<arg name="prefix" value="$(arg prefix)"/>
@@ -112,7 +108,7 @@
 
 	<include if="$(arg launch_perception)" file="$(find rb1_base_perception)/launch/perception_complete.launch">
 		<arg name="id_robot" value="$(arg id_robot)"/>
-		<arg name="run_reflector_locator" value="true"/>
+		<arg name="run_reflector_locator" value="$(arg launch_reflector_locator)"/>
 		<arg name="run_ar_locator" value="true"/>
 	</include>
 
@@ -127,10 +123,10 @@
 			<arg name="id_robot" value="$(arg id_robot)"/>
 		</include>
 
-		<include if="$(arg launch_rlc_rostful)" file="$(find rb1_base_robot_local_control)/launch/rostful_server.launch">
+		<include if="$(arg launch_rostful)" file="$(find rb1_base_robot_local_control)/launch/rostful_server.launch">
 			<arg name="id_robot" value="$(arg id_robot)"/>
-			<arg name="host" value="$(arg rlc_rostful_host)"/>
-			<arg name="port" value="$(arg rlc_rostful_port)"/>
+			<arg name="host" value="$(arg rostful_host)"/>
+			<arg name="port" value="$(arg rostful_port)"/>
 		</include>
 
 	</group>
