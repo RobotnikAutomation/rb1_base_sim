@@ -4,8 +4,6 @@
 	<!-- arg to config the launch file-->
 	<arg name="launch_rviz" default="true"/>
 	<arg name="gazebo_world" default="$(find rb1_base_gazebo)/worlds/rb1_base_office.world"/>
-	<arg name="launch_base_hw_sim" default="true"/>
-	<arg name="launch_elevator_fake_pickup_gazebo" default="true"/>
 
 	<!-- arguments robot a -->
 	<arg name="id_robot_a" default="robot"/>
@@ -16,18 +14,11 @@
 	<arg name="z_init_pose_robot_a" default="0.0" />
 	<arg name="init_yaw_robot_a" default="0.0" />
 	<arg name="gmapping_robot_a" default="false"/>
-	<arg name="amcl_and_mapserver_robot_a" default="true"/>
+	<arg name="amcl_and_mapserver_robot_a" default="false"/>
 	<arg name="map_frame_robot_a" default="$(arg id_robot_a)_map"/>
 	<arg name="map_file_robot_a" default="$(find rb1_base_localization)/maps/willow_garage/willow_garage.yaml"/>
-	<arg name="move_base_robot_a" default="true"/>
-	<arg name="navigation_robot_a" default="true"/>
-	<arg name="pad_robot_a" default="true"/>
-	<arg name="perception_robot_a" default="true"/>
-	<arg name="reflector_locator_robot_a" default="true"/>
-	<arg name="rlc_robot_a" default="true"/>
-	<arg name="rostful_robot_a" default="true"/>
-	<arg name="rostful_host_robot_a" default="192.168.0.200"/>
-	<arg name="rostful_port_robot_a" default="8080"/>
+	<arg name="move_base_robot_a" default="false"/>
+	<arg name="pad_robot_a" default="false"/>
 
 
 	<!-- arguments robot b -->
@@ -37,20 +28,13 @@
 	<arg name="x_init_pose_robot_b" default="0.0" />
 	<arg name="y_init_pose_robot_b" default="1.0" />
 	<arg name="z_init_pose_robot_b" default="0.0" />
-	<arg name="init_yaw_robot_a" default="0.0" />
+	<arg name="init_yaw_robot_b" default="0.0" />
 	<arg name="gmapping_robot_b" default="false"/>
-	<arg name="amcl_and_mapserver_robot_b" default="true"/>
+	<arg name="amcl_and_mapserver_robot_b" default="false"/>
 	<arg name="map_frame_robot_b" default="$(arg id_robot_b)_map"/>
 	<arg name="map_file_robot_b" default="$(find rb1_base_localization)/maps/willow_garage/willow_garage.yaml"/>
-	<arg name="move_base_robot_b" default="true"/>
-	<arg name="navigation_robot_b" default="true"/>
-	<arg name="pad_robot_b" default="true"/>
-	<arg name="perception_robot_b" default="true"/>
-	<arg name="reflector_locator_robot_b" default="true"/>
-	<arg name="rlc_robot_b" default="true"/>
-	<arg name="rostful_robot_b" default="true"/>
-	<arg name="rostful_host_robot_b" default="192.168.0.200"/>
-	<arg name="rostful_port_robot_b" default="8081"/>
+	<arg name="move_base_robot_b" default="false"/>
+	<arg name="pad_robot_b" default="false"/>
 
 	<!-- arguments robot c -->
 	<arg name="id_robot_c" default="robot_c"/>
@@ -59,20 +43,13 @@
 	<arg name="x_init_pose_robot_c" default="0.0" />
 	<arg name="y_init_pose_robot_c" default="2.0" />
 	<arg name="z_init_pose_robot_c" default="0.0" />
-	<arg name="init_yaw_robot_a" default="0.0" />
+	<arg name="init_yaw_robot_c" default="0.0" />
 	<arg name="gmapping_robot_c" default="false"/>
-	<arg name="amcl_and_mapserver_robot_c" default="true"/>
+	<arg name="amcl_and_mapserver_robot_c" default="false"/>
 	<arg name="map_frame_robot_c" default="$(arg id_robot_c)_map"/>
 	<arg name="map_file_robot_c" default="$(find rb1_base_localization)/maps/willow_garage/willow_garage.yaml"/>
-	<arg name="move_base_robot_c" default="true"/>
-	<arg name="navigation_robot_c" default="true"/>
-	<arg name="pad_robot_c" default="true"/>
-	<arg name="perception_robot_c" default="true"/>
-	<arg name="reflector_locator_robot_c" default="true"/>
-	<arg name="rlc_robot_c" default="true"/>
-	<arg name="rostful_robot_c" default="true"/>
-	<arg name="rostful_host_robot_c" default="192.168.0.200"/>
-	<arg name="rostful_port_robot_c" default="8082"/>
+	<arg name="move_base_robot_c" default="false"/>
+	<arg name="pad_robot_c" default="false"/>
 
 
 
@@ -80,8 +57,6 @@
 		<!-- general args -->
 		<arg name="launch_rviz" value="$(arg launch_rviz)"/>
 		<arg name="gazebo_world" value="$(arg gazebo_world)"/>
-		<arg name="launch_base_hw_sim" value="$(arg launch_base_hw_sim)"/>
-		<arg name="launch_elevator_fake_pickup_gazebo" value="$(arg launch_elevator_fake_pickup_gazebo)"/>
 
 		<!-- robot_a args -->
 		<arg name="id_robot_a" value="$(arg id_robot_a)"/>
@@ -96,14 +71,7 @@
 		<arg name="map_frame_robot_a" value="$(arg map_frame_robot_a)"/>
 		<arg name="map_file_robot_a" value="$(arg map_file_robot_a)"/>
 		<arg name="move_base_robot_a" value="$(arg move_base_robot_a)"/>
-		<arg name="navigation_robot_a" value="$(arg navigation_robot_a)"/>
 		<arg name="pad_robot_a" value="$(arg pad_robot_a)"/>
-		<arg name="perception_robot_a" value="$(arg perception_robot_a)"/>
-		<arg name="reflector_locator_robot_a" value="$(arg reflector_locator_robot_a)"/>
-		<arg name="rlc_robot_a" value="$(arg rlc_robot_a)"/>
-		<arg name="rostful_robot_a" value="$(arg rostful_robot_a)"/>
-		<arg name="rostful_host_robot_a" value="$(arg rostful_host_robot_a)"/>
-		<arg name="rostful_port_robot_a" value="$(arg rostful_port_robot_a)"/>
 
 		<!-- robot_b args -->
 		<arg name="id_robot_b" value="$(arg id_robot_b)"/>
@@ -118,14 +86,7 @@
 		<arg name="map_frame_robot_b" value="$(arg map_frame_robot_b)"/>
 		<arg name="map_file_robot_b" value="$(arg map_file_robot_b)"/>
 		<arg name="move_base_robot_b" value="$(arg move_base_robot_b)"/>
-		<arg name="navigation_robot_b" value="$(arg navigation_robot_b)"/>
 		<arg name="pad_robot_b" value="$(arg pad_robot_b)"/>
-		<arg name="perception_robot_b" value="$(arg perception_robot_b)"/>
-		<arg name="reflector_locator_robot_b" value="$(arg reflector_locator_robot_b)"/>
-		<arg name="rlc_robot_b" value="$(arg rlc_robot_b)"/>
-		<arg name="rostful_robot_b" value="$(arg rostful_robot_b)"/>
-		<arg name="rostful_host_robot_b" value="$(arg rostful_host_robot_b)"/>
-		<arg name="rostful_port_robot_b" value="$(arg rostful_port_robot_b)"/>
 
 		<!-- robot_c args -->
 		<arg name="id_robot_c" value="$(arg id_robot_c)"/>
@@ -140,14 +101,7 @@
 		<arg name="map_frame_robot_c" value="$(arg map_frame_robot_c)"/>
 		<arg name="map_file_robot_c" value="$(arg map_file_robot_c)"/>
 		<arg name="move_base_robot_c" value="$(arg move_base_robot_c)"/>
-		<arg name="navigation_robot_c" value="$(arg navigation_robot_c)"/>
 		<arg name="pad_robot_c" value="$(arg pad_robot_c)"/>
-		<arg name="perception_robot_c" value="$(arg perception_robot_c)"/>
-		<arg name="reflector_locator_robot_c" value="$(arg reflector_locator_robot_c)"/>
-		<arg name="rlc_robot_c" value="$(arg rlc_robot_c)"/>
-		<arg name="rostful_robot_c" value="$(arg rostful_robot_c)"/>
-		<arg name="rostful_host_robot_c" value="$(arg rostful_host_robot_c)"/>
-		<arg name="rostful_port_robot_c" value="$(arg rostful_port_robot_c)"/>
 	</include>
 
 </launch>

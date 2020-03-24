@@ -34,8 +34,6 @@
   <run_depend>rb1_base_control</run_depend>
   <run_depend>rb1_base_description</run_depend>
   <run_depend>rb1_base_pad</run_depend>
-  <run_depend>battery_estimation</run_depend>
-  <run_depend>charge_manager</run_depend> 
   <run_depend>std_msgs</run_depend>
   <run_depend>std_srvs</run_depend>
   <run_depend>tf</run_depend>
