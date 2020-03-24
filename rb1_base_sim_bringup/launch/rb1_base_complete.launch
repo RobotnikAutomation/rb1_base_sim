@@ -37,7 +37,7 @@
 	<arg name="x_init_pose_robot_b" default="0.0" />
 	<arg name="y_init_pose_robot_b" default="1.0" />
 	<arg name="z_init_pose_robot_b" default="0.0" />
-	<arg name="init_yaw_robot_a" default="0.0" />
+	<arg name="init_yaw_robot_b" default="0.0" />
 	<arg name="gmapping_robot_b" default="false"/>
 	<arg name="amcl_and_mapserver_robot_b" default="true"/>
 	<arg name="map_frame_robot_b" default="$(arg id_robot_b)_map"/>
@@ -59,7 +59,7 @@
 	<arg name="x_init_pose_robot_c" default="0.0" />
 	<arg name="y_init_pose_robot_c" default="2.0" />
 	<arg name="z_init_pose_robot_c" default="0.0" />
-	<arg name="init_yaw_robot_a" default="0.0" />
+	<arg name="init_yaw_robot_c" default="0.0" />
 	<arg name="gmapping_robot_c" default="false"/>
 	<arg name="amcl_and_mapserver_robot_c" default="true"/>
 	<arg name="map_frame_robot_c" default="$(arg id_robot_c)_map"/>
