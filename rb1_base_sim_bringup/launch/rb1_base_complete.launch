@@ -3,7 +3,7 @@
 
 	<!-- arg to config the launch file-->
 	<arg name="launch_rviz" default="true"/>
-	<arg name="gazebo_world" default="$(find rb1_base_gazebo)/worlds/simple_building_floor.world"/>
+	<arg name="gazebo_world" default="$(find rb1_base_gazebo)/worlds/rb1_base_office.world"/>
 	<arg name="launch_base_hw_sim" default="true"/>
 	<arg name="launch_elevator_fake_pickup_gazebo" default="true"/>
 
