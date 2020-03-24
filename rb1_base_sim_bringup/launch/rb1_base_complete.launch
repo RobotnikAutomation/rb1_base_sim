@@ -11,6 +11,10 @@
 	<arg name="id_robot_a" default="robot"/>
 	<arg name="launch_robot_a" default="true"/>
 	<arg name="has_elevator_robot_a" default="true"/>
+	<arg name="x_init_pose_robot_a" default="0.0" />
+	<arg name="y_init_pose_robot_a" default="0.0" />
+	<arg name="z_init_pose_robot_a" default="0.0" />
+	<arg name="init_yaw_robot_a" default="0.0" />
 	<arg name="gmapping_robot_a" default="false"/>
 	<arg name="amcl_and_mapserver_robot_a" default="true"/>
 	<arg name="map_frame_robot_a" default="$(arg id_robot_a)_map"/>
@@ -30,6 +34,10 @@
 	<arg name="id_robot_b" default="robot_b"/>
 	<arg name="launch_robot_b" default="false"/>
 	<arg name="has_elevator_robot_b" default="true"/>
+	<arg name="x_init_pose_robot_b" default="0.0" />
+	<arg name="y_init_pose_robot_b" default="1.0" />
+	<arg name="z_init_pose_robot_b" default="0.0" />
+	<arg name="init_yaw_robot_a" default="0.0" />
 	<arg name="gmapping_robot_b" default="false"/>
 	<arg name="amcl_and_mapserver_robot_b" default="true"/>
 	<arg name="map_frame_robot_b" default="$(arg id_robot_b)_map"/>
@@ -48,6 +56,10 @@
 	<arg name="id_robot_c" default="robot_c"/>
 	<arg name="launch_robot_c" default="false"/>
 	<arg name="has_elevator_robot_c" default="true"/>
+	<arg name="x_init_pose_robot_c" default="0.0" />
+	<arg name="y_init_pose_robot_c" default="2.0" />
+	<arg name="z_init_pose_robot_c" default="0.0" />
+	<arg name="init_yaw_robot_a" default="0.0" />
 	<arg name="gmapping_robot_c" default="false"/>
 	<arg name="amcl_and_mapserver_robot_c" default="true"/>
 	<arg name="map_frame_robot_c" default="$(arg id_robot_c)_map"/>
@@ -75,6 +87,10 @@
 		<arg name="id_robot_a" value="$(arg id_robot_a)"/>
 		<arg name="launch_robot_a" value="$(arg launch_robot_a)"/>
 		<arg name="has_elevator_robot_a" value="$(arg has_elevator_robot_a)"/>
+		<arg name="x_init_pose_robot_a" value="$(arg x_init_pose_robot_a)" />
+		<arg name="y_init_pose_robot_a" value="$(arg y_init_pose_robot_a)" />
+		<arg name="z_init_pose_robot_a" value="$(arg z_init_pose_robot_a)" />
+		<arg name="init_yaw_robot_a" value="$(arg init_yaw_robot_a)" />
 		<arg name="gmapping_robot_a" value="$(arg gmapping_robot_a)"/>
 		<arg name="amcl_and_mapserver_robot_a" value="$(arg amcl_and_mapserver_robot_a)"/>
 		<arg name="map_frame_robot_a" value="$(arg map_frame_robot_a)"/>
@@ -93,6 +109,10 @@
 		<arg name="id_robot_b" value="$(arg id_robot_b)"/>
 		<arg name="launch_robot_b" value="$(arg launch_robot_b)"/>
 		<arg name="has_elevator_robot_b" value="$(arg has_elevator_robot_b)"/>
+		<arg name="x_init_pose_robot_b" value="$(arg x_init_pose_robot_b)" />
+		<arg name="y_init_pose_robot_b" value="$(arg y_init_pose_robot_b)" />
+		<arg name="z_init_pose_robot_b" value="$(arg z_init_pose_robot_b)" />
+		<arg name="init_yaw_robot_b" value="$(arg init_yaw_robot_b)" />
 		<arg name="gmapping_robot_b" value="$(arg gmapping_robot_b)"/>
 		<arg name="amcl_and_mapserver_robot_b" value="$(arg amcl_and_mapserver_robot_b)"/>
 		<arg name="map_frame_robot_b" value="$(arg map_frame_robot_b)"/>
@@ -111,6 +131,10 @@
 		<arg name="id_robot_c" value="$(arg id_robot_c)"/>
 		<arg name="launch_robot_c" value="$(arg launch_robot_c)"/>
 		<arg name="has_elevator_robot_c" value="$(arg has_elevator_robot_c)"/>
+		<arg name="x_init_pose_robot_c" value="$(arg x_init_pose_robot_c)" />
+		<arg name="y_init_pose_robot_c" value="$(arg y_init_pose_robot_c)" />
+		<arg name="z_init_pose_robot_c" value="$(arg z_init_pose_robot_c)" />
+		<arg name="init_yaw_robot_c" value="$(arg init_yaw_robot_c)" />
 		<arg name="gmapping_robot_c" value="$(arg gmapping_robot_c)"/>
 		<arg name="amcl_and_mapserver_robot_c" value="$(arg amcl_and_mapserver_robot_c)"/>
 		<arg name="map_frame_robot_c" value="$(arg map_frame_robot_c)"/>
