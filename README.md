@@ -26,11 +26,20 @@ Launch files that launch the complete simulation of the robot/s.
 <h1>Simulating RB-1 Base</h1>
 
 1. Install the following dependencies:
-  - rb1_base_common [link](https://github.com/RobotnikAutomation/rb1_base_common)
+  - rb1_base_common [link](https://github.com/RobotnikAutomation/rb1_base_common/tree/update_structure)
   - robotnik_msgs [link](https://github.com/RobotnikAutomation/robotnik_msgs)
   - robotnik_sensors [link](https://github.com/RobotnikAutomation/robotnik_sensors)
   - robotnik_base_hw_sim [link](https://github.com/RobotnikAutomation/robotnik_base_hw_sim)
   - robot_localization_utils [link](https://github.com/RobotnikAutomation/robot_localization_utils)
+  - robotnik_gazebo_models [link](https://github.com/RobotnikAutomation/robotnik_gazebo_models.git)
+  - procedures_msgs [link](https://github.com/RobotnikAutomation/procedures_msgs.git)
+  - marker_mapping [link](https://github.com/RobotnikAutomation/marker_mapping.git)
+  - robot_local_control_msgs [link](https://github.com/RobotnikAutomation/robot_local_control_msgs.git)
+  - robotnik_navigation [link](https://github.com/RobotnikAutomation/robotnik_navigation.git)
+  - rostful [link](https://github.com/RobotnikAutomation/rostful.git)
+  - robot_local_control [link](https://github.com/RobotnikAutomation/robot_local_control.git)
+  - rcomponent [link](https://github.com/RobotnikAutomation/rcomponent.git)
+  - battery_manager [link](https://github.com/RobotnikAutomation/battery_manager.git)
 
     In the workspace install the packages dependencies:
     ```
