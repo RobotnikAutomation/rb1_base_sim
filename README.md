@@ -40,6 +40,11 @@ Launch files that launch the complete simulation of the robot/s.
   - robot_local_control [link](https://github.com/RobotnikAutomation/robot_local_control.git)
   - rcomponent [link](https://github.com/RobotnikAutomation/rcomponent.git)
   - battery_manager [link](https://github.com/RobotnikAutomation/battery_manager.git)
+  
+    Rostful requires jwt:
+    ```
+    pip install PyJWT
+    ```  
 
     In the workspace install the packages dependencies:
     ```
