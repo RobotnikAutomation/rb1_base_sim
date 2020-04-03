@@ -3,24 +3,35 @@ project(rb1_base_gazebo)
 
 
 find_package(catkin REQUIRED COMPONENTS
-  gazebo_ros
-  gazebo_ros_control
-  diff_drive_controller
+    roscpp
+    std_srvs
+    std_msgs
+    tf
+    gazebo_ros
+    joint_state_controller
+    velocity_controllers
+    gazebo_ros_control
 )
 
 
+###################################
+## catkin specific configuration ##
+###################################
+catkin_package(
 
-catkin_package()
+)
 
+
+###########
+## Build ##
+###########
 
 include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-install(DIRECTORY launch
-        DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
 
-install(DIRECTORY worlds
-        DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
-
-
+install(
+  DIRECTORY launch worlds
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+)
