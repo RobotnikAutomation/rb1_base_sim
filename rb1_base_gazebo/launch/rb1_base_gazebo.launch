@@ -11,6 +11,7 @@
 	<arg name="debug" default="false"/>
 	<arg name="launch_base_hw_sim" default="false"/>
 	<arg name="launch_elevator_fake_pickup_gazebo" default="false"/>
+	<arg name="use_ros_planar_move_plugin" default="false"/>
 
 	<!--params of the different robots-->
 	<!-- robot a -->
@@ -92,7 +93,7 @@
 		<arg name="launch_amcl_and_mapserver" value="$(arg amcl_and_mapserver_robot_a)"/>
 		<arg name="map_file" value="$(arg map_file_robot_a)"/>
 		<arg name="global_frame" value="$(arg map_frame_robot_a)"/>
- 		<arg name="launch_move_base" value="$(arg move_base_robot_a)"/>
+		<arg name="launch_move_base" value="$(arg move_base_robot_a)"/>
 		<arg name="launch_navigation" value="$(arg navigation_robot_a)"/>
 		<arg name="launch_pad" value="$(arg pad_robot_a)"/>
 		<arg name="launch_perception" value="$(arg perception_robot_a)"/>
@@ -103,6 +104,7 @@
 		<arg name="rostful_port" value="$(arg rostful_port_robot_a)"/>
 		<arg name="launch_base_hw_sim" value="$(arg launch_base_hw_sim)"/>
 		<arg name="fake_elevator_physics" value="$(arg launch_elevator_fake_pickup_gazebo)"/>
+		<arg name="use_ros_planar_move_plugin" value="$(arg use_ros_planar_move_plugin)"/>
 	</include>
 
 	<!--BEGIN ROBOT 2-->
@@ -118,7 +120,7 @@
 		<arg name="launch_amcl_and_mapserver" value="$(arg amcl_and_mapserver_robot_b)"/>
 		<arg name="map_file" value="$(arg map_file_robot_b)"/>
 		<arg name="global_frame" value="$(arg map_frame_robot_b)"/>
- 		<arg name="launch_move_base" value="$(arg move_base_robot_b)"/>
+		<arg name="launch_move_base" value="$(arg move_base_robot_b)"/>
 		<arg name="launch_navigation" value="$(arg navigation_robot_b)"/>
 		<arg name="launch_pad" value="$(arg pad_robot_b)"/>
 		<arg name="launch_perception" value="$(arg perception_robot_b)"/>
@@ -129,6 +131,7 @@
 		<arg name="rostful_port" value="$(arg rostful_port_robot_b)"/>
 		<arg name="launch_base_hw_sim" value="$(arg launch_base_hw_sim)"/>
 		<arg name="fake_elevator_physics" value="$(arg launch_elevator_fake_pickup_gazebo)"/>
+		<arg name="use_ros_planar_move_plugin" value="$(arg use_ros_planar_move_plugin)"/>
 	</include>
 
 	<!--BEGIN ROBOT 3-->
@@ -144,7 +147,7 @@
 		<arg name="launch_amcl_and_mapserver" value="$(arg amcl_and_mapserver_robot_c)"/>
 		<arg name="map_file" value="$(arg map_file_robot_c)"/>
 		<arg name="global_frame" value="$(arg map_frame_robot_c)"/>
- 		<arg name="launch_move_base" value="$(arg move_base_robot_c)"/>
+		<arg name="launch_move_base" value="$(arg move_base_robot_c)"/>
 		<arg name="launch_navigation" value="$(arg navigation_robot_c)"/>
 		<arg name="launch_pad" value="$(arg pad_robot_c)"/>
 		<arg name="launch_perception" value="$(arg perception_robot_c)"/>
@@ -155,6 +158,7 @@
 		<arg name="rostful_port" value="$(arg rostful_port_robot_c)"/>
 		<arg name="launch_base_hw_sim" value="$(arg launch_base_hw_sim)"/>
 		<arg name="fake_elevator_physics" value="$(arg launch_elevator_fake_pickup_gazebo)"/>
+		<arg name="use_ros_planar_move_plugin" value="$(arg use_ros_planar_move_plugin)"/>
 	</include>
 
 	<!-- gazebo simulation and rviz visualization-->
