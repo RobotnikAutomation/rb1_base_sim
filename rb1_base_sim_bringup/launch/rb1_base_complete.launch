@@ -10,6 +10,7 @@
 	<arg name="gazebo_world" default="$(find rb1_base_gazebo)/worlds/rb1_base_office.world"/>
 	<arg name="launch_base_hw_sim" default="false"/>
 	<arg name="launch_elevator_fake_pickup_gazebo" default="false"/>
+	<arg name="verbose" default="false"/>
 
 	<!-- arguments robot a -->
 	<arg name="id_robot_a" default="rb1_base"/>
@@ -51,6 +52,7 @@
 		<arg name="launch_base_hw_sim" value="$(arg launch_base_hw_sim)"/>
 		<arg name="launch_elevator_fake_pickup_gazebo" value="$(arg launch_elevator_fake_pickup_gazebo)"/>
 		<arg name="gazebo_gui" value="$(arg gazebo_gui)"/>
+		<arg name="verbose" value="$(arg verbose)"/>
 		<!-- robot_a args -->
 		<arg name="id_robot_a" default="$(arg id_robot_a)"/>
 		<arg name="launch_robot_a" value="$(arg launch_robot_a)"/>
