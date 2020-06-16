@@ -22,6 +22,7 @@
 	<arg name="launch_rlc" default="true"/>
 	<arg name="launch_rostful" default="true"/>
 	<arg name="rostful_host" default="192.168.0.200"/>
+	<arg name="rostful_init_delay" default="5"/>
 	<arg name="rostful_port" default="8080"/>
 	<arg name="launch_base_hw_sim" default="false"/>
 	<arg name="fake_elevator_physics" default="true"/>
@@ -126,6 +127,7 @@
 				<arg name="id_robot" value="$(arg id_robot)"/>
 				<arg name="host" value="$(arg rostful_host)"/>
 				<arg name="port" value="$(arg rostful_port)"/>
+				<arg name="init_delay" value="$(arg rostful_init_delay)"/>
 			</include>
 
 		</group>
