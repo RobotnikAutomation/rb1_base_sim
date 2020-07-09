@@ -38,9 +38,9 @@
 
 
 	<!-- robot b -->
-	<arg name="id_robot_b" default="robot"/>
+	<arg name="id_robot_b" default="robot_b"/>
 	<arg name="has_elevator_robot_b" default="false"/>
-	<arg name="launch_robot_b" default="true"/>
+	<arg name="launch_robot_b" default="false"/>
 	<arg name="xacro_elevator_robot_b" default="rb1_base_elevator.urdf.xacro"/>
 	<!-- arm robot b -->
 	<arg name="launch_arm_robot_b" default="false"/>
@@ -67,9 +67,9 @@
 	<arg name="rostful_port_robot_b" default="8081"/>
 
 	<!-- robot c -->
-	<arg name="id_robot_c" default="robot"/>
+	<arg name="id_robot_c" default="robot_c"/>
 	<arg name="has_elevator_robot_c" default="false"/>
-	<arg name="launch_robot_c" default="true"/>
+	<arg name="launch_robot_c" default="false"/>
 	<arg name="xacro_elevator_robot_c" default="rb1_base_elevator.urdf.xacro"/>
 	<!-- arm robot c -->
 	<arg name="launch_arm_robot_c" default="false"/>
