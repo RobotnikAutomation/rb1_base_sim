@@ -106,31 +106,30 @@
 
 		</group>
 
-		<include if="$(arg launch_perception)" file="$(find rb1_base_perception)/launch/perception_complete.launch">
+	</group>
+
+	<include if="$(arg launch_perception)" file="$(find rb1_base_perception)/launch/perception_complete.launch">
+		<arg name="id_robot" value="$(arg id_robot)"/>
+		<arg name="run_reflector_locator" value="$(arg launch_reflector_locator)"/>
+		<arg name="run_ar_locator" value="true"/>
+	</include>
+
+	<include if="$(arg launch_navigation)" file="$(find rb1_base_navigation)/launch/navigation_complete.launch">
+		<arg name="id_robot" value="$(arg id_robot)"/>
+		<arg name="has_docker" value="true"/>
+		<arg name="run_laser_docker" value="true"/>
+	</include>
+
+	<group if="$(arg launch_rlc)">
+		<include file="$(find rb1_base_robot_local_control)/launch/robot_local_control.launch">
 			<arg name="id_robot" value="$(arg id_robot)"/>
-			<arg name="run_reflector_locator" value="$(arg launch_reflector_locator)"/>
-			<arg name="run_ar_locator" value="true"/>
 		</include>
 
-		<include if="$(arg launch_navigation)" file="$(find rb1_base_navigation)/launch/navigation_complete.launch">
+		<include if="$(arg launch_rostful)" file="$(find rb1_base_robot_local_control)/launch/rostful_server.launch">
 			<arg name="id_robot" value="$(arg id_robot)"/>
-			<arg name="has_docker" value="true"/>
-			<arg name="run_laser_docker" value="true"/>
+			<arg name="host" value="$(arg rostful_host)"/>
+			<arg name="port" value="$(arg rostful_port)"/>
 		</include>
-
-		<group if="$(arg launch_rlc)">
-			<include file="$(find rb1_base_robot_local_control)/launch/robot_local_control.launch">
-				<arg name="id_robot" value="$(arg id_robot)"/>
-			</include>
-
-			<include if="$(arg launch_rostful)" file="$(find rb1_base_robot_local_control)/launch/rostful_server.launch">
-				<arg name="id_robot" value="$(arg id_robot)"/>
-				<arg name="host" value="$(arg rostful_host)"/>
-				<arg name="port" value="$(arg rostful_port)"/>
-				<arg name="init_delay" value="$(arg rostful_init_delay)"/>
-			</include>
-
-		</group>
 
 	</group>
 
