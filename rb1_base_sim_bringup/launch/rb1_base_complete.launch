@@ -6,9 +6,11 @@
 	<!--launch_navigation and launch_navigation_nomap args are exclusive
 	and they are (or not) launched for all robots-->
 	<arg name="launch_rviz" default="true"/>
+	<arg name="gazebo_gui" default="true"/>
 	<arg name="gazebo_world" default="$(find rb1_base_gazebo)/worlds/rb1_base_office.world"/>
 	<arg name="launch_base_hw_sim" default="false"/>
 	<arg name="launch_elevator_fake_pickup_gazebo" default="false"/>
+	<arg name="verbose" default="false"/>
 
 	<!-- arguments robot a -->
 	<arg name="id_robot_a" default="rb1_base"/>
@@ -20,6 +22,7 @@
 	<arg name="amcl_and_mapserver_a" default="false"/>
 	<arg name="map_frame_a" default="$(arg id_robot_a)_map"/>
 	<arg name="move_robot_a" default="false"/>
+	<arg name="has_elevator_robot_a" default="false"/>
 
 	<!-- arguments robot b -->
 	<arg name="id_robot_b" default="rb1_base_b"/>
@@ -30,7 +33,8 @@
 	<arg name="move_base_robot_b" default="false"/>
 	<arg name="amcl_and_mapserver_b" default="false"/>
 	<arg name="map_frame_b" default="$(arg id_robot_b)_map"/>
-    <arg name="move_robot_b" default="false"/>
+	<arg name="move_robot_b" default="false"/>
+	<arg name="has_elevator_robot_b" default="false"/>
 
 	<!-- arguments robot c -->
 	<arg name="id_robot_c" default="rb1_base_c"/>
@@ -41,7 +45,8 @@
 	<arg name="move_base_robot_c" default="false"/>
 	<arg name="amcl_and_mapserver_c" default="false"/>
 	<arg name="map_frame_c" default="$(arg id_robot_c)_map"/>
-    <arg name="move_robot_c" default="false"/>
+	<arg name="move_robot_c" default="false"/>
+	<arg name="has_elevator_robot_c" default="false"/>
 
 	<include file="$(find rb1_base_gazebo)/launch/rb1_base_gazebo.launch">
 		<!-- general args -->
@@ -49,6 +54,8 @@
 		<arg name="gazebo_world" value="$(arg gazebo_world)"/>
 		<arg name="launch_base_hw_sim" value="$(arg launch_base_hw_sim)"/>
 		<arg name="launch_elevator_fake_pickup_gazebo" value="$(arg launch_elevator_fake_pickup_gazebo)"/>
+		<arg name="gazebo_gui" value="$(arg gazebo_gui)"/>
+		<arg name="verbose" value="$(arg verbose)"/>
 		<!-- robot_a args -->
 		<arg name="id_robot_a" default="$(arg id_robot_a)"/>
 		<arg name="launch_robot_a" value="$(arg launch_robot_a)"/>
@@ -57,8 +64,10 @@
 		<arg name="move_base_robot_a" value="$(arg move_base_robot_a)"/>
 		<arg name="amcl_and_mapserver_a" value="$(arg amcl_and_mapserver_a)"/>
 		<arg name="map_file_a" value="$(arg map_file_a)"/>
-		<arg name="map_frame_a" default="$(arg map_frame_a)"/>
-		<arg name="move_robot_a" default="$(arg move_robot_a)"/>
+		<arg name="map_frame_a" value="$(arg map_frame_a)"/>
+		<arg name="move_robot_a" value="$(arg move_robot_a)"/>
+		<arg name="has_elevator_robot_a" value="$(arg has_elevator_robot_a)"/>
+
 		<!-- robot_b args -->
 		<arg name="id_robot_b" default="$(arg id_robot_b)"/>
 		<arg name="launch_robot_b" value="$(arg launch_robot_b)"/>
@@ -67,8 +76,10 @@
 		<arg name="move_base_robot_b" value="$(arg move_base_robot_b)"/>
 		<arg name="amcl_and_mapserver_b" value="$(arg amcl_and_mapserver_b)"/>
 		<arg name="map_file_b" value="$(arg map_file_b)"/>
-		<arg name="map_frame_b" default="$(arg map_frame_b)"/>
-        <arg name="move_robot_b" default="$(arg move_robot_b)"/>
+		<arg name="map_frame_b" value="$(arg map_frame_b)"/>
+	        <arg name="move_robot_b" value="$(arg move_robot_b)"/>
+		<arg name="has_elevator_robot_b" value="$(arg has_elevator_robot_b)"/>
+
 		<!-- robot_c args -->
 		<arg name="id_robot_c" default="$(arg id_robot_c)"/>
 		<arg name="launch_robot_c" value="$(arg launch_robot_c)"/>
@@ -77,8 +88,10 @@
 		<arg name="move_base_robot_c" value="$(arg move_base_robot_c)"/>
 		<arg name="amcl_and_mapserver_c" value="$(arg amcl_and_mapserver_c)"/>
 		<arg name="map_file_c" value="$(arg map_file_c)"/>
-		<arg name="map_frame_c" default="$(arg map_frame_c)"/>
-        <arg name="move_robot_c" default="$(arg move_robot_c)"/>
+		<arg name="map_frame_c" value="$(arg map_frame_c)"/>
+	        <arg name="move_robot_c" value="$(arg move_robot_c)"/>
+		<arg name="has_elevator_robot_c" value="$(arg has_elevator_robot_c)"/>
+
 	</include>
 
 </launch>

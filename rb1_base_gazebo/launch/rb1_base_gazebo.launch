@@ -6,14 +6,16 @@
 	<!--launch_navigation and launch_navigation_nomap args are exclusive
 	and they are (or not) launched for all robots-->
 	<arg name="launch_rviz" default="true"/>
+	<arg name="gazebo_gui" default="true"/>
 	<arg name="rviz_config" default="$(find rb1_base_gazebo)/rviz/rb1_base_a.rviz"/>
 	<arg name="launch_robot_a" default="true"/>
 	<arg name="launch_robot_b" default="false"/>
 	<arg name="launch_robot_c" default="false"/>
 	<arg name="gazebo_world" default="$(find rb1_base_gazebo)/worlds/rb1_base.world"/>
 	<arg name="debug" default="false"/>
-    <arg name="launch_base_hw_sim" default="false"/>
-    <arg name="launch_elevator_fake_pickup_gazebo" default="false"/>
+	<arg name="launch_base_hw_sim" default="false"/>
+    	<arg name="launch_elevator_fake_pickup_gazebo" default="false"/>
+	<arg name="verbose" default="false"/>
 
 	<!--params of the different robots-->
 	<!-- robot a -->
@@ -28,8 +30,8 @@
 	<arg name="map_file_a" default="$(find rb1_base_localization)/maps/empty/map_empty.yaml"/>
 	<arg name="map_frame_a" default="$(arg id_robot_a)_map"/>
 	<arg name="xacro_robot_a" default="rb1_base_std.urdf.xacro"/>
-    <arg name="has_elevator_robot_a" default="true"/>
-    <arg name="move_robot_a" default="false"/>
+    	<arg name="has_elevator_robot_a" default="false"/>
+    	<arg name="move_robot_a" default="false"/>
 
 	<!-- robot b -->
 	<arg name="id_robot_b" default="rb1_base_b"/>
@@ -44,7 +46,7 @@
 	<arg name="map_frame_b" default="$(arg id_robot_b)_map"/>
 	<arg name="xacro_robot_b" default="rb1_base_std.urdf.xacro"/>
 	<arg name="has_elevator_robot_b" default="true"/>
-    <arg name="move_robot_b" default="false"/>
+    	<arg name="move_robot_b" default="false"/>
 
 	<!-- robot c -->
 	<arg name="id_robot_c" default="rb1_base_c"/>
@@ -124,6 +126,8 @@
 		<arg name="world_name" value="$(arg gazebo_world)"/>
 		<arg name="debug" value="$(arg debug)"/>
 		<arg name="rviz_config" value="$(arg rviz_config)"/>
+		<arg name="gazebo_gui" value="$(arg gazebo_gui)"/>
+		<arg name="verbose" value="$(arg verbose)"/>
 	</include>
 
         <!-- avoids Gazebo physics to pickup carts -->
