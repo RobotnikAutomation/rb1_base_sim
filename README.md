@@ -11,19 +11,19 @@ Packages for the simulation of the RB-1 Base
 </p>
 
 
-# Packages
+## Packages
 
-## rb1_base_gazebo
+### rb1_base_gazebo
 
 This package contains the configuration files and worlds to launch the Gazebo environment along with the simulated robot.
 
-## rb1_base_sim_bringup
+### rb1_base_sim_bringup
 
 Launch files that launch the complete simulation of the robot/s.
 
 
 
-# Simulating RB-1 Base
+## Simulating RB-1 Base
 
 1. Install the following dependencies:
   - rb1_base_common [link](https://github.com/RobotnikAutomation/rb1_base_common)
