@@ -1,5 +1,5 @@
-rb1_base_sim
-=============
+# rb1_base_sim
+
 
 Packages for the simulation of the RB-1 Base
 
@@ -11,19 +11,19 @@ Packages for the simulation of the RB-1 Base
 </p>
 
 
-<h1> Packages </h1>
+# Packages
 
-<h2>rb1_base_gazebo</h2>
+## rb1_base_gazebo
 
 This package contains the configuration files and worlds to launch the Gazebo environment along with the simulated robot.
 
-<h2>rb1_base_sim_bringup</h2>
+## rb1_base_sim_bringup
 
 Launch files that launch the complete simulation of the robot/s.
 
 
 
-<h1>Simulating RB-1 Base</h1>
+# Simulating RB-1 Base
 
 1. Install the following dependencies:
   - rb1_base_common [link](https://github.com/RobotnikAutomation/rb1_base_common)
@@ -35,7 +35,7 @@ Launch files that launch the complete simulation of the robot/s.
     In the workspace install the packages dependencies:
     ```
     rosdep install --from-paths src --ignore-src -r -y
-    ```  
+    ```
 
 2. Launch RB-1 Base simulation (1 robot by default, up to 3 robots): <br>
 - RB-1 Base: <br>
