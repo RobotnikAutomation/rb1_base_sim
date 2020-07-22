@@ -29,13 +29,13 @@ Launch files that launch the complete simulation of the robot/s.
 
     In the workspace install the packages dependencies:
     ```bash
-    rosdep install --from-paths src --ignore-src -r -y
+rosdep install --from-paths src --ignore-src -r -y
     ```
 
 2. Launch RB-1 Base simulation (1 robot by default, up to 3 robots):
 - RB-1 Base:
   ```bash
-  roslaunch rb1_base_sim_bringup rb1_base_complete.launch
+roslaunch rb1_base_sim_bringup rb1_base_complete.launch
   ```
 
   Optional general arguments:
@@ -65,18 +65,40 @@ Launch files that launch the complete simulation of the robot/s.
   ```
 - Example to launch simulation with 3 RB-1 Base robots:
   ```bash
-  roslaunch rb1_base_sim_bringup rb1_base_complete.launch launch_robot_b:=true launch_robot_c:=true
+roslaunch rb1_base_sim_bringup rb1_base_complete.launch \
+  launch_robot_b:=true \
+  launch_robot_c:=true
   ```
 - Example to launch simulation with 1 RB-1 Base robot with navigation and localization:
   ```bash
-  roslaunch rb1_base_sim_bringup rb1_base_complete.launch move_base_robot_a:=true amcl_and_mapserver_a:=true
+roslaunch rb1_base_sim_bringup rb1_base_complete.launch \
+  move_base_robot_a:=true \
+  amcl_and_mapserver_a:=true
   ```
 - Example to launch simulation with 2 RB-1 Base robot with navigation and localization sharing the same global frame:
   ```bash
-  roslaunch rb1_base_sim_bringup rb1_base_complete.launch amcl_and_mapserver_a:=true move_base_robot_a:=true map_frame_a:=/map launch_robot_b:=true amcl_and_mapserver_b:=true move_base_robot_b:=true map_frame_b:=/map
+roslaunch rb1_base_sim_bringup rb1_base_complete.launch \
+  amcl_and_mapserver_a:=true \
+  move_base_robot_a:=true \
+  map_frame_a:=/map \
+  launch_robot_b:=true \
+  amcl_and_mapserver_b:=true \
+  move_base_robot_b:=true \
+  map_frame_b:=/map
   ```
 - Example to launch simulation with 3 RB-1 Base robot with navigation and localization sharing the same global frame:
 ```bash
-roslaunch rb1_base_sim_bringup rb1_base_complete.launch amcl_and_mapserver_a:=true move_base_robot_a:=true map_frame_a:=/map launch_robot_b:=true amcl_and_mapserver_b:=true move_base_robot_b:=true map_frame_b:=/map launch_robot_c:=true amcl_and_mapserver_c:=true move_base_robot_c:=true map_frame_c:=/map
+roslaunch rb1_base_sim_bringup rb1_base_complete.launch \
+  amcl_and_mapserver_a:=true \
+  move_base_robot_a:=true \
+  map_frame_a:=/map \
+  launch_robot_b:=true \
+  amcl_and_mapserver_b:=true \
+  move_base_robot_b:=true \
+  map_frame_b:=/map \
+  launch_robot_c:=true \
+  amcl_and_mapserver_c:=true \
+  move_base_robot_c:=true \
+  map_frame_c:=/map
 ```
 3. Enjoy! You can use the topic `${id_robot}/robotnik_base_control/cmd_vel` to control the RB-1 Base robot or send simple goals using `/${id_robot}/move_base_simple/goal`
