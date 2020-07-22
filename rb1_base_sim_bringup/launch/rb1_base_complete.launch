@@ -6,6 +6,7 @@
 	<arg name="gazebo_world" default="$(find rb1_base_gazebo)/worlds/rb1_base_office.world"/>
 	<arg name="launch_base_hw_sim" default="true"/>
 	<arg name="launch_elevator_fake_pickup_gazebo" default="true"/>
+	<arg name="use_ros_planar_move_plugin" default="true"/>
 
 	<!-- robot a -->
 	<arg name="id_robot_a" default="robot"/>
@@ -103,6 +104,7 @@
 		<arg name="gazebo_world" value="$(arg gazebo_world)"/>
 		<arg name="launch_base_hw_sim" value="$(arg launch_base_hw_sim)"/>
 		<arg name="launch_elevator_fake_pickup_gazebo" value="$(arg launch_elevator_fake_pickup_gazebo)"/>
+		<arg name="use_ros_planar_move_plugin" value="$(arg use_ros_planar_move_plugin)"/>
 
 		<!-- robot a -->
 		<arg name="id_robot_a" value="$(arg id_robot_a)"/>

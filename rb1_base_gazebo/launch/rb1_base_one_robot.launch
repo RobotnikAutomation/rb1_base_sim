@@ -5,12 +5,12 @@
 	<arg name="prefix" value="$(arg id_robot)_"/>
 	<arg name="has_elevator" default="false"/>
 	<arg name="xacro_robot_elevator" default="rb1_base_elevator.urdf.xacro"/>
-	
+
 	<arg name="launch_arm" default="false"/>
 	<arg name="arm_model" default="base"/>
 	<arg name="xacro_robot" default="rb1_$(arg arm_model).urdf.xacro"/>
 	<arg name="moveit_movegroup" default="false"/>
-	
+
 	<arg name="x_init_pose" default="0"/>
 	<arg name="y_init_pose" default="0"/>
 	<arg name="z_init_pose" default="0"/>
@@ -27,6 +27,7 @@
 	<arg name="launch_rlc" default="true"/>
 	<arg name="launch_rostful" default="true"/>
 	<arg name="rostful_host" default="192.168.0.200"/>
+	<arg name="rostful_init_delay" default="10"/>
 	<arg name="rostful_port" default="8080"/>
 	<arg name="launch_base_hw_sim" default="false"/>
 	<arg name="fake_elevator_physics" default="true"/>
@@ -54,7 +55,7 @@
 			<arg name="id_robot" value="$(arg id_robot)"/>
 			<arg name="sim" value="true"/>
 
-     		<arg name="sim_arm_control" value="$(arg launch_arm)"/>
+			<arg name="sim_arm_control" value="$(arg launch_arm)"/>
 			<arg name="left_arm_controllers" value="left_arm/pos_traj_controller"/>
 			<arg name="right_arm_controllers" value="right_arm/pos_traj_controller"/>
 
@@ -116,38 +117,36 @@
 
 		</group>
 
-		<!-- perception -->
-		<include if="$(arg launch_perception)" file="$(find rb1_base_perception)/launch/perception_complete.launch">
-			<arg name="id_robot" value="$(arg id_robot)"/>
-			<arg name="run_reflector_locator" value="$(arg launch_reflector_locator)"/>
-			<arg name="run_ar_locator" value="true"/>
-		</include>
-
-		<!-- navigation -->
-		<include if="$(arg launch_navigation)" file="$(find rb1_base_navigation)/launch/navigation_complete.launch">
-			<arg name="id_robot" value="$(arg id_robot)"/>
-			<arg name="has_docker" value="true"/>
-			<arg name="run_laser_docker" value="true"/>
-		</include>
-
-		<!-- robot_local_control -->
-		<group if="$(arg launch_rlc)">
-			<include file="$(find rb1_base_robot_local_control)/launch/robot_local_control.launch">
-				<arg name="id_robot" value="$(arg id_robot)"/>
-			</include>
-
-			<include if="$(arg launch_rostful)" file="$(find rb1_base_robot_local_control)/launch/rostful_server.launch">
-				<arg name="id_robot" value="$(arg id_robot)"/>
-				<arg name="host" value="$(arg rostful_host)"/>
-				<arg name="port" value="$(arg rostful_port)"/>
-			</include>
-
-		</group>
-
 		<!-- MoveGroup Moveit! -->
-        <include if="$(arg moveit_movegroup)" file="$(find rb1_dual_ur3_moveit_config)/launch/rb1_dual_ur3_moveit_config.launch">
-                <arg name="sim" value="true"/>
-        </include>
+		<include if="$(arg moveit_movegroup)" file="$(find rb1_dual_ur3_moveit_config)/launch/rb1_dual_ur3_moveit_config.launch">
+			<arg name="sim" value="true"/>
+		</include>
+
+	</group>
+
+	<include if="$(arg launch_perception)" file="$(find rb1_base_perception)/launch/perception_complete.launch">
+		<arg name="id_robot" value="$(arg id_robot)"/>
+		<arg name="run_reflector_locator" value="$(arg launch_reflector_locator)"/>
+		<arg name="run_ar_locator" value="true"/>
+	</include>
+
+	<include if="$(arg launch_navigation)" file="$(find rb1_base_navigation)/launch/navigation_complete.launch">
+		<arg name="id_robot" value="$(arg id_robot)"/>
+		<arg name="has_docker" value="true"/>
+		<arg name="run_laser_docker" value="true"/>
+	</include>
+
+	<group if="$(arg launch_rlc)">
+		<include file="$(find rb1_base_robot_local_control)/launch/robot_local_control.launch">
+			<arg name="id_robot" value="$(arg id_robot)"/>
+		</include>
+
+		<include if="$(arg launch_rostful)" file="$(find rb1_base_robot_local_control)/launch/rostful_server.launch">
+			<arg name="id_robot" value="$(arg id_robot)"/>
+			<arg name="host" value="$(arg rostful_host)"/>
+			<arg name="port" value="$(arg rostful_port)"/>
+			<arg name="init_delay" value="$(arg rostful_init_delay)"/>
+		</include>
 
 	</group>
 
