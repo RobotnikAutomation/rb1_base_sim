@@ -4,7 +4,6 @@
 Packages for the simulation of the RB-1 Base
 
 ![RB-1-BASE Front](doc/rb-1-base-front.jpg) ![RB-1-BASE Rear](doc/rb-1-base-rear.jpg)
-<!-- ![RB-1-BASE Perspective](doc/rb-1-base-pers.jpg) -->
 
 ## Packages
 
