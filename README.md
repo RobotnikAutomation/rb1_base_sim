@@ -49,7 +49,7 @@ Launch files that launch the complete simulation of the robot/s.
   <!--arguments for each robot (example for robot A)-->
   <arg name="id_robot_a" default="rb1_base_a"/>
   <arg name="launch_robot_a" default="true"/>
-  <arg name="map_file_a" default="$(find rb1_base_localization)/maps/willow_garage/willow_garage.yaml""/>
+  <arg name="map_file_a" default="$(find rb1_base_localization)/maps/willow_garage/willow_garage.yaml"/>
   <arg name="localization_robot_a" default="true"/>
   <arg name="gmapping_robot_a" default="false"/>
   <arg name="move_base_robot_a" default="false"/>
