@@ -3,9 +3,14 @@
 
 	<arg name="id_robot" default="robot"/>
 	<arg name="prefix" value="$(arg id_robot)_"/>
-	<arg name="xacro_robot" default="rb1_base_std.urdf.xacro"/>
 	<arg name="has_elevator" default="false"/>
-	<arg name="xacro_robot_elevator" default="rb1_base_std_elevator.urdf.xacro"/>
+	<arg name="xacro_robot_elevator" default="rb1_base_elevator.urdf.xacro"/>
+
+	<arg name="launch_arm" default="false"/>
+	<arg name="arm_model" default="base"/>
+	<arg name="xacro_robot" default="rb1_$(arg arm_model).urdf.xacro"/>
+	<arg name="moveit_movegroup" default="false"/>
+
 	<arg name="x_init_pose" default="0"/>
 	<arg name="y_init_pose" default="0"/>
 	<arg name="z_init_pose" default="0"/>
@@ -49,6 +54,12 @@
 			<arg name="prefix" value="$(arg prefix)"/>
 			<arg name="id_robot" value="$(arg id_robot)"/>
 			<arg name="sim" value="true"/>
+
+			<arg name="sim_arm_control" value="$(arg launch_arm)"/>
+			<arg name="left_arm_controllers" value="left_arm/pos_traj_controller"/>
+			<arg name="right_arm_controllers" value="right_arm/pos_traj_controller"/>
+
+
 			<arg name="has_elevator" value="$(arg has_elevator)"/>
 			<arg name="fake_elevator_physics" default="$(arg fake_elevator_physics)"/>
 			<arg name="use_ros_planar_move_plugin" default="$(arg use_ros_planar_move_plugin)"/>
@@ -105,6 +116,11 @@
 			</include>
 
 		</group>
+
+		<!-- MoveGroup Moveit! -->
+		<include if="$(arg moveit_movegroup)" file="$(find rb1_dual_ur3_moveit_config)/launch/rb1_dual_ur3_moveit_config.launch">
+			<arg name="sim" value="true"/>
+		</include>
 
 	</group>
 

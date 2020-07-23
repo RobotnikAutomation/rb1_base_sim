@@ -8,10 +8,17 @@
 	<arg name="launch_elevator_fake_pickup_gazebo" default="true"/>
 	<arg name="use_ros_planar_move_plugin" default="true"/>
 
-	<!-- arguments robot a -->
+	<!-- robot a -->
 	<arg name="id_robot_a" default="robot"/>
+	<arg name="has_elevator_robot_a" default="false"/>
 	<arg name="launch_robot_a" default="true"/>
-	<arg name="has_elevator_robot_a" default="true"/>
+	<arg name="xacro_elevator_robot_a" default="rb1_base_elevator.urdf.xacro"/>
+	<!-- arm robot a -->
+	<arg name="launch_arm_robot_a" default="false"/>
+	<arg name="arm_model_robot_a" default="base"/>
+	<arg name="xacro_robot_a" default="rb1_$(arg arm_model_robot_a).urdf.xacro"/>
+	<arg name="moveit_movegroup_a" default="false"/>
+	<!-- arguments robot a -->
 	<arg name="x_init_pose_robot_a" default="0.0" />
 	<arg name="y_init_pose_robot_a" default="0.0" />
 	<arg name="z_init_pose_robot_a" default="0.0" />
@@ -31,10 +38,17 @@
 	<arg name="rostful_port_robot_a" default="8080"/>
 
 
-	<!-- arguments robot b -->
+	<!-- robot b -->
 	<arg name="id_robot_b" default="robot_b"/>
+	<arg name="has_elevator_robot_b" default="false"/>
 	<arg name="launch_robot_b" default="false"/>
-	<arg name="has_elevator_robot_b" default="true"/>
+	<arg name="xacro_elevator_robot_b" default="rb1_base_elevator.urdf.xacro"/>
+	<!-- arm robot b -->
+	<arg name="launch_arm_robot_b" default="false"/>
+	<arg name="arm_model_robot_b" default="base"/>
+	<arg name="xacro_robot_b" default="rb1_$(arg arm_model_robot_b).urdf.xacro"/>
+	<arg name="moveit_movegroup_b" default="false"/>
+	<!-- arguments robot b -->
 	<arg name="x_init_pose_robot_b" default="0.0" />
 	<arg name="y_init_pose_robot_b" default="1.0" />
 	<arg name="z_init_pose_robot_b" default="0.0" />
@@ -53,10 +67,17 @@
 	<arg name="rostful_host_robot_b" default="192.168.0.200"/>
 	<arg name="rostful_port_robot_b" default="8081"/>
 
-	<!-- arguments robot c -->
+	<!-- robot c -->
 	<arg name="id_robot_c" default="robot_c"/>
+	<arg name="has_elevator_robot_c" default="false"/>
 	<arg name="launch_robot_c" default="false"/>
-	<arg name="has_elevator_robot_c" default="true"/>
+	<arg name="xacro_elevator_robot_c" default="rb1_base_elevator.urdf.xacro"/>
+	<!-- arm robot c -->
+	<arg name="launch_arm_robot_c" default="false"/>
+	<arg name="arm_model_robot_c" default="base"/>
+	<arg name="xacro_robot_c" default="rb1_$(arg arm_model_robot_c).urdf.xacro"/>
+	<arg name="moveit_movegroup_c" default="false"/>
+	<!-- arguments robot c -->
 	<arg name="x_init_pose_robot_c" default="0.0" />
 	<arg name="y_init_pose_robot_c" default="2.0" />
 	<arg name="z_init_pose_robot_c" default="0.0" />
@@ -85,10 +106,17 @@
 		<arg name="launch_elevator_fake_pickup_gazebo" value="$(arg launch_elevator_fake_pickup_gazebo)"/>
 		<arg name="use_ros_planar_move_plugin" value="$(arg use_ros_planar_move_plugin)"/>
 
-		<!-- robot_a args -->
+		<!-- robot a -->
 		<arg name="id_robot_a" value="$(arg id_robot_a)"/>
-		<arg name="launch_robot_a" value="$(arg launch_robot_a)"/>
+		<arg name="xacro_robot_a" value="$(arg xacro_robot_a)"/>
 		<arg name="has_elevator_robot_a" value="$(arg has_elevator_robot_a)"/>
+		<arg name="launch_robot_a" value="$(arg launch_robot_a)"/>
+		<arg name="xacro_elevator_robot_a" value="$(arg xacro_elevator_robot_a)"/>
+		<!-- arm robot a -->
+		<arg name="launch_arm_robot_a" value="$(arg launch_arm_robot_a)"/>
+		<arg name="arm_model_robot_a" value="$(arg arm_model_robot_a)"/>
+		<arg name="moveit_movegroup_a" value="$(arg moveit_movegroup_a)"/>
+		<!-- arguments robot a -->
 		<arg name="x_init_pose_robot_a" value="$(arg x_init_pose_robot_a)" />
 		<arg name="y_init_pose_robot_a" value="$(arg y_init_pose_robot_a)" />
 		<arg name="z_init_pose_robot_a" value="$(arg z_init_pose_robot_a)" />
@@ -107,10 +135,17 @@
 		<arg name="rostful_host_robot_a" value="$(arg rostful_host_robot_a)"/>
 		<arg name="rostful_port_robot_a" value="$(arg rostful_port_robot_a)"/>
 
-		<!-- robot_b args -->
+		<!-- robot b -->
 		<arg name="id_robot_b" value="$(arg id_robot_b)"/>
-		<arg name="launch_robot_b" value="$(arg launch_robot_b)"/>
+		<arg name="xacro_robot_b" value="$(arg xacro_robot_b)"/>
 		<arg name="has_elevator_robot_b" value="$(arg has_elevator_robot_b)"/>
+		<arg name="launch_robot_b" value="$(arg launch_robot_b)"/>
+		<arg name="xacro_elevator_robot_b" value="$(arg xacro_elevator_robot_b)"/>
+		<!-- arm robot b -->
+		<arg name="launch_arm_robot_b" value="$(arg launch_arm_robot_b)"/>
+		<arg name="arm_model_robot_b" value="$(arg arm_model_robot_b)"/>
+		<arg name="moveit_movegroup_b" value="$(arg moveit_movegroup_b)"/>
+		<!-- arguments robot b -->
 		<arg name="x_init_pose_robot_b" value="$(arg x_init_pose_robot_b)" />
 		<arg name="y_init_pose_robot_b" value="$(arg y_init_pose_robot_b)" />
 		<arg name="z_init_pose_robot_b" value="$(arg z_init_pose_robot_b)" />
@@ -129,10 +164,17 @@
 		<arg name="rostful_host_robot_b" value="$(arg rostful_host_robot_b)"/>
 		<arg name="rostful_port_robot_b" value="$(arg rostful_port_robot_b)"/>
 
-		<!-- robot_c args -->
+		<!-- robot c -->
 		<arg name="id_robot_c" value="$(arg id_robot_c)"/>
-		<arg name="launch_robot_c" value="$(arg launch_robot_c)"/>
+		<arg name="xacro_robot_c" value="$(arg xacro_robot_c)"/>
 		<arg name="has_elevator_robot_c" value="$(arg has_elevator_robot_c)"/>
+		<arg name="launch_robot_c" value="$(arg launch_robot_c)"/>
+		<arg name="xacro_elevator_robot_c" value="$(arg xacro_elevator_robot_c)"/>
+		<!-- arm robot c -->
+		<arg name="launch_arm_robot_c" value="$(arg launch_arm_robot_c)"/>
+		<arg name="arm_model_robot_c" value="$(arg arm_model_robot_c)"/>
+		<arg name="moveit_movegroup_c" value="$(arg moveit_movegroup_c)"/>
+		<!-- arguments robot c -->
 		<arg name="x_init_pose_robot_c" value="$(arg x_init_pose_robot_c)" />
 		<arg name="y_init_pose_robot_c" value="$(arg y_init_pose_robot_c)" />
 		<arg name="z_init_pose_robot_c" value="$(arg z_init_pose_robot_c)" />
