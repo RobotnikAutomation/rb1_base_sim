@@ -83,7 +83,7 @@
   </group>
 
   <!-- launch rviz -->
-  <include if="$(arg run_rviz)" ns="$(arg robot_id)" file="$(find rbares_sim_bringup)/launch/run_rviz.launch">
+  <include if="$(arg run_rviz)" ns="$(arg robot_id)" file="$(find rb1_base_sim_bringup)/launch/run_rviz.launch">
     <arg name="rviz_config_file" value="$(arg rviz_config_file)" />
   </include>
 
