@@ -63,86 +63,87 @@ roslaunch rb1_base_sim_bringup rb1_base_complete.launch
 ```
   Optional robot arguments:
 ```xml
-  <!--arguments for each robot (example for robot A)-->
-  <arg name="id_robot_a" default="robot"/>
-  <arg name="launch_robot_a" default="true"/>
-  <arg name="has_elevator_robot_a" default="true"/>
-  <arg name="x_init_pose_robot_a" default="0.0" />
-  <arg name="y_init_pose_robot_a" default="0.0" />
-  <arg name="z_init_pose_robot_a" default="0.0" />
-  <arg name="init_yaw_robot_a" default="0.0" />
-  <arg name="gmapping_robot_a" default="false"/>
-  <arg name="amcl_and_mapserver_robot_a" default="true"/>
-  <arg name="map_frame_robot_a" default="$(arg id_robot_a)_map"/>
-  <arg name="map_file_robot_a" default="$(find rb1_base_localization)/maps/willow_garage/willow_garage.yaml"/>
-  <arg name="move_base_robot_a" default="true"/>
-  <!-- Launch robotnik_navigation nodes (move, docking, etc.) -->
-  <arg name="navigation_robot_a" default="true"/>
-  <arg name="pad_robot_a" default="true"/>
-  <!-- Launch robotnik perception nodes (camera locator, pose filter, etc.) -->
-  <arg name="perception_robot_a" default="true"/>
-  <!-- Use reflector laser locator to improve objects detection -->
-  <arg name="reflector_locator_robot_a" default="true"/>
-  <arg name="rlc_robot_a" default="true"/>
-  <arg name="rostful_robot_a" default="true"/>
-  <arg name="rostful_host_robot_a" default="192.168.0.200"/>
-  <arg name="rostful_port_robot_a" default="8080"/>
+<!--arguments for each robot (example for robot A)-->
+<arg name="id_robot_a" default="robot"/>
+<arg name="launch_robot_a" default="true"/>
+<arg name="has_elevator_robot_a" default="true"/>
+<arg name="x_init_pose_robot_a" default="0.0" />
+<arg name="y_init_pose_robot_a" default="0.0" />
+<arg name="z_init_pose_robot_a" default="0.0" />
+<arg name="init_yaw_robot_a" default="0.0" />
+<arg name="gmapping_robot_a" default="false"/>
+<arg name="amcl_and_mapserver_robot_a" default="true"/>
+<arg name="map_frame_robot_a" default="$(arg id_robot_a)_map"/>
+<arg name="map_file_robot_a"
+  default="$(find rb1_base_localization)/maps/willow_garage/willow_garage.yaml"/>
+<arg name="move_base_robot_a" default="true"/>
+<!-- Launch robotnik_navigation nodes (move, docking, etc.) -->
+<arg name="navigation_robot_a" default="true"/>
+<arg name="pad_robot_a" default="true"/>
+<!-- Launch robotnik perception nodes (camera locator, pose filter, etc.) -->
+<arg name="perception_robot_a" default="true"/>
+<!-- Use reflector laser locator to improve objects detection -->
+<arg name="reflector_locator_robot_a" default="true"/>
+<arg name="rlc_robot_a" default="true"/>
+<arg name="rostful_robot_a" default="true"/>
+<arg name="rostful_host_robot_a" default="192.168.0.200"/>
+<arg name="rostful_port_robot_a" default="8080"/>
 ```
 
 - Example to launch simulation with 3 RB-1 Base robots:
 ```bash
-  roslaunch rb1_base_sim_bringup rb1_base_complete.launch \
-    launch_robot_b:=true \
-    launch_robot_c:=true
+roslaunch rb1_base_sim_bringup rb1_base_complete.launch \
+  launch_robot_b:=true \
+  launch_robot_c:=true
 ```
 - Example to launch simulation with 1 RB-1 Base robot with navigation and localization:
 ```bash
-  roslaunch rb1_base_sim_bringup rb1_base_complete.launch \
-    move_base_robot_a:=true \
-    amcl_and_mapserver_a:=true
+roslaunch rb1_base_sim_bringup rb1_base_complete.launch \
+  move_base_robot_a:=true \
+  amcl_and_mapserver_a:=true
 ```
 - Example to launch simulation with 2 RB-1 Base robot with navigation and localization sharing the same global frame:
 ```bash
-  roslaunch rb1_base_sim_bringup rb1_base_complete.launch \
-    amcl_and_mapserver_a:=true \
-    move_base_robot_a:=true \
-    map_frame_a:=/map \
-    launch_robot_b:=true \
-    amcl_and_mapserver_b:=true \
-    move_base_robot_b:=true \
-    map_frame_b:=/map
+roslaunch rb1_base_sim_bringup rb1_base_complete.launch \
+  amcl_and_mapserver_a:=true \
+  move_base_robot_a:=true \
+  map_frame_a:=/map \
+  launch_robot_b:=true \
+  amcl_and_mapserver_b:=true \
+  move_base_robot_b:=true \
+  map_frame_b:=/map
 ```
 - Example to launch simulation with 3 RB-1 Base robot with navigation and localization sharing the same global frame:
 ```bash
-  roslaunch rb1_base_sim_bringup rb1_base_complete.launch \
-    amcl_and_mapserver_a:=true \
-    move_base_robot_a:=true \
-    map_frame_a:=/map \
-    launch_robot_b:=true \
-    amcl_and_mapserver_b:=true \
-    move_base_robot_b:=true \
-    map_frame_b:=/map \
-    launch_robot_c:=true \
-    amcl_and_mapserver_c:=true \
-    move_base_robot_c:=true \
-    map_frame_c:=/map
+roslaunch rb1_base_sim_bringup rb1_base_complete.launch \
+  amcl_and_mapserver_a:=true \
+  move_base_robot_a:=true \
+  map_frame_a:=/map \
+  launch_robot_b:=true \
+  amcl_and_mapserver_b:=true \
+  move_base_robot_b:=true \
+  map_frame_b:=/map \
+  launch_robot_c:=true \
+  amcl_and_mapserver_c:=true \
+  move_base_robot_c:=true \
+  map_frame_c:=/map
 ```
 
 ### RB-1 Base Dual Arm
 
 - Example to launch rb1_base with two ur arms:
 ```bash
-  roslaunch rb1_base_sim_bringup rb1_base_complete.launch \
-     arm_model_robot_a:=dual_ur3 \
-     launch_arm_robot_a:=true
+roslaunch rb1_base_sim_bringup rb1_base_complete.launch \
+  arm_model_robot_a:=dual_ur3 \
+  launch_arm_robot_a:=true
 ```
 
 - In case you want to use moveit to manipulate the arms:
 ```bash
-  roslaunch rb1_base_sim_bringup rb1_base_complete.launch \
-    arm_model_robot_a:=dual_ur3 \
-    launch_arm_robot_a:=true \
-    moveit_movegroup_a:=true
+roslaunch rb1_base_sim_bringup rb1_base_complete.launch \
+  arm_model_robot_a:=dual_ur3 \
+  launch_arm_robot_a:=true \
+  moveit_movegroup_a:=true
 ```
 
 ## Enjoy!
