@@ -35,12 +35,12 @@ Launch files that launch the complete simulation of the robot/s.
   - rcomponent [link](https://github.com/RobotnikAutomation/rcomponent.git)
   - battery_manager [link](https://github.com/RobotnikAutomation/battery_manager.git)
 
-    Rostful requires jwt:
+Rostful requires jwt:
 ```bash
 pip install PyJWT
 ```
 
-    In the workspace install the packages dependencies:
+In the workspace install the packages dependencies:
 ```bash
 rosdep install --from-paths src --ignore-src -r -y
 ```
@@ -52,15 +52,15 @@ roslaunch rb1_base_sim_bringup rb1_base_complete.launch
 ```
 
   Optional general arguments:
-  ```xml
-  <arg name="launch_rviz" default="true"/>
-  <arg name="gazebo_world" default="$(find rb1_base_gazebo)/worlds/rb1_base_office.world"/>
-  <!-- Emulates Robotnik Base HW -->
-  <arg name="launch_base_hw_sim" default="true"/>
-   <!-- avoids Gazebo physics to pick carts-->
-  <arg name="launch_elevator_fake_pickup_gazebo" default="true"/>
+```xml
+<arg name="launch_rviz" default="true"/>
+<arg name="gazebo_world" default="$(find rb1_base_gazebo)/worlds/rb1_base_office.world"/>
+<!-- Emulates Robotnik Base HW -->
+<arg name="launch_base_hw_sim" default="true"/>
+<!-- avoids Gazebo physics to pick carts-->
+<arg name="launch_elevator_fake_pickup_gazebo" default="true"/>
 
-  ```
+```
   Optional robot arguments:
 ```xml
   <!--arguments for each robot (example for robot A)-->
