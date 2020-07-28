@@ -52,9 +52,8 @@
 
     <!-- Load the URDF into the ROS Parameter Server -->
     <include file="$(eval find(description_package)+ '/launch/' + robot_state_launch)" >
-      <arg name="robot_id" value="$(arg robot_id)" />
       <arg name="prefix" value="$(arg prefix)" />
-      <arg name="robot_xacro" value="$(arg robot_xacro)" />
+      <arg name="version" value="$(arg robot_xacro)" />
       <arg name="use_gpu_for_simulation" default="$(arg use_gpu_for_simulation)" />
     </include>
 
