@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<launch>
+
+	<!-- arg to config the launch file-->
+	<arg name="launch_rviz" default="true"/>
+	<arg name="launch_base_hw_sim" default="true"/>
+	<arg name="launch_elevator_fake_pickup_gazebo" default="true"/>
+	<arg name="use_ros_planar_move_plugin" default="true"/>
+	<arg name="verbose" default="false"/>
+
+	<!-- robot -->
+	<arg name="id_robot" default="robot"/>
+	<arg name="has_elevator_robot" default="false"/>
+	<arg name="launch_robot" default="true"/>
+	<arg name="xacro_elevator_robot" default="rb1_base_elevator.urdf.xacro"/>
+	<!-- arm robot -->
+	<arg name="launch_arm_robot" default="false"/>
+	<arg name="arm_model_robot" default="base"/>
+	<arg name="xacro_robot" default="rb1_$(arg arm_model_robot_a).urdf.xacro"/>
+	<arg name="moveit_movegroup" default="false"/>
+	<!-- arguments robot -->
+	<arg name="x_init_pose_robot" default="0.0" />
+	<arg name="y_init_pose_robot" default="0.0" />
+	<arg name="z_init_pose_robot" default="0.0" />
+	<arg name="init_yaw_robot" default="0.0" />
+	<arg name="gmapping_robot" default="false"/>
+	<arg name="amcl_and_mapserver_robot" default="true"/>
+	<arg name="map_frame_robot" default="$(arg id_robot_a)_map"/>
+	<arg name="map_file_robot" default="$(find rb1_base_localization)/maps/willow_garage/willow_garage.yaml"/>
+	<arg name="move_base_robot" default="true"/>
+	<arg name="navigation_robot" default="true"/>
+	<arg name="pad_robot" default="true"/>
+	<arg name="perception_robot" default="true"/>
+	<arg name="reflector_locator_robot" default="true"/>
+	<arg name="rlc_robot" default="true"/>
+	<arg name="rostful_robot" default="true"/>
+	<arg name="rostful_host_robot" default="192.168.0.200"/>
+	<arg name="rostful_port_robot" default="8080"/>
+
+</launch>
