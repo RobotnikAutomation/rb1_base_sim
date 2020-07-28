@@ -5,11 +5,11 @@
   <arg name="simulation_package" default="$(optenv SIMULATION_PACKAGE rb1_base_gazebo)"/>
   <arg name="config_package" default="$(optenv SIMULATION_CONFIG_PACKAGE rb1_base_gazebo)"/>
   <arg name="use_gpu_for_simulation" default="$(optenv SIMULATION_USE_GPU true)"/>
-  <arg name="simulation_bringup_package" default="$(optenv SIMULATION_BRINGUP_PACKAGE rb1_base_sim_bringup)"/>
+  <arg name="simulation_bringup_package" default="rb1_base_sim_bringup"/>
 
   <!-- What general packages use -->
-  <arg name="description_package" default="$(optenv DESCRIPTION_PACKAGE rb1_base_description)"/>
-  <arg name="control_package" default="$(optenv CONTROL_PACKAGE rb1_base_control)"/>
+  <arg name="description_package" default="rb1_base_description"/>
+  <arg name="control_package" default="rb1_base_control"/>
 
   <!-- arg to config the launch file-->
   <arg name="robot_id" default="$(optenv ROBOT_ID robot)"/>
