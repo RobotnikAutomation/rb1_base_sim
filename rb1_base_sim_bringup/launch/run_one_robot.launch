@@ -9,7 +9,7 @@
 	<arg name="verbose" default="false"/>
 
 	<!-- robot -->
-	<arg name="id_robot" default="robot"/>
+	<arg name="id_robot" default="$(optenv ROBOT_ID robot)"/>
 	<arg name="has_elevator_robot" default="false"/>
 	<arg name="launch_robot" default="true"/>
 	<arg name="xacro_elevator_robot" default="rb1_base_elevator.urdf.xacro"/>
