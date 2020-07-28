@@ -1,5 +1,8 @@
 <?xml version="1.0"?>
 <launch>
+
+	<arg name="use_gpu_for_simulation" default="$(optenv SIMULATION_USE_GPU true)"/>
+	<arg name="launch_elevator_fake_pickup_gazebo" default="$(optenv LAUNCH_ELEVATOR_FAKE_PICKUP_GAZEBO false"/>
 	<!-- robot -->
 	<arg name="id_robot" default="$(optenv ROBOT_ID robot"/>
 	<arg name="prefix" value="$(arg id_robot)_"/>

@@ -5,6 +5,7 @@
 	<arg name="prefix" value="$(arg id_robot)_"/>
 	<arg name="has_elevator" default="false"/>
 	<arg name="xacro_robot_elevator" default="rb1_base_elevator.urdf.xacro"/>
+	<arg name="use_gpu_for_simulation" default="true"/>
 
 	<arg name="launch_arm" default="false"/>
 	<arg name="arm_model" default="base"/>
@@ -38,8 +39,8 @@
 	<group ns="$(arg id_robot)">
 
 		<!-- Load the URDF into the ROS Parameter Server -->
-		<param unless="$(arg has_elevator)" name="robot_description" command="$(find xacro)/xacro '$(find rb1_base_description)/robots/$(arg xacro_robot)' prefix:=$(arg prefix) ros_planar_move_plugin:=$(arg use_ros_planar_move_plugin) --inorder"/>
-		<param if="$(arg has_elevator)" name="robot_description" command="$(find xacro)/xacro '$(find rb1_base_description)/robots/$(arg xacro_robot_elevator)' prefix:=$(arg prefix) ros_planar_move_plugin:=$(arg use_ros_planar_move_plugin) --inorder"/>
+		<param unless="$(arg has_elevator)" name="robot_description" command="$(find xacro)/xacro '$(find rb1_base_description)/robots/$(arg xacro_robot)' prefix:=$(arg prefix) ros_planar_move_plugin:=$(arg use_ros_planar_move_plugin)  use_gpu_for_simulation:=$(arg use_gpu_for_simulation) --inorder"/>
+		<param if="$(arg has_elevator)" name="robot_description" command="$(find xacro)/xacro '$(find rb1_base_description)/robots/$(arg xacro_robot_elevator)' prefix:=$(arg prefix) ros_planar_move_plugin:=$(arg use_ros_planar_move_plugin)  use_gpu_for_simulation:=$(arg use_gpu_for_simulation) --inorder"/>
 
 		<!-- Spawner model into gazebo -->
 		<node name="urdf_spawner_rb1_model" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-x $(arg x_init_pose) -y $(arg y_init_pose) -z $(arg z_init_pose) -Y $(arg init_yaw) -urdf -param robot_description -model $(arg id_robot)" />
