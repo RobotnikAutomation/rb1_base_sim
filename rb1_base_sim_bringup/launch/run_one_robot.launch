@@ -1,16 +1,16 @@
 <?xml version="1.0"?>
 <launch>
-
+	<!-- robot -->
 	<arg name="id_robot" default="$(optenv ROBOT_ID robot"/>
 	<arg name="prefix" value="$(arg id_robot)_"/>
 	<arg name="has_elevator" default="false"/>
 	<arg name="xacro_robot_elevator" default="rb1_base_elevator.urdf.xacro"/>
-
+	<!-- arm robot -->
 	<arg name="launch_arm" default="false"/>
 	<arg name="arm_model" default="base"/>
 	<arg name="xacro_robot" default="rb1_$(arg arm_model).urdf.xacro"/>
 	<arg name="moveit_movegroup" default="false"/>
-
+	<!-- arguments robot -->
 	<arg name="x_init_pose" default="0"/>
 	<arg name="y_init_pose" default="0"/>
 	<arg name="z_init_pose" default="0"/>
