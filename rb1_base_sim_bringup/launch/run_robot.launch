@@ -11,6 +11,11 @@
   <arg name="description_package" default="rb1_base_description"/>
   <arg name="control_package" default="rb1_base_control"/>
 
+  <!-- What launch files use -->
+  <arg name="robot_state_launch" default="rb1_base_state.launch"/>
+  <arg name="robot_control_launch" default="rb1_base_control.launch"/>
+  <arg name="robot_hw_sim_launch" default="rb1_hw_sim.launch"/>
+
   <!-- arg to config the launch file-->
   <arg name="robot_id" default="$(optenv ROBOT_ID robot)"/>
   <arg name="prefix" default="$(arg robot_id)_"/>
