@@ -10,6 +10,7 @@
   <!-- What general packages use -->
   <arg name="description_package" default="rb1_base_description"/>
   <arg name="control_package" default="rb1_base_control"/>
+  <arg name="rbk_base_hw_sim_package" default="robotnik_base_hw_sim"/>
 
   <!-- What launch files use -->
   <arg name="robot_state_launch" default="rb1_base_state.launch"/>
@@ -51,7 +52,7 @@
   <group ns="$(arg robot_id)">
 
     <!-- Load the URDF into the ROS Parameter Server -->
-    <include file="$(find rb1_base_description)/launch/rbares_state.launch" >
+    <include file="$(eval find(description_package)+ '/launch/' + robot_state_launch)" >
       <arg name="robot_id" value="$(arg robot_id)" />
       <arg name="prefix" value="$(arg prefix)" />
       <arg name="robot_xacro" value="$(arg robot_xacro)" />
@@ -59,13 +60,13 @@
     </include>
 
     <!-- Start control nodes -->
-    <include file="$(find rb1_base_control)/launch/rbares_control.launch">
+    <include file="$(eval find(control_package) + '/launch/' + robot_control_launch)">
       <arg name="robot_id" value="$(arg robot_id)"/>
       <arg name="prefix" value="$(arg prefix)"/>
     </include>
 
     <!-- base_hw_sim -->
-    <include if="$(arg launch_base_hw_sim)" file="$(find robotnik_base_hw_sim)/launch/rbares_hw_sim.launch">
+    <include if="$(arg launch_base_hw_sim)" file="$(eval find( rbk_base_hw_sim_package) + '/launch/' + robot_hw_sim_launch)">
       <arg name="prefix" value="$(arg prefix)"/>
     </include>
 
