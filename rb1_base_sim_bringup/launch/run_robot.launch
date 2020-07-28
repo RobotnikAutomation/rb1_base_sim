@@ -69,24 +69,6 @@
     <include if="$(arg launch_base_hw_sim)" file="$(eval find( rbk_base_hw_sim_package) + '/launch/' + robot_hw_sim_launch)">
       <arg name="prefix" value="$(arg prefix)"/>
     </include>
-
-    <group if="$(arg launch_battery_estimator)">
-      <!-- start dock_manager node -->
-      <include file="$(find charge_manager)/launch/charge_manager.launch">
-        <arg name="docker_mode" value="manual_sw"/>
-        <arg name="inverted_contact_relay_input" value="false"/>
-        <arg name="contact_relay_input_number" value="2"/>
-        <arg name="charger_relay_output_number" value="1"/>
-      </include>
-
-      <!-- start battery_estimation node -->
-      <include file="$(find battery_estimation)/launch/table_battery.launch">
-        <arg name="battery_voltage" value="48"/>
-        <arg name="read_voltage_from_analog_input" value="true"/>
-        <arg name="voltage_analog_input_number" value="1" />
-        <arg name="current_analog_input_number" value="2" />
-      </include>
-    </group>
   </group>
 
   <!-- launch rviz -->
