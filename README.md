@@ -36,31 +36,33 @@ Launch files that launch the complete simulation of the robot/s.
   - battery_manager [link](https://github.com/RobotnikAutomation/battery_manager.git)
 
     Rostful requires jwt:
-    ```
-    pip install PyJWT
-    ```
+```bash
+pip install PyJWT
+```
 
     In the workspace install the packages dependencies:
-    ```bash
-    rosdep install --from-paths src --ignore-src -r -y
-    ```
+```bash
+rosdep install --from-paths src --ignore-src -r -y
+```
 
 ## 2. Launch RB-1 Base simulation (1 robot by default, up to 3 robots):
 ### RB-1 Base:
-  ```
-  roslaunch rb1_base_sim_bringup rb1_base_complete.launch
-  ```
+```bash
+roslaunch rb1_base_sim_bringup rb1_base_complete.launch
+```
 
   Optional general arguments:
   ```xml
   <arg name="launch_rviz" default="true"/>
   <arg name="gazebo_world" default="$(find rb1_base_gazebo)/worlds/rb1_base_office.world"/>
-  <arg name="launch_base_hw_sim" default="true"/> <!-- Emulates Robotnik Base HW -->
-  <arg name="launch_elevator_fake_pickup_gazebo" default="true"/> <!-- avoids Gazebo physics to pick carts-->
+  <!-- Emulates Robotnik Base HW -->
+  <arg name="launch_base_hw_sim" default="true"/>
+   <!-- avoids Gazebo physics to pick carts-->
+  <arg name="launch_elevator_fake_pickup_gazebo" default="true"/>
 
   ```
   Optional robot arguments:
-  ```xml
+```xml
   <!--arguments for each robot (example for robot A)-->
   <arg name="id_robot_a" default="robot"/>
   <arg name="launch_robot_a" default="true"/>
@@ -85,7 +87,7 @@ Launch files that launch the complete simulation of the robot/s.
   <arg name="rostful_robot_a" default="true"/>
   <arg name="rostful_host_robot_a" default="192.168.0.200"/>
   <arg name="rostful_port_robot_a" default="8080"/>
-  ```
+```
 
 - Example to launch simulation with 3 RB-1 Base robots:
 ```bash
