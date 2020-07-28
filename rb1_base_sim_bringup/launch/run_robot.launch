@@ -59,8 +59,15 @@
 
     <!-- Start control nodes -->
     <include file="$(eval find(control_package) + '/launch/' + robot_control_launch)">
-      <arg name="robot_id" value="$(arg robot_id)"/>
+      <arg name="id_robot" value="$(arg robot_id)"/>
       <arg name="prefix" value="$(arg prefix)"/>
+      <arg name="sim" value="true"/>
+      <arg name="sim_arm_control" value="$(arg launch_arm)"/>
+      <arg name="left_arm_controllers" value="left_arm/pos_traj_controller"/>
+      <arg name="right_arm_controllers" value="right_arm/pos_traj_controller"/>
+      <arg name="has_elevator" value="$(arg has_elevator)"/>
+      <arg name="fake_elevator_physics" default="$(arg fake_elevator_physics)"/>
+      <arg name="use_ros_planar_move_plugin" default="$(arg use_ros_planar_move_plugin)"/>
     </include>
 
     <!-- base_hw_sim -->
