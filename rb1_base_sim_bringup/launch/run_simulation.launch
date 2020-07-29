@@ -16,7 +16,7 @@
  <arg name="verbose" default="false"/>
 
  <arg name="launch_elevator_fake_pickup_gazebo" default="$(optenv LAUNCH_ELEVATOR_FAKE_PICKUP_GAZEBO false"/>
- <arg name="rb1_sim_elevator_pickup_gazebo_cfg_file" default="$(optenv RB1_SIM_ELEVATOR_PICKUP_GAZEBO_CFG_FILE elevator_fake_pickup_gazebo.yaml"/>
+ <arg name="rb1_sim_elevator_pickup_gazebo_cfg_file" default="$(optenv RB1_SIM_ELEVATOR_PICKUP_GAZEBO_CFG_FILE elevator_fake_pickup_gazebo.yaml)"/>
 
  <!-- Launch gazebo -->
  <include file="$(eval find(simulation_package) + '/launch/spawn_simulation.launch')">
@@ -30,7 +30,7 @@
 
  <!-- avoids Gazebo physics to pickup carts -->
  <include if="$(arg launch_elevator_fake_pickup_gazebo)" file="$(find robotnik_base_hw_sim)/launch/elevator_fake_pickup_gazebo.launch">
-   <arg name="config_yaml" value="$(eval find(rb1_base_sim_bringup) + '/config/' + rb1_sim_elevator_pickup_gazebo_cfg_file)"/>
+   <arg name="config_yaml" value="$(eval find('rb1_base_sim_bringup') + '/config/' + rb1_sim_elevator_pickup_gazebo_cfg_file)"/>
  </include>
 
 </launch>
