@@ -59,7 +59,6 @@
 
 			<arg name="has_elevator" value="$(arg has_elevator)"/>
 			<arg name="fake_elevator_physics" default="$(arg fake_elevator_physics)"/>
-			<arg name="use_ros_planar_move_plugin" default="$(arg use_ros_planar_move_plugin)"/>
 		</include>
 
 		<!-- robot_localization nodes, publishes transformation world->odom->base_footprint -->
