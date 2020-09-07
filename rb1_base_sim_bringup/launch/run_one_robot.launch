@@ -3,6 +3,7 @@
 
 	<arg name="use_gpu_for_simulation" default="$(optenv SIMULATION_USE_GPU true)"/>
 	<arg name="launch_elevator_fake_pickup_gazebo" default="$(optenv LAUNCH_ELEVATOR_FAKE_PICKUP_GAZEBO false"/>
+	<arg name="hq_models" default="$(optenv HQ_MODELS true)"/>
 	<!-- robot -->
 	<arg name="id_robot" default="$(optenv ROBOT_ID robot"/>
 	<arg name="prefix" value="$(arg id_robot)_"/>
@@ -71,6 +72,7 @@
 		<arg name="fake_elevator_physics" value="$(arg launch_elevator_fake_pickup_gazebo)"/>
 		<arg name="use_ros_planar_move_plugin" value="$(arg use_ros_planar_move_plugin)"/>
 		<arg name="use_gpu_for_simulation" value="$(arg use_gpu_for_simulation)"/>
+		<arg name="hq_models" value="$(arg hq_models)"/>
 		<arg name="launch_battery" value="$(arg launch_battery)"/>
 	</include>
 
