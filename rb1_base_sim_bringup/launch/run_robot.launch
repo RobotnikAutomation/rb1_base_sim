@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!-- What simulator to use -->
+  <arg name="simulation_package" default="$(optenv SIMULATION_PACKAGE rb1_base_gazebo)"/>
+  <arg name="config_package" default="$(optenv SIMULATION_CONFIG_PACKAGE rb1_base_gazebo)"/>
+  <arg name="use_gpu_for_simulation" default="$(optenv SIMULATION_USE_GPU true)"/>
+  <arg name="simulation_bringup_package" default="rb1_base_sim_bringup"/>
+
+  <!-- What general packages use -->
+  <arg name="description_package" default="rb1_base_description"/>
+  <arg name="control_package" default="rb1_base_control"/>
+  <arg name="rbk_base_hw_sim_package" default="robotnik_base_hw_sim"/>
+
+  <!-- What launch files use -->
+  <arg name="robot_state_launch" default="rb1_base_state.launch"/>
+  <arg name="robot_control_launch" default="rb1_base_control.launch"/>
+  <arg name="robot_hw_sim_launch" default="rb1_hw_sim.launch"/>
+
+  <!-- arg to config the launch file-->
+  <arg name="robot_id" default="$(optenv ROBOT_ID robot)"/>
+  <arg name="prefix" default="$(arg robot_id)_"/>
+  <arg name="robot_model" default="$(optenv ROBOT_MODEL rb1_base)"/> <!-- If different models should exist (rb1_base) -->
+  <arg name="robot_xacro" default="$(optenv ROBOT_XACRO rb1_base_std.urdf.xacro)"/>
+
+  <!-- Robot configuration -->
+  <arg name="x_init_pose" default="0"/>
+  <arg name="y_init_pose" default="0"/>
+  <arg name="z_init_pose" default="0"/>
+  <arg name="launch_base_hw_sim" default="false"/>
+
+  <!-- If Rviz should be spawned here -->
+  <arg name="run_rviz" default="false"/>
+
+  <!-- RViz configuration -->
+  <arg name="rviz_config" default="rviz/rviz.rviz"/>
+  <arg name="rviz_config_file" default="$(eval find(config_package) + '/' + rviz_config)"/>
+
+  <!-- Launch robot (simulation specific software) -->
+  <group ns="$(arg robot_id)">
+    <!-- spawn robot in simulator -->
+    <include file="$(eval find(simulation_package) + '/launch/spawn_robot.launch')">
+      <arg name="robot_id" value="$(arg robot_id)"/>
+      <arg name="x_init_pose" value="$(arg x_init_pose)"/>
+      <arg name="y_init_pose" value="$(arg y_init_pose)"/>
+      <arg name="z_init_pose" value="$(arg z_init_pose)"/>
+    </include>
+  </group>
+
+  <!-- Launch robot (simulation independent software) -->
+  <group ns="$(arg robot_id)">
+
+    <!-- Load the URDF into the ROS Parameter Server -->
+    <include file="$(eval find(description_package)+ '/launch/' + robot_state_launch)" >
+      <arg name="prefix" value="$(arg prefix)" />
+      <arg name="version" value="$(arg robot_xacro)" />
+      <arg name="use_gpu_for_simulation" default="$(arg use_gpu_for_simulation)" />
+    </include>
+
+    <!-- Start control nodes -->
+    <include file="$(eval find(control_package) + '/launch/' + robot_control_launch)">
+      <arg name="id_robot" value="$(arg robot_id)"/>
+      <arg name="prefix" value="$(arg prefix)"/>
+      <arg name="sim" value="true"/>
+      <arg name="sim_arm_control" value="$(arg launch_arm)"/>
+      <arg name="left_arm_controllers" value="left_arm/pos_traj_controller"/>
+      <arg name="right_arm_controllers" value="right_arm/pos_traj_controller"/>
+      <arg name="has_elevator" value="$(arg has_elevator)"/>
+      <arg name="fake_elevator_physics" default="$(arg fake_elevator_physics)"/>
+      <arg name="use_ros_planar_move_plugin" default="$(arg use_ros_planar_move_plugin)"/>
+    </include>
+
+    <!-- base_hw_sim -->
+    <include if="$(arg launch_base_hw_sim)" file="$(eval find( rbk_base_hw_sim_package) + '/launch/' + robot_hw_sim_launch)">
+      <arg name="prefix" value="$(arg prefix)"/>
+    </include>
+  </group>
+
+  <!-- launch rviz -->
+  <include if="$(arg run_rviz)" ns="$(arg robot_id)" file="$(find rb1_base_sim_bringup)/launch/run_rviz.launch">
+    <arg name="rviz_config_file" value="$(arg rviz_config_file)" />
+  </include>
+
+</launch>

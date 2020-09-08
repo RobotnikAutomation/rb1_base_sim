@@ -3,10 +3,12 @@
 
 	<!-- arg to config the launch file-->
 	<arg name="launch_rviz" default="true"/>
+	<arg name="gazebo_gui" default="true"/>
 	<arg name="gazebo_world" default="$(find rb1_base_gazebo)/worlds/rb1_base_office.world"/>
 	<arg name="launch_base_hw_sim" default="true"/>
 	<arg name="launch_elevator_fake_pickup_gazebo" default="true"/>
 	<arg name="use_ros_planar_move_plugin" default="true"/>
+	<arg name="verbose" default="false"/>
 
 	<!-- robot a -->
 	<arg name="id_robot_a" default="robot"/>

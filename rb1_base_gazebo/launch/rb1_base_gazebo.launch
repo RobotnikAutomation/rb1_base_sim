@@ -206,6 +206,8 @@
 		<arg name="world_name" value="$(arg gazebo_world)"/>
 		<arg name="debug" value="$(arg debug)"/>
 		<arg name="rviz_config" value="$(arg rviz_config)"/>
+		<arg name="gazebo_gui" value="$(arg gazebo_gui)"/>
+		<arg name="verbose" value="$(arg verbose)"/>
 	</include>
 
 	<!-- avoids Gazebo physics to pickup carts -->
