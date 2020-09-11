@@ -3,9 +3,9 @@
 
 	<arg name="id_robot" default="robot"/>
 	<arg name="prefix" value="$(arg id_robot)_"/>
-	<arg name="xacro_robot" default="rb1_base_std.urdf.xacro"/>
+	<arg name="xacro_robot" default="rb1_base.urdf.xacro"/>
 	<arg name="has_elevator" default="false"/>
-	<arg name="xacro_robot_elevator" default="rb1_base_std_elevator.urdf.xacro"/>
+	<arg name="xacro_robot_elevator" default="rb1_base_elevator.urdf.xacro"/>
 	<arg name="x_init_pose" default="0"/>
 	<arg name="y_init_pose" default="0"/>
 	<arg name="z_init_pose" default="0"/>
