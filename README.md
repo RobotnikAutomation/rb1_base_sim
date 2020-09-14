@@ -4,10 +4,7 @@ rb1_base_sim
 Packages for the simulation of the RB-1 Base
 
 <p align="center">
-  <img src="https://www.roscomponents.com/1080-thickbox_default/rb-1-base.jpg" width="275" />
-  <img src="  https://www.roscomponents.com/761-thickbox_default/rb-1-base.jpg
-" width="275" />
-  <img src="https://www.roscomponents.com/759-thickbox_default/rb-1-base.jpg" width="275" />
+  <img src="https://robotnik.eu/wp-content/uploads/2020/05/Robotnik-RB-1_Base-01_.jpg" width="275" />
 </p>
 
 
@@ -22,20 +19,24 @@ This package contains the configuration files and worlds to launch the Gazebo en
 Launch files that launch the complete simulation of the robot/s.
 
 
-
 <h1>Simulating RB-1 Base</h1>
 
 1. Install the following dependencies:
-  - rb1_base_common [link](https://github.com/RobotnikAutomation/rb1_base_common)
-  - robotnik_msgs [link](https://github.com/RobotnikAutomation/robotnik_msgs)
-  - robotnik_sensors [link](https://github.com/RobotnikAutomation/robotnik_sensors)
-  - robotnik_base_hw_sim [link](https://github.com/RobotnikAutomation/robotnik_base_hw_sim)
-  - robot_localization_utils [link](https://github.com/RobotnikAutomation/robot_localization_utils)
+  - [rb1_base_common](https://github.com/RobotnikAutomation/rb1_base_common/tree/melodic-devel) (melodic-devel)
+  - [robotnik_msgs](https://github.com/RobotnikAutomation/robotnik_msgs) (master)
+  - [robotnik_sensors](https://github.com/RobotnikAutomation/robotnik_sensors) (kinetic-devel)
+  - [robotnik_base_hw_sim](https://github.com/RobotnikAutomation/robotnik_base_hw_sim) (master)
+  - [robot_localization_utils](https://github.com/RobotnikAutomation/robot_localization_utils) (master)
+  - [hector_gazebo](https://github.com/RobotnikAutomation/hector_gazebo/tree/melodic-devel) (melodic-devel)
 
     In the workspace install the packages dependencies:
     ```
     rosdep install --from-paths src --ignore-src -r -y
-    ```  
+    ```
+
+    ```bash
+    sudo apt-get install ros-melodic-ros-control ros-melodic-joint-state-controller ros-melodic-effort-controllers ros-melodic-position-controllers ros-melodic-velocity-controllers ros-melodic-ros-controllers ros-melodic-gazebo-ros ros-melodic-gazebo-ros-control
+    ```
 
 2. Launch RB-1 Base simulation (1 robot by default, up to 3 robots): <br>
 - RB-1 Base: <br>
