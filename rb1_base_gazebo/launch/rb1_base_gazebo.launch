@@ -13,7 +13,7 @@
 	<!--params of the different robots-->
 	<!-- robot a -->
 	<arg name="id_robot_a" default="robot"/>
-	<arg name="xacro_robot_a" default="rb1_base_std.urdf.xacro"/>
+	<arg name="xacro_robot_a" default="rb1_base.urdf.xacro"/>
 	<arg name="has_elevator_robot_a" default="false"/>
 	<arg name="x_init_pose_robot_a" default="0.0" />
 	<arg name="y_init_pose_robot_a" default="0.0" />
@@ -28,7 +28,7 @@
 
 	<!-- robot b -->
 	<arg name="id_robot_b" default="robot_b"/>
-	<arg name="xacro_robot_b" default="rb1_base_std.urdf.xacro"/>
+	<arg name="xacro_robot_b" default="rb1_base.urdf.xacro"/>
 	<arg name="has_elevator_robot_b" default="false"/>
 	<arg name="x_init_pose_robot_b" default="0.0" />
 	<arg name="y_init_pose_robot_b" default="1.0" />
@@ -43,7 +43,7 @@
 
 	<!-- robot c -->
 	<arg name="id_robot_c" default="robot_c"/>
-	<arg name="xacro_robot_c" default="rb1_base_std.urdf.xacro"/>
+	<arg name="xacro_robot_c" default="rb1_base.urdf.xacro"/>
 	<arg name="has_elevator_robot_c" default="false"/>
 	<arg name="x_init_pose_robot_c" default="0.0" />
 	<arg name="y_init_pose_robot_c" default="2.0" />
