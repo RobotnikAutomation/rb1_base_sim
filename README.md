@@ -82,4 +82,37 @@ Launch files that launch the complete simulation of the robot/s.
 ```
 roslaunch rb1_base_sim_bringup rb1_base_complete.launch launch_robot_a:=true amcl_and_mapserver_robot_a:=true move_base_robot_a:=true map_frame_a:=/map launch_robot_b:=true amcl_and_mapserver_robot_b:=true move_base_robot_b:=true map_frame_b:=/map launch_robot_c:=true amcl_and_mapserver_robot_c:=true move_base_robot_c:=true map_frame_c:=/map
 ```
-3. Enjoy! You can use the topic "${id_robot}/robotnik_base_control/cmd_vel" to control the RB-1 Base robot or send simple goals using "/${id_robot}/move_base_simple/goal"
+3. Enjoy! You can use the topic `${id_robot}/robotnik_base_control/cmd_vel` to control the RB-1 Base robot:
+
+```bash
+rostopic pub /robot/robotnik_base_control/cmd_vel geometry_msgs/Twist "linear:
+  x: 0.1
+  y: 0.0
+  z: 0.0
+angular:
+  x: 0.0
+  y: 0.0
+  z: 0.0" -r 10
+```
+
+or if you have launched move_base, you can send simple goals using `/${id_robot}/move_base_simple/goal`:
+```bash
+rostopic pub /robot/move_base_simple/goal geometry_msgs/PoseStamped "header:
+  seq: 0
+  stamp:
+    secs: 0
+    nsecs: 0
+  frame_id: 'robot_map'
+pose:
+  position:
+    x: 3.0
+    y: 0.0
+    z: 0.0
+  orientation:
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0" 
+```
+
+
