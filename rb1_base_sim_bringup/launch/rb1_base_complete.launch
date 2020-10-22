@@ -4,6 +4,7 @@
 	<!-- arg to config the launch file-->
 	<arg name="launch_rviz" default="true"/>
 	<arg name="gazebo_world" default="$(find rb1_base_gazebo)/worlds/rb1_base_office.world"/>
+	<arg name="use_ros_planar_move_plugin" default="false"/>
 
 	<!-- arguments robot a -->
 	<arg name="id_robot_a" default="robot"/>
@@ -57,6 +58,7 @@
 		<!-- general args -->
 		<arg name="launch_rviz" value="$(arg launch_rviz)"/>
 		<arg name="gazebo_world" value="$(arg gazebo_world)"/>
+		<arg name="use_ros_planar_move_plugin" value="$(arg use_ros_planar_move_plugin)"/>
 
 		<!-- robot_a args -->
 		<arg name="id_robot_a" value="$(arg id_robot_a)"/>

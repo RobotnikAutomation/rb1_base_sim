@@ -9,11 +9,12 @@
 	<arg name="launch_robot_c" default="false"/>
 	<arg name="gazebo_world" default="$(find rb1_base_gazebo)/worlds/rb1_base.world"/>
 	<arg name="debug" default="false"/>
+	<arg name="use_ros_planar_move_plugin" default="false"/>
 
 	<!--params of the different robots-->
 	<!-- robot a -->
 	<arg name="id_robot_a" default="robot"/>
-	<arg name="xacro_robot_a" default="rb1_base_std.urdf.xacro"/>
+	<arg name="xacro_robot_a" default="rb1_base.urdf.xacro"/>
 	<arg name="has_elevator_robot_a" default="false"/>
 	<arg name="x_init_pose_robot_a" default="0.0" />
 	<arg name="y_init_pose_robot_a" default="0.0" />
@@ -28,7 +29,7 @@
 
 	<!-- robot b -->
 	<arg name="id_robot_b" default="robot_b"/>
-	<arg name="xacro_robot_b" default="rb1_base_std.urdf.xacro"/>
+	<arg name="xacro_robot_b" default="rb1_base.urdf.xacro"/>
 	<arg name="has_elevator_robot_b" default="false"/>
 	<arg name="x_init_pose_robot_b" default="0.0" />
 	<arg name="y_init_pose_robot_b" default="1.0" />
@@ -43,7 +44,7 @@
 
 	<!-- robot c -->
 	<arg name="id_robot_c" default="robot_c"/>
-	<arg name="xacro_robot_c" default="rb1_base_std.urdf.xacro"/>
+	<arg name="xacro_robot_c" default="rb1_base.urdf.xacro"/>
 	<arg name="has_elevator_robot_c" default="false"/>
 	<arg name="x_init_pose_robot_c" default="0.0" />
 	<arg name="y_init_pose_robot_c" default="2.0" />
@@ -71,6 +72,7 @@
 		<arg name="global_frame" value="$(arg map_frame_robot_a)"/>
  		<arg name="launch_move_base" value="$(arg move_base_robot_a)"/>
 		<arg name="launch_pad" value="$(arg pad_robot_a)"/>
+		<arg name="use_ros_planar_move_plugin" value="$(arg use_ros_planar_move_plugin)"/>
 	</include>
 
 	<!--BEGIN ROBOT 2-->
@@ -88,6 +90,7 @@
 		<arg name="global_frame" value="$(arg map_frame_robot_b)"/>
  		<arg name="launch_move_base" value="$(arg move_base_robot_b)"/>
 		<arg name="launch_pad" value="$(arg pad_robot_b)"/>
+		<arg name="use_ros_planar_move_plugin" value="$(arg use_ros_planar_move_plugin)"/>
 	</include>
 
 	<!--BEGIN ROBOT 3-->
@@ -105,6 +108,7 @@
 		<arg name="global_frame" value="$(arg map_frame_robot_c)"/>
  		<arg name="launch_move_base" value="$(arg move_base_robot_c)"/>
 		<arg name="launch_pad" value="$(arg pad_robot_c)"/>
+		<arg name="use_ros_planar_move_plugin" value="$(arg use_ros_planar_move_plugin)"/>
 	</include>
 
 	<!-- gazebo simulation and rviz visualization-->
