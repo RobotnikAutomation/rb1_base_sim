@@ -75,15 +75,15 @@ Launch files that launch the complete simulation of the robot/s.
   ```
 - Example to launch simulation with 1 RB-1 Base robot with navigation and localization:
   ```
-  roslaunch rb1_base_sim_bringup rb1_base_complete.launch launch_robot_a:=true move_base_robot_a:=true amcl_and_mapserver_a:=true
+  roslaunch rb1_base_sim_bringup rb1_base_complete.launch launch_robot_a:=true move_base_robot_a:=true amcl_and_mapserver_robot_a:=true
   ```
 - Example to launch simulation with 2 RB-1 Base robot with navigation and localization sharing the same global frame:
   ```
-  roslaunch rb1_base_sim_bringup rb1_base_complete.launch launch_robot_a:=true amcl_and_mapserver_a:=true move_base_robot_a:=true map_frame_a:=/map launch_robot_b:=true amcl_and_mapserver_b:=true move_base_robot_b:=true map_frame_b:=/map
+  roslaunch rb1_base_sim_bringup rb1_base_complete.launch launch_robot_a:=true amcl_and_mapserver_robot_a:=true move_base_robot_a:=true map_frame_a:=/map launch_robot_b:=true amcl_and_mapserver_robot_b:=true move_base_robot_b:=true map_frame_b:=/map
   ```
 - Example to launch simulation with 3 RB-1 Base robot with navigation and localization sharing the same global frame:
 ```
-roslaunch rb1_base_sim_bringup rb1_base_complete.launch launch_robot_a:=true amcl_and_mapserver_a:=true move_base_robot_a:=true map_frame_a:=/map launch_robot_b:=true amcl_and_mapserver_b:=true move_base_robot_b:=true map_frame_b:=/map launch_robot_c:=true amcl_and_mapserver_c:=true move_base_robot_c:=true map_frame_c:=/map
+roslaunch rb1_base_sim_bringup rb1_base_complete.launch launch_robot_a:=true amcl_and_mapserver_robot_a:=true move_base_robot_a:=true map_frame_a:=/map launch_robot_b:=true amcl_and_mapserver_robot_b:=true move_base_robot_b:=true map_frame_b:=/map launch_robot_c:=true amcl_and_mapserver_robot_c:=true move_base_robot_c:=true map_frame_c:=/map
 ```
 
 ### RB-1 Base Dual Arm
