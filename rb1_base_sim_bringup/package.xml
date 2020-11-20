@@ -12,13 +12,16 @@
 
   <author email="rguzman@robotnik.es">Roberto Guzmán</author>
   <author email="rnavarro@robotnik.es">Román Navarro</author>
-  
+
   <buildtool_depend>catkin</buildtool_depend>
 
   <build_depend>roslaunch</build_depend>
   <run_depend>gazebo_ros</run_depend>
-  <run_depend>rb1_base_control</run_depend>  
+  <run_depend>rb1_base_control</run_depend>
   <run_depend>rb1_base_description</run_depend>
-  <run_depend>rb1_base_pad</run_depend>  
+  <run_depend>rb1_base_pad</run_depend>
+  <run_depend>rb1_base_navigation</run_depend>
+  <run_depend>rb1_base_localization</run_depend>
+  <run_depend>moveit</run_depend>
 
 </package>
