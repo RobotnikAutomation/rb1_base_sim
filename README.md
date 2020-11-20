@@ -4,10 +4,10 @@ rb1_base_sim
 Packages for the simulation of the RB-1 Base
 
 <p align="center">
-  <img src="https://www.roscomponents.com/1080-thickbox_default/rb-1-base.jpg" width="275" />
-  <img src="  https://www.roscomponents.com/761-thickbox_default/rb-1-base.jpg
-" width="275" />
-  <img src="https://www.roscomponents.com/759-thickbox_default/rb-1-base.jpg" width="275" />
+  <img src="https://robotnik.eu/wp-content/uploads/2020/05/Robotnik-RB-1_Base-01_.jpg" width="275" />
+
+  <img src="https://robotnik.eu/wp-content/uploads/2020/05/Robotnik_RB-1-Base_02_.jpg" width="280" />
+    <img src="https://robotnik.eu/wp-content/uploads/2020/05/Robotnik_RB-1-BASE_03_.jpg" width="275" />
 </p>
 
 
@@ -25,20 +25,24 @@ Launch files that launch the complete simulation of the robot/s.
 
 <h1>Simulating RB-1 Base</h1>
 
-1. Install the following dependencies:
+## 1. Install the following dependencies:
   - rb1_base_common [link](https://github.com/RobotnikAutomation/rb1_base_common)
   - robotnik_msgs [link](https://github.com/RobotnikAutomation/robotnik_msgs)
   - robotnik_sensors [link](https://github.com/RobotnikAutomation/robotnik_sensors)
   - robotnik_base_hw_sim [link](https://github.com/RobotnikAutomation/robotnik_base_hw_sim)
   - robot_localization_utils [link](https://github.com/RobotnikAutomation/robot_localization_utils)
+  - gazebo_ros_pkgs (Robotnik's fork) [link](https://github.com/RobotnikAutomation/gazebo_ros_pkgs)
 
     In the workspace install the packages dependencies:
     ```
     rosdep install --from-paths src --ignore-src -r -y
     ```  
 
-2. Launch RB-1 Base simulation (1 robot by default, up to 3 robots): <br>
-- RB-1 Base: <br>
+## 2. Launch RB-1 Base simulation
+
+1 robot by default, up to 3 robots at the same time.
+
+## RB-1 Base
   ```
   roslaunch rb1_base_sim_bringup rb1_base_complete.launch
   ```
@@ -81,4 +85,23 @@ Launch files that launch the complete simulation of the robot/s.
 ```
 roslaunch rb1_base_sim_bringup rb1_base_complete.launch launch_robot_a:=true amcl_and_mapserver_a:=true move_base_robot_a:=true map_frame_a:=/map launch_robot_b:=true amcl_and_mapserver_b:=true move_base_robot_b:=true map_frame_b:=/map launch_robot_c:=true amcl_and_mapserver_c:=true move_base_robot_c:=true map_frame_c:=/map
 ```
-3. Enjoy! You can use the topic "${id_robot}/robotnik_base_control/cmd_vel" to control the RB-1 Base robot or send simple goals using "/${id_robot}/move_base_simple/goal"
+
+### RB-1 Base Dual Arm
+
+There is also a version of the base plus a torso with two ur3 arms.
+
+  <img src="https://robotnik.eu/wp-content/uploads/2020/11/rb1_dual_ur3_gazebo.png" width="275" />
+
+- Example to launch rb1_base with two ur arms:
+```bash
+roslaunch rb1_base_sim_bringup rb1_dual_ur3_complete.launch amcl_and_mapserver:=true move_base:=true
+```
+
+- In case you want to use moveit to manipulate the arms:
+```bash
+roslaunch rb1_base_sim_bringup rb1_dual_ur3_complete.launch amcl_and_mapserver:=true move_base:=true moveit_movegroup:=true
+```
+* This simulation requires the use of the ros_planar plugin (Robotnik's fork).
+
+### 3. Enjoy!
+ You can use the topic "${id_robot}/robotnik_base_control/cmd_vel" to control the RB-1 Base robot or send simple goals using "/${id_robot}/move_base_simple/goal"
