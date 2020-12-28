@@ -4,7 +4,7 @@ rb1_base_sim
 Packages for the simulation of the RB-1 Base
 
 <p align="center">
-  <img src="https://github.com/RobotnikAutomation/rb1_base_sim/blob/melodic-master/doc/rb1_base.jpg" width="275" />
+  <img src="https://github.com/RobotnikAutomation/rb1_base_sim/blob/melodic-master/doc/rb1_base.jpeg" width="275" />
 </p>
 
 
