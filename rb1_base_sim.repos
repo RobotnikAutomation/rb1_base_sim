@@ -1,0 +1,29 @@
+repositories:
+  src/hector_gazebo:
+    type: git
+    url: https://github.com/RobotnikAutomation/hector_gazebo
+    version: 5d34e5ff5562e55d5e0c3b53cc4aa51ee7cfe945
+  src/rb1_base_common:
+    type: git
+    url: https://github.com/RobotnikAutomation/rb1_base_common
+    version: b22dcfeae5ee092f50e56c8e19ccb82dcb96548d
+  src/rb1_base_sim:
+    type: git
+    url: https://github.com/RobotnikAutomation/rb1_base_sim
+    version: melodic-1.0.0
+  src/robot_localization_utils:
+    type: git
+    url: https://github.com/RobotnikAutomation/robot_localization_utils
+    version: 0ae59be55ba58275970d9c4108fb6e7d249f7a16
+  src/robotnik_base_hw_sim:
+    type: git
+    url: https://github.com/RobotnikAutomation/robotnik_base_hw_sim
+    version: 7a28ef065737a7deebeba47805191b53b5dd34ad
+  src/robotnik_msgs:
+    type: git
+    url: https://github.com/RobotnikAutomation/robotnik_msgs
+    version: 7cde6e462cf266cf12c125d43a9e5981860ccd3d
+  src/robotnik_sensors:
+    type: git
+    url: https://github.com/RobotnikAutomation/robotnik_sensors
+    version: d9cf6efb8f0e1ed66b5c9dfca80dd6f24af58145
