@@ -48,7 +48,8 @@ source devel/setup.bash
 
 <h2> 4) Launch RB-1 Base simulation (1 robot by default, up to 3 robots): </h2>
 - RB-1 Base: <br>
-  ```
+
+  ```bash
   roslaunch rb1_base_sim_bringup rb1_base_complete.launch
   ```
 
