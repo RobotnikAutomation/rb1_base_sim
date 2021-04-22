@@ -198,17 +198,30 @@ docker/simulation-in-container-run.sh [OPTIONS]
 Optional arguments:
  --robot -r ROBOT       Select robot to simulate
                         Valid robots:
-                            rb1_base
+                            multirobot_2 multirobot_3 rb1_base
                         default: rb1_base
 
  --launch -l            Select launch file
-                        default: rb1_base_complete.launch   launch_robot_a:=true   move_base_robot_a:=true   amcl_and_mapserver_robot_a:=true
+                        default: rb1_base_complete.launch \
+                                 launch_robot_a:=true \
+                                 move_base_robot_a:=true \
+                                 amcl_and_mapserver_robot_a:=true
 
  --package -p           Select ros package
                         default: rb1_base_sim_bringup
 
  -h, --help             Shows this help
 
+```
+
+**2 robots simulation**
+```bash
+docker/simulation-in-container-run.sh --robot multirobot_2
+```
+
+**3 robots simulation**
+```bash
+docker/simulation-in-container-run.sh --robot multirobot_3
 ```
 
 #### Manual Build
