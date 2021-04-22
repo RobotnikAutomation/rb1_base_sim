@@ -56,7 +56,10 @@ roslaunch rb1_base_sim_bringup rb1_base_complete.launch
 Optional general arguments:
 ```xml
 <arg name="launch_rviz" default="true"/>
-<arg name="gazebo_world" default="$(find rb1_base_gazebo)/worlds/rb1_base_office.world"/>
+<arg
+  name="gazebo_world"
+  default="$(find rb1_base_gazebo)/worlds/rb1_base_office.world"
+/>
 ```
   Optional robot arguments:
 ```xml
@@ -71,25 +74,54 @@ Optional general arguments:
 <arg name="gmapping_robot_a" default="false"/>
 <arg name="amcl_and_mapserver_robot_a" default="true"/>
 <arg name="map_frame_robot_a" default="$(arg id_robot_a)_map"/>
-<arg name="map_file_robot_a" default="$(find rb1_base_localization)/maps/willow_garage/willow_garage.yaml"/>
+<arg
+  name="map_file_robot_a"
+  default="$(find rb1_base_localization)/maps/willow_garage/willow_garage.yaml"
+/>
 <arg name="move_base_robot_a" default="true"/>
 <arg name="pad_robot_a" default="true"/>
 ```
 - Example to launch simulation with 3 RB-1 Base robots:
 ```bash
-roslaunch rb1_base_sim_bringup rb1_base_complete.launch launch_robot_a:=true launch_robot_b:=true launch_robot_c:=true
+roslaunch rb1_base_sim_bringup rb1_base_complete.launch \
+  launch_robot_a:=true \
+  launch_robot_b:=true \
+  launch_robot_c:=true
 ```
 - Example to launch simulation with 1 RB-1 Base robot with navigation and localization:
 ```bash
-roslaunch rb1_base_sim_bringup rb1_base_complete.launch launch_robot_a:=true move_base_robot_a:=true amcl_and_mapserver_robot_a:=true
+roslaunch rb1_base_sim_bringup rb1_base_complete.launch \
+  launch_robot_a:=true \
+  move_base_robot_a:=true \
+  amcl_and_mapserver_robot_a:=true
 ```
 - Example to launch simulation with 2 RB-1 Base robot with navigation and localization sharing the same global frame:
 ```bash
-roslaunch rb1_base_sim_bringup rb1_base_complete.launch launch_robot_a:=true amcl_and_mapserver_robot_a:=true move_base_robot_a:=true map_frame_a:=/map launch_robot_b:=true amcl_and_mapserver_robot_b:=true move_base_robot_b:=true map_frame_b:=/map
+roslaunch rb1_base_sim_bringup rb1_base_complete.launch \
+  launch_robot_a:=true \
+  amcl_and_mapserver_robot_a:=true \
+  move_base_robot_a:=true \
+  map_frame_a:=/map \
+  launch_robot_b:=true \
+  amcl_and_mapserver_robot_b:=true \
+  move_base_robot_b:=true \
+  map_frame_b:=/map
 ```
 - Example to launch simulation with 3 RB-1 Base robot with navigation and localization sharing the same global frame:
 ```bash
-roslaunch rb1_base_sim_bringup rb1_base_complete.launch launch_robot_a:=true amcl_and_mapserver_robot_a:=true move_base_robot_a:=true map_frame_a:=/map launch_robot_b:=true amcl_and_mapserver_robot_b:=true move_base_robot_b:=true map_frame_b:=/map launch_robot_c:=true amcl_and_mapserver_robot_c:=true move_base_robot_c:=true map_frame_c:=/map
+roslaunch rb1_base_sim_bringup rb1_base_complete.launch \
+  launch_robot_a:=true \
+  amcl_and_mapserver_robot_a:=true \
+  move_base_robot_a:=true \
+  map_frame_a:=/map \
+  launch_robot_b:=true \
+  amcl_and_mapserver_robot_b:=true \
+  move_base_robot_b:=true \
+  map_frame_b:=/map \
+  launch_robot_c:=true \
+  amcl_and_mapserver_robot_c:=true \
+  move_base_robot_c:=true \
+  map_frame_c:=/map
 ```
 
 ### Comands and data retreving
