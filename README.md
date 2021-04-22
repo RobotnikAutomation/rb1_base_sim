@@ -217,6 +217,12 @@ Optional arguments:
  --package -p           Select ros package
                         default: rb1_base_sim_bringup
 
+ --ros-port -u PORT     Host ros port
+                        default: 11345
+
+ --gazebo-port -g PORT  Host ros port
+                        default: 11345
+
  -h, --help             Shows this help
 
 ```
@@ -248,6 +254,8 @@ docker build -f docker/Dockerfile .
 #### Notes
 
 - This is docker requires a graphical interface
+- The ros master uri is accesible outside the container, so in the host any ros command should work
+- If you already have a roscore o gzserver on your machine running please change the port using the `--ros-port -u PORT` and/or `--gazebo-port -g PORT`
 - if you want to enter on the container use the following command in another terminal
 ```bash
 docker container exec -it rb1_base_sim_instance bash
