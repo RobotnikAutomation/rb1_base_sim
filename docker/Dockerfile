@@ -108,7 +108,10 @@ ARG repo_file_list_to_use=/tmp/$repo_file
 ARG fresh_download_of_git_repos=no
 
 RUN true \
-	&& vcs import --input $repo_file_list_to_use \
+	&& vcs import --input $repo_file_list_to_use; \
+	echo $? \
+	&& true
+RUN true \
 	&& rosdep update \
 	&& echo 'debconf debconf/frontend select Noninteractive' | sudo debconf-set-selections \
 	&& sudo apt-get update \
