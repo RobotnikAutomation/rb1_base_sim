@@ -177,6 +177,13 @@ git checkout melodic-devel
 docker/simulation-in-container-run.sh
 
 ```
+#### Docker permission fix
+
+In order to run this simulation it's mandatory to the current linux user to have full docker permission. If the script fails due to that, please execute the following command:
+```bash
+sudo usermod -aG docker $USER
+```
+And logout and login in order to make this change effective
 
 #### Selecting the robot model
 
