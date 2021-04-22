@@ -19,7 +19,7 @@ This package contains the configuration files and worlds to launch the Gazebo en
 Launch files that launch the complete simulation of the robot/s.
 
 
-## Simulating RB-1 Base<
+## Simulating RB-1 Base
 
 ### 1) Install the following dependencies:
 
