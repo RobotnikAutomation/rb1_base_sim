@@ -159,4 +159,82 @@ pose:
     w: 1.0" 
 ```
 
+## Docker usage
 
+In order to run this simulation you will need nvidia graphical accelation
+
+### Installation of required files
+- [docker](https://docs.docker.com/engine/install/ubuntu/)
+- [nvidia-docker](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#docker)
+- nvidia-drivers
+
+### Usage
+
+```bash
+git clone https://github.com/RobotnikAutomation/rb1_base_sim.git
+cd rb1_base_sim
+git checkout melodic-devel
+docker/simulation-in-container-run.sh
+
+```
+
+#### Selecting the robot model
+
+You can select the robot, the launch file of package using the optional arguments on launch
+By default the selected robot is `rb1_base`
+
+```bash
+docker/simulation-in-container-run.sh --help
+```
+
+```
+ROBOTNIK AUTOMATION S.L.L. 2021
+
+Simulation of RB1 BASE using docker
+
+Usage:
+docker/simulation-in-container-run.sh [OPTIONS]
+
+Optional arguments:
+ --robot -r ROBOT       Select robot to simulate
+                        Valid robots:
+                            rb1_base
+                        default: rb1_base
+
+ --launch -l            Select launch file
+                        default: rb1_base_complete.launch   launch_robot_a:=true   move_base_robot_a:=true   amcl_and_mapserver_robot_a:=true
+
+ --package -p           Select ros package
+                        default: rb1_base_sim_bringup
+
+ -h, --help             Shows this help
+
+```
+
+#### Manual Build
+
+If you wish to build manually the image without the use of the script use one the following commands:
+
+**Optiona A**
+```bash
+cd docker
+docker build -f Dockerfile ..
+```
+**Option B**
+```bash
+docker build -f docker/Dockerfile .
+```
+
+#### Notes
+
+- This is docker requires a graphical interface
+- if you want to enter on the container use the following command in another terminal
+```bash
+docker container exec -it rb1_base_sim_instance bash
+```
+- In order to exit you have to 2 options
+1. Close `gazebo` and `rviz` and wait a bit
+2. execute in another terminal:
+```bash
+docker container rm --force rb1_base_sim_instance
+```
