@@ -62,12 +62,12 @@ tool_list=(\
     wget \
 )
 
-robot_name="RB VOGUI"
+robot_name="RB1 BASE"
 
-instance_name=rb_vogui_sim_instance
+instance_name=rb1_base_sim_instance
 
 image_name_org="robotnik"
-image_name="rb_vogui_sim"
+image_name="rb1_base_sim"
 image_version="latest"
 image_complete_name='${image_name_org}/${image_name}:${image_version}'
 
@@ -79,20 +79,14 @@ nvidia_repo="nvidia/cuda"
 nvidia_repo="${base_url_registry}/${nvidia_repo}/tags"
 nvidia_docker_image=""
 
-default_robot='rb_vogui'
+default_robot='rb1_base'
 selected_robot="${default_robot}"
 
 declare -A ros_bringup_package_array
 declare -A ros_launch_file_array
 
-ros_bringup_package_array[rb_vogui]="rbvogui_sim_bringup"
-ros_launch_file_array[rb_vogui]="rbvogui_complete.launch kinematics:=omni twist2ackermann:=false"
-
-ros_bringup_package_array[rb_vogui_one_ur_arm]="rbvogui_sim_bringup"
-ros_launch_file_array[rb_vogui_one_ur_arm]="rbvogui_complete.launch robot_xacro:=rbvogui_std_ur10.urdf.xacro launch_arm_control:=true arm_controllers:=arm_controller"
-
-ros_bringup_package_array[rb_vogui_xl]="rbvogui_sim_bringup"
-ros_launch_file_array[rb_vogui_xl]="rbvogui_complete.launch robot_xacro:=rbvogui_xl.urdf.xacro"
-
-ros_bringup_package_array[rb_vogui_xl_two_ur_arms]="rbvogui_sim_bringup"
-ros_launch_file_array[rb_vogui_xl_two_ur_arms]="rbvogui_complete.launch robot_xacro:=rbvogui_xl.urdf.xacro launch_arm_control:=true"
+ros_bringup_package_array[rb1_base]="rb1_base_sim_bringup"
+ros_launch_file_array[rb1_base]="rb1_base_complete.launch \
+  launch_robot_a:=true \
+  move_base_robot_a:=true \
+  amcl_and_mapserver_robot_a:=true"
