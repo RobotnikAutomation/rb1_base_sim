@@ -255,7 +255,7 @@ docker build -f docker/Dockerfile .
 
 - This is docker requires a graphical interface
 - The ros master uri is accesible outside the container, so in the host any ros command should work
-- If you already have a roscore o gzserver on your machine running please change the port using the `--ros-port -u PORT` and/or `--gazebo-port -g PORT`
+- You could also run a roscore previous to launch the simulation in order to have some processes on the host running
 - if you want to enter on the container use the following command in another terminal
 ```bash
 docker container exec -it rb1_base_sim_instance bash
