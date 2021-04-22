@@ -1,5 +1,5 @@
-rb1_base_sim
-=============
+# rb1_base_sim
+
 
 Packages for the simulation of the RB-1 Base
 
@@ -8,20 +8,20 @@ Packages for the simulation of the RB-1 Base
 </p>
 
 
-<h1> Packages </h1>
+## Packages
 
-<h2>rb1_base_gazebo</h2>
+### rb1_base_gazebo
 
 This package contains the configuration files and worlds to launch the Gazebo environment along with the simulated robot.
 
-<h2>rb1_base_sim_bringup</h2>
+### rb1_base_sim_bringup
 
 Launch files that launch the complete simulation of the robot/s.
 
 
-<h1>Simulating RB-1 Base</h1>
+## Simulating RB-1 Base<
 
-<h2> 1) Install the following dependencies: </h2>
+### 1) Install the following dependencies:
 
 This simulation has been tested using Gazebo 9 version. To facilitate the installation you can use the vcstool:
 
@@ -29,7 +29,7 @@ This simulation has been tested using Gazebo 9 version. To facilitate the instal
 sudo apt-get install -y python3-vcstool
 ```
 
-<h2> 2) Create a workspace and clone the repository: </h2>
+### 2) Create a workspace and clone the repository:
 
 ```bash
 mkdir catkin_ws
@@ -38,7 +38,7 @@ vcs import --input https://raw.githubusercontent.com/RobotnikAutomation/rb1_base
 rosdep install --from-paths src --ignore-src -y
 ```
 
-<h2> 3) Compile: </h2>
+### 3) Compile:
 
 ```bash
 catkin build
@@ -46,8 +46,8 @@ source devel/setup.bash
 ```
 
 
-<h2> 4) Launch RB-1 Base simulation (1 robot by default, up to 3 robots): </h2>
-- RB-1 Base: <br>
+### 4) Launch RB-1 Base simulation (1 robot by default, up to 3 robots):
+- RB-1 Base:
 
   ```bash
   roslaunch rb1_base_sim_bringup rb1_base_complete.launch
@@ -91,7 +91,9 @@ source devel/setup.bash
 ```
 roslaunch rb1_base_sim_bringup rb1_base_complete.launch launch_robot_a:=true amcl_and_mapserver_robot_a:=true move_base_robot_a:=true map_frame_a:=/map launch_robot_b:=true amcl_and_mapserver_robot_b:=true move_base_robot_b:=true map_frame_b:=/map launch_robot_c:=true amcl_and_mapserver_robot_c:=true move_base_robot_c:=true map_frame_c:=/map
 ```
-<h2> Enjoy! You can use the topic `${id_robot}/robotnik_base_control/cmd_vel` to control the RB-1 Base robot: </h2>
+
+### Comands and data retreving
+**Enjoy! You can use the topic `${id_robot}/robotnik_base_control/cmd_vel` to control the RB-1 Base robot:**
 
 ```bash
 rostopic pub /robot/robotnik_base_control/cmd_vel geometry_msgs/Twist "linear:
