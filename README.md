@@ -4,7 +4,7 @@ rb1_base_sim
 Packages for the simulation of the RB-1 Base
 
 <p align="center">
-  <img src="rb1_base_sim/doc/rb1_base.jpeg" height="275" />
+  <img src="doc/rb1_base.jpeg" height="275" />
 </p>
 
 
