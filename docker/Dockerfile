@@ -87,18 +87,18 @@ RUN true \
 WORKDIR $ck_dir
 
 COPY --chown=$user_name \
-	rbvogui_gazebo \
-	$ck_src_dir/rbvogui_gazebo
+	rb1_base_gazebo \
+	$ck_src_dir/rb1_base_gazebo
 
 COPY --chown=$user_name \
-	rbvogui_sim \
-	$ck_src_dir/rbvogui_sim
+	rb1_base_sim \
+	$ck_src_dir/rb1_base_sim
 
 COPY --chown=$user_name \
-	rbvogui_sim_bringup \
-	$ck_src_dir/rbvogui_sim_bringup
+	rb1_base_sim_bringup \
+	$ck_src_dir/rb1_base_sim_bringup
 
-ARG repo_file=rbvogui_sim_devel_docker.repos
+ARG repo_file=rb1_base_sim.repos
 
 COPY --chown=$user_name \
 	repos/$repo_file \
@@ -109,7 +109,6 @@ ARG fresh_download_of_git_repos=no
 
 RUN true \
 	&& vcs import --input $repo_file_list_to_use \
-	&& sudo dpkg -i $ck_src_dir/rbvogui_common/libraries/* \
 	&& rosdep update \
 	&& echo 'debconf debconf/frontend select Noninteractive' | sudo debconf-set-selections \
 	&& sudo apt-get update \
@@ -138,8 +137,8 @@ ENV NVIDIA_DRIVER_CAPABILITIES \
 
 ENV USE_GPU_FOR_SIMULATION true
 
-ENV ROS_BU_PKG "rbvogui_sim_bringup"
-ENV ROS_BU_LAUNCH "rbvogui_complete.launch kinematics:=omni twist2ackermann:=false"
+ENV ROS_BU_PKG "rb1_base_sim_bringup"
+ENV ROS_BU_LAUNCH "rb1_base_complete.launch"
 ENV CATKIN_WS $ck_dir
 ENV RBK_CATKIN_PATH $ck_dir
 
