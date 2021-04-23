@@ -42,24 +42,32 @@ RUN apt-get update \
 
 RUN apt-get update \
 	&& apt-get install -q -y \
-		ros-melodic-ackermann-msgs \
-		ros-melodic-ros-control \
-		ros-melodic-hector-gazebo-plugins \
-		ros-melodic-moveit-planners-ompl \
-		ros-melodic-moveit-ros-planning \
-		python-lxml \
-		ros-melodic-moveit-ros-visualization \
-		ros-melodic-moveit-setup-assistant \
+		ros-melodic-amcl \
+		ros-melodic-base-local-planner \
+		ros-melodic-costmap-2d \
+		ros-melodic-costmap-converter \
+		ros-melodic-geographic-msgs \
+		ros-melodic-gmapping \
+		ros-melodic-hector-sensors-description \
+		ros-melodic-imu-complementary-filter \
+		ros-melodic-joint-state-publisher-gui \
 		ros-melodic-joy \
-		ros-melodic-moveit-fake-controller-manager \
-		ros-melodic-moveit-kinematics \
+		ros-melodic-libg2o \
+		ros-melodic-map-server \
+		ros-melodic-mavros \
+		ros-melodic-mavros-msgs \
+		ros-melodic-mbf-abstract-core \
+		ros-melodic-mbf-costmap-core \
+		ros-melodic-mbf-msgs \
+		ros-melodic-mbf-utility \
+		ros-melodic-move-base \
+		ros-melodic-nav-core \
+		ros-melodic-pointcloud-to-laserscan \
+		ros-melodic-robot-localization \
+		ros-melodic-teb-local-planner \
+		ros-melodic-teb-local-planner \
 		ros-melodic-twist-mux \
-		ros-melodic-moveit-ros-move-group \
-		ros-melodic-moveit-simple-controller-manager \
-		ros-melodic-moveit-core \
-		ros-melodic-joint-trajectory-controller \
-		ros-melodic-ros-controllers \
-		ros-melodic-effort-controllers \
+		ros-melodic-voxel-grid \
 	&& apt-get clean -q -y \
 	&& apt-get autoremove -q -y \
 	&& rm -rf /var/lib/apt/lists/*
