@@ -15,8 +15,12 @@ RUN useradd -m -d $user_home -s $user_shell -u $user_uid $user_name \
 
 ENV DEBIAN_FRONTEND noninteractive
 
+# setup keys
+RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
+
 RUN apt-get update \
 	&& apt-get install -q -y \
+	--no-install-recommends \
 		wget \
 		apt-utils \
 		# dialog \
@@ -34,43 +38,23 @@ RUN apt-get update \
 
 RUN apt-get update \
 	&& apt-get install -q -y \
+	--no-install-recommends \
 		python3-vcstool \
 		python-catkin-tools \
 	&& apt-get clean -q -y \
 	&& apt-get autoremove -q -y \
 	&& rm -rf /var/lib/apt/lists/*
 
+COPY docker/ros-requirements.txt /tmp
+
 RUN apt-get update \
 	&& apt-get install -q -y \
-		ros-melodic-amcl \
-		ros-melodic-base-local-planner \
-		ros-melodic-costmap-2d \
-		ros-melodic-costmap-converter \
-		ros-melodic-geographic-msgs \
-		ros-melodic-gmapping \
-		ros-melodic-hector-sensors-description \
-		ros-melodic-imu-complementary-filter \
-		ros-melodic-joint-state-publisher-gui \
-		ros-melodic-joy \
-		ros-melodic-libg2o \
-		ros-melodic-map-server \
-		ros-melodic-mavros \
-		ros-melodic-mavros-msgs \
-		ros-melodic-mbf-abstract-core \
-		ros-melodic-mbf-costmap-core \
-		ros-melodic-mbf-msgs \
-		ros-melodic-mbf-utility \
-		ros-melodic-move-base \
-		ros-melodic-nav-core \
-		ros-melodic-pointcloud-to-laserscan \
-		ros-melodic-robot-localization \
-		ros-melodic-teb-local-planner \
-		ros-melodic-teb-local-planner \
-		ros-melodic-twist-mux \
-		ros-melodic-voxel-grid \
+	--no-install-recommends \
+		$(eval "echo $(cat /tmp/ros-requirements.txt | xargs)") \
 	&& apt-get clean -q -y \
 	&& apt-get autoremove -q -y \
-	&& rm -rf /var/lib/apt/lists/*
+	&& rm -rf /var/lib/apt/lists/* \
+	&& rm /tmp/ros-requirements.txt
 
 
 COPY docker/ros_entrypoint.sh /
@@ -94,17 +78,17 @@ RUN true \
 
 WORKDIR $ck_dir
 
-COPY --chown=$user_name \
-	rb1_base_gazebo \
-	$ck_src_dir/rb1_base_gazebo
+# COPY --chown=$user_name \
+# 	rb1_base_gazebo \
+# 	$ck_src_dir/rb1_base_gazebo
 
-COPY --chown=$user_name \
-	rb1_base_sim \
-	$ck_src_dir/rb1_base_sim
+# COPY --chown=$user_name \
+# 	rb1_base_sim \
+# 	$ck_src_dir/rb1_base_sim
 
-COPY --chown=$user_name \
-	rb1_base_sim_bringup \
-	$ck_src_dir/rb1_base_sim_bringup
+# COPY --chown=$user_name \
+# 	rb1_base_sim_bringup \
+# 	$ck_src_dir/rb1_base_sim_bringup
 
 ARG repo_file=rb1_base_sim.repos
 
@@ -154,3 +138,19 @@ ENV CATKIN_WS $ck_dir
 ENV RBK_CATKIN_PATH $ck_dir
 
 CMD bash -c "/ros_entrypoint.sh roslaunch ${ROS_BU_PKG} ${ROS_BU_LAUNCH}"
+
+RUN sed -i \
+	's/<cylinder_inertia/<xacro:cylinder_inertia/' \
+	$ck_src_dir/rb1_base_common/rb1_base_description/urdf/wheels/rubber_wheel.urdf.xacro \
+	$ck_src_dir/rb1_base_common/rb1_base_description/urdf/wheels/omni_wheel.urdf.xacro
+
+ARG file=$ck_src_dir/robotnik_sensors/urdf/hokuyo_ust20lx.urdf.xacro
+RUN sed -i 's#<!--arg name="namespace" value="$(arg namespace)"/-->##' ${file}
+
+ARG file=$ck_src_dir/rb1_base_common/rb1_base_description/urdf/wheels/rubber_wheel.gazebo.xacro
+RUN sed 's/<!--/\x0<!--/g;s/-->/-->\x0/g' $file | grep -zv '^<!--' | tr -d '\0' >${file}.new && mv ${file}.new $file
+
+ARG file=$ck_src_dir/rb1_base_common/rb1_base_description/urdf/wheels/omni_wheel.urdf.xacro
+RUN sed 's/<!--/\x0<!--/g;s/-->/-->\x0/g' $file | grep -zv '^<!--' | tr -d '\0' >${file}.new && mv ${file}.new $file
+
+# CMD /opt/ros/melodic/lib/xacro/xacro /home/ros/catkin_ws/src/rb1_base_common/rb1_base_description/robots/rb1_base.urdf.xacro prefix:=robot_ ros_planar_move_plugin:=true
