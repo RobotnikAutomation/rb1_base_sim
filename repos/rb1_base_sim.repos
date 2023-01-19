@@ -7,11 +7,11 @@ repositories:
   src/rb1_base_common:
     type: git
     url: https://github.com/RobotnikAutomation/rb1_base_common
-    version: melodic-1.0.0
+    version: melodic-devel
   src/rb1_base_sim:
     type: git
     url: https://github.com/RobotnikAutomation/rb1_base_sim
-    version: melodic-1.0.0
+    version: melodic-devel
   src/robot_localization_utils:
     type: git
     url: https://github.com/RobotnikAutomation/robot_localization_utils
@@ -19,12 +19,12 @@ repositories:
   src/robotnik_base_hw_sim:
     type: git
     url: https://github.com/RobotnikAutomation/robotnik_base_hw_sim
-    version: 2.0.0
+    version: master
   src/robotnik_msgs:
     type: git
     url: https://github.com/RobotnikAutomation/robotnik_msgs
-    version: melodic-1.0.0
+    version: master
   src/robotnik_sensors:
     type: git
     url: https://github.com/RobotnikAutomation/robotnik_sensors
-    version: melodic-1.0.0
+    version: melodic-devel
