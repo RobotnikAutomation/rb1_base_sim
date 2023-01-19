@@ -1,4 +1,4 @@
-FROM osrf/ros:melodic-desktop-full
+FROM osrf/ros:noetic-desktop-full
 MAINTAINER Nuria Diaz <ndiaz@robontik.es>
 
 # Non Root user
@@ -64,7 +64,7 @@ USER $user_name
 RUN mkdir -p $ck_src_dir
 RUN true \
 	&& echo "PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u\[\033[00m\]@\[\033[01;31m\]\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '" >> ~/.bashrc \
-	&& echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc \
+	&& echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc \
 	&& echo "source $ck_dir/devel/setup.bash" >> ~/.bashrc
 
 ARG gazebo_model_path=$user_home/.gazebo/
@@ -113,7 +113,7 @@ RUN true \
 	&& sudo rm -rf /var/lib/apt/lists/*
 
 RUN true \
-	&& . /opt/ros/melodic/setup.sh \
+	&& . /opt/ros/noetic/setup.sh \
 	&& export ROS_PARALLEL_JOBS=-j$(nproc --all) \
 	&& catkin build
 
@@ -153,4 +153,4 @@ RUN sed 's/<!--/\x0<!--/g;s/-->/-->\x0/g' $file | grep -zv '^<!--' | tr -d '\0' 
 ARG file=$ck_src_dir/rb1_base_common/rb1_base_description/urdf/wheels/omni_wheel.urdf.xacro
 RUN sed 's/<!--/\x0<!--/g;s/-->/-->\x0/g' $file | grep -zv '^<!--' | tr -d '\0' >${file}.new && mv ${file}.new $file
 
-# CMD /opt/ros/melodic/lib/xacro/xacro /home/ros/catkin_ws/src/rb1_base_common/rb1_base_description/robots/rb1_base.urdf.xacro prefix:=robot_ ros_planar_move_plugin:=true
+# CMD /opt/ros/noetic/lib/xacro/xacro /home/ros/catkin_ws/src/rb1_base_common/rb1_base_description/robots/rb1_base.urdf.xacro prefix:=robot_ ros_planar_move_plugin:=true
