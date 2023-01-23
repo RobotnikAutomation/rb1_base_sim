@@ -40,7 +40,9 @@ RUN apt-get update \
 	&& apt-get install -q -y \
 	--no-install-recommends \
 		python3-vcstool \
-		python-catkin-tools \
+		python3-catkin-tools \
+	&& apt-get install -q -y \
+		git \
 	&& apt-get clean -q -y \
 	&& apt-get autoremove -q -y \
 	&& rm -rf /var/lib/apt/lists/*
