@@ -41,6 +41,7 @@ RUN apt-get update \
 	--no-install-recommends \
 		python3-vcstool \
 		python-catkin-tools \
+		-y python3 \
 	&& apt-get clean -q -y \
 	&& apt-get autoremove -q -y \
 	&& rm -rf /var/lib/apt/lists/*
@@ -107,7 +108,7 @@ RUN true \
 	&& rosdep update \
 	&& echo 'debconf debconf/frontend select Noninteractive' | sudo debconf-set-selections \
 	&& sudo apt-get update \
-	&& rosdep install --from-paths src --ignore-src -y \
+	&& rosdep install --from-paths src --ignore-src -y -r\
 	&& sudo apt-get clean -q -y \
 	&& sudo apt-get autoremove -q -y \
 	&& sudo rm -rf /var/lib/apt/lists/*
