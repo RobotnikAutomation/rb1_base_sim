@@ -10,6 +10,7 @@ services:
     stdin_open: true
     tty: true
     privileged: true
+    stop_signal: SIGINT
     environment:
       ROS_MASTER_URI: "http://localhost:11311"
       GAZEBO_MASTER_URI: "http://localhost:11345"
