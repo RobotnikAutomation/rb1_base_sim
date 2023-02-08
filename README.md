@@ -130,8 +130,8 @@ Optional general arguments:
   map_frame_c:=/map
   ```
 
+### commands and data retrieving
 
-### Comands and data retreving
 **Enjoy! You can use the topic `${id_robot}/robotnik_base_control/cmd_vel` to control the RB-1 Base robot:**
 
 ```bash
@@ -187,15 +187,17 @@ nvidia-smi &>/dev/null \
 && ln -sf docker-compose-nvidia.yml docker-compose.yml \
 || ln -sf docker-compose-intel.yml docker-compose.yml
 docker compose up 
-
 ```
+
 #### Docker permission fix
 
-In order to run this simulation it's mandatory to the current linux user to have full docker permission. If the script fails due to that, please execute the following command:
+In order to run this simulation it's mandatory to the current linux user to have full docker permission. If the simulation fails due to that, please execute the following command:
+
 ```bash
 sudo usermod -aG docker $USER
 newgrp docker
 ```
+
 #### Selecting the robot model
 
 You can select the robot, the launch file of package using the optional arguments on launch
