@@ -91,6 +91,7 @@ Optional general arguments:
   launch_robot_b:=true \
   launch_robot_c:=true
   ```
+
 - Example to launch simulation with 1 RB-1 Base robot with navigation and localization:
   
   ```bash
@@ -99,6 +100,7 @@ Optional general arguments:
   move_base_robot_a:=true \
   amcl_and_mapserver_robot_a:=true
   ```
+
 - Example to launch simulation with 2 RB-1 Base robot with navigation and localization sharing the same global frame:
   
   ```bash
@@ -112,6 +114,7 @@ Optional general arguments:
   move_base_robot_b:=true \
   map_frame_b:=/map
   ```
+
 - Example to launch simulation with 3 RB-1 Base robot with navigation and localization sharing the same global frame:
   
   ```bash
@@ -179,6 +182,7 @@ pose:
 - [docker and docker compose plugin](https://docs.docker.com/engine/install/ubuntu/)
 
 - nvidia-drivers
+
 - [nvidia-docker]([Installation Guide &mdash; NVIDIA Cloud Native Technologies documentation](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#docker)
 
 ### Usage
@@ -229,17 +233,22 @@ docker build -f docker/Dockerfile .
 #### Notes
 
 - This is docker requires a graphical interface
+
 - The ros master uri is accessible outside the container, so in the host any ros command should work
+
 - You could also run a roscore previous to launch the simulation in order to have some processes on the host running
+
 - if you want to enter on the container use the following command in another terminal
   
   ```bash
   docker container exec -it docker-base-1 bash
   ```
+
 - In order to exit you have to 2 options
 1. Close `gazebo` and `rviz` and wait a bit
-2. execute in another terminal:
+
+2. execute in another terminal in the same folder than the `docker-compose.yml`:
    
    ```bash
-   docker container rm --force docker-base-1
+   docker compose down
    ```
