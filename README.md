@@ -202,8 +202,6 @@ nvidia-smi &>/dev/null \
 docker compose up 
 ```
 
-If you wish to change the simulation parameters change the environment variable `ROS_BU_LAUNCH` and relaunch the simulation
-
 #### Docker permission fix
 
 In order to run this simulation it's mandatory to the current linux user to have full docker permission. If the simulation fails due to that, please execute the following command:
@@ -215,24 +213,17 @@ newgrp docker
 
 #### Selecting the robot model
 
-You can select the robot, the launch file of package using the optional arguments on launch
-By default the selected robot is `rb1_base`
+If you wish to change the simulation parameters change the environment variable `ROS_BU_LAUNCH` and relaunch the simulation
 
 #### Manual Build
 
 If you wish to build manually the image without the use of the script use one the following commands:
 
-**Option A**
+
 
 ```bash
 cd docker
-docker build -f Dockerfile ..
-```
-
-**Option B**
-
-```bash
-docker build -f docker/Dockerfile .
+docker compose up --build
 ```
 
 #### Notes
