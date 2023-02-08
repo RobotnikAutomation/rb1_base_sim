@@ -176,6 +176,9 @@ cd rb1_base_sim
 git checkout noetic-devel
 export ROS_BU_PKG="rb1_base_sim_bringup"
 export ROS_BU_LAUNCH="rb1_base_complete.launch"
+nvidia-smi &>/dev/null \
+&& ln -sf docker-compose-nvidia.yml docker-compose.yml \
+|| ln -sf docker-compose-intel.yml docker-compose.yml
 docker compose up 
 
 ```
