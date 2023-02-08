@@ -202,6 +202,8 @@ nvidia-smi &>/dev/null \
 docker compose up 
 ```
 
+If you wish to change the simulation parameters change the environment variable `ROS_BU_LAUNCH` and relaunch the simulation
+
 #### Docker permission fix
 
 In order to run this simulation it's mandatory to the current linux user to have full docker permission. If the simulation fails due to that, please execute the following command:
