@@ -1,12 +1,10 @@
 # rb1_base_sim
 
-
 Packages for the simulation of the RB-1 Base
 
 <p align="center">
   <img src="doc/rb1_base.jpeg" height="275" />
 </p>
-
 
 ## Packages
 
@@ -17,7 +15,6 @@ This package contains the configuration files and worlds to launch the Gazebo en
 ### rb1_base_sim_bringup
 
 Launch files that launch the complete simulation of the robot/s.
-
 
 ## Simulating RB-1 Base
 
@@ -46,8 +43,8 @@ catkin build
 source devel/setup.bash
 ```
 
-
 ### 4) Launch RB-1 Base simulation (1 robot by default, up to 3 robots):
+
 - RB-1 Base:
 
 ```bash
@@ -55,6 +52,7 @@ roslaunch rb1_base_sim_bringup rb1_base_complete.launch
 ```
 
 Optional general arguments:
+
 ```xml
 <arg name="launch_rviz" default="true"/>
 <arg
@@ -62,7 +60,9 @@ Optional general arguments:
   default="$(find rb1_base_gazebo)/worlds/rb1_base_office.world"
 />
 ```
+
   Optional robot arguments:
+
 ```xml
 <!--arguments for each robot (example for robot A)-->
 <arg name="id_robot_a" default="robot"/>
@@ -82,23 +82,27 @@ Optional general arguments:
 <arg name="move_base_robot_a" default="true"/>
 <arg name="pad_robot_a" default="true"/>
 ```
+
 - Example to launch simulation with 3 RB-1 Base robots:
-```bash
-roslaunch rb1_base_sim_bringup rb1_base_complete.launch \
+  
+  ```bash
+  roslaunch rb1_base_sim_bringup rb1_base_complete.launch \
   launch_robot_a:=true \
   launch_robot_b:=true \
   launch_robot_c:=true
-```
+  ```
 - Example to launch simulation with 1 RB-1 Base robot with navigation and localization:
-```bash
-roslaunch rb1_base_sim_bringup rb1_base_complete.launch \
+  
+  ```bash
+  roslaunch rb1_base_sim_bringup rb1_base_complete.launch \
   launch_robot_a:=true \
   move_base_robot_a:=true \
   amcl_and_mapserver_robot_a:=true
-```
+  ```
 - Example to launch simulation with 2 RB-1 Base robot with navigation and localization sharing the same global frame:
-```bash
-roslaunch rb1_base_sim_bringup rb1_base_complete.launch \
+  
+  ```bash
+  roslaunch rb1_base_sim_bringup rb1_base_complete.launch \
   launch_robot_a:=true \
   amcl_and_mapserver_robot_a:=true \
   move_base_robot_a:=true \
@@ -107,10 +111,11 @@ roslaunch rb1_base_sim_bringup rb1_base_complete.launch \
   amcl_and_mapserver_robot_b:=true \
   move_base_robot_b:=true \
   map_frame_b:=/map
-```
+  ```
 - Example to launch simulation with 3 RB-1 Base robot with navigation and localization sharing the same global frame:
-```bash
-roslaunch rb1_base_sim_bringup rb1_base_complete.launch \
+  
+  ```bash
+  roslaunch rb1_base_sim_bringup rb1_base_complete.launch \
   launch_robot_a:=true \
   amcl_and_mapserver_robot_a:=true \
   move_base_robot_a:=true \
@@ -123,7 +128,8 @@ roslaunch rb1_base_sim_bringup rb1_base_complete.launch \
   amcl_and_mapserver_robot_c:=true \
   move_base_robot_c:=true \
   map_frame_c:=/map
-```
+  ```
+
 
 ### Comands and data retreving
 **Enjoy! You can use the topic `${id_robot}/robotnik_base_control/cmd_vel` to control the RB-1 Base robot:**
@@ -140,6 +146,7 @@ angular:
 ```
 
 or if you have launched move_base, you can send simple goals using `/${id_robot}/move_base_simple/goal`:
+
 ```bash
 rostopic pub /robot/move_base_simple/goal geometry_msgs/PoseStamped "header:
   seq: 0
