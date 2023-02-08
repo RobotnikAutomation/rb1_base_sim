@@ -168,12 +168,18 @@ pose:
 
 ## Docker usage
 
-In order to run this simulation you will need nvidia graphical accelation
-
 ### Installation of required files
-- [docker](https://docs.docker.com/engine/install/ubuntu/)
-- [nvidia-docker](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#docker)
+
+#### Intel GPU
+
+- [docker and docker compose plugin](https://docs.docker.com/engine/install/ubuntu/)
+
+#### Nvidia GPU
+
+- [docker and docker compose plugin](https://docs.docker.com/engine/install/ubuntu/)
+
 - nvidia-drivers
+- [nvidia-docker]([Installation Guide &mdash; NVIDIA Cloud Native Technologies documentation](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#docker)
 
 ### Usage
 
