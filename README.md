@@ -203,53 +203,6 @@ newgrp docker
 You can select the robot, the launch file of package using the optional arguments on launch
 By default the selected robot is `rb1_base`
 
-```bash
-docker/simulation-in-container-run.sh --help
-```
-
-```
-ROBOTNIK AUTOMATION S.L.L. 2021
-
-Simulation of RB1 BASE using docker
-
-Usage:
-docker/simulation-in-container-run.sh [OPTIONS]
-
-Optional arguments:
- --robot -r ROBOT       Select robot to simulate
-                        Valid robots:
-                            multirobot_2 multirobot_3 rb1_base
-                        default: rb1_base
-
- --launch -l            Select launch file
-                        default: rb1_base_complete.launch \
-                                 launch_robot_a:=true \
-                                 move_base_robot_a:=true \
-                                 amcl_and_mapserver_robot_a:=true
-
- --package -p           Select ros package
-                        default: rb1_base_sim_bringup
-
- --ros-port -u PORT     Host ros port
-                        default: 11345
-
- --gazebo-port -g PORT  Host ros port
-                        default: 11345
-
- -h, --help             Shows this help
-
-```
-
-**2 robots simulation**
-```bash
-docker/simulation-in-container-run.sh --robot multirobot_2
-```
-
-**3 robots simulation**
-```bash
-docker/simulation-in-container-run.sh --robot multirobot_3
-```
-
 #### Manual Build
 
 If you wish to build manually the image without the use of the script use one the following commands:
