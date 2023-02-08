@@ -217,22 +217,20 @@ If you wish to change the simulation parameters change the environment variable 
 
 #### Manual Build
 
-If you wish to build manually the image without the use of the script use one the following commands:
-
-
+If you wish to build the image without launching the simulation use the following commands:
 
 ```bash
 cd docker
-docker compose up --build
+docker compose build
 ```
 
 #### Notes
 
 - This is docker requires a graphical interface
 
-- The ros master uri is accessible outside the container, so in the host any ros command should work
+- The `ROS_MASTER_URI` is accessible outside the container, so in the host any ros command should work
 
-- You could also run a roscore previous to launch the simulation in order to have some processes on the host running
+- You could also run a `roscore` previous to launch the simulation in order to have some processes on the host running
 
 - if you want to enter on the container use the following command in another terminal
   
