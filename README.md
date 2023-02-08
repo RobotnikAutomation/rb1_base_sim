@@ -175,11 +175,14 @@ pose:
 
 #### Intel GPU
 
-- [docker and docker compose plugin](https://docs.docker.com/engine/install/ubuntu/)
+- [docker engine](https://docs.docker.com/engine/install/ubuntu/)
+- [docker compose plugin](https://docs.docker.com/compose/install/linux/)
 
 #### Nvidia GPU
 
-- [docker and docker compose plugin](https://docs.docker.com/engine/install/ubuntu/)
+- [docker engine](https://docs.docker.com/engine/install/ubuntu/)
+
+- [docker compose plugin](https://docs.docker.com/compose/install/linux/)
 
 - nvidia-drivers
 
