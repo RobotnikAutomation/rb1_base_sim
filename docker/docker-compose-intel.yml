@@ -2,6 +2,7 @@
 version: "3.7"
 services:
   base:
+    image: robotnik/rb1-base-sim:noetic-devel
     build:
       context: ..
       dockerfile: docker/Dockerfile
