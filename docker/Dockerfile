@@ -2,13 +2,12 @@ FROM osrf/ros:noetic-desktop-full
 MAINTAINER Nuria Diaz <ndiaz@robontik.es>
 
 # Non Root user
-ARG user_name=ros
+ARG user_name=robot
 ARG user_uid=1000
 ARG user_home=/home/$user_name
 ARG user_shell=/bin/bash
 ARG ck_dir=$user_home/catkin_ws
 ARG ck_src_dir=$ck_dir/src
-ARG ros_brup_pkg=rostful_bringup
 
 RUN useradd -m -d $user_home -s $user_shell -u $user_uid $user_name \
 	&& echo "PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;33m\]\u\[\033[00m\]@\[\033[01;31m\]\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '" >> ~/.bashrc
@@ -28,7 +27,7 @@ RUN apt-get update \
 	&& apt-get clean -q -y \
 	&& apt-get autoremove -q -y \
 	&& rm -rf /var/lib/apt/lists/* \
-	&& echo '%ros ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+	&& echo '%robot ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 RUN apt-get update \
 	&& apt upgrade -y \
@@ -41,7 +40,6 @@ RUN apt-get update \
 	--no-install-recommends \
 		python3-vcstool \
 		python3-catkin-tools \
-	&& apt-get install -q -y \
 		git \
 	&& apt-get clean -q -y \
 	&& apt-get autoremove -q -y \
@@ -69,7 +67,7 @@ RUN true \
 	&& echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc \
 	&& echo "source $ck_dir/devel/setup.bash" >> ~/.bashrc
 
-ARG gazebo_model_path=$user_home/.gazebo/
+ARG gazebo_model_path=$user_home/.gazebo
 ARG gazebo_models_url=https://github.com/osrf/gazebo_models.git
 RUN true \
 	&& mkdir -p $gazebo_model_path/models \
@@ -102,10 +100,7 @@ ARG repo_file_list_to_use=/tmp/$repo_file
 ARG fresh_download_of_git_repos=no
 
 RUN true \
-	&& vcs import --input $repo_file_list_to_use; \
-	echo $? \
-	&& true
-RUN true \
+	&& vcs import --input $repo_file_list_to_use \
 	&& rosdep update \
 	&& echo 'debconf debconf/frontend select Noninteractive' | sudo debconf-set-selections \
 	&& sudo apt-get update \

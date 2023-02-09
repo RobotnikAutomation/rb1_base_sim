@@ -1,12 +1,10 @@
 # rb1_base_sim
 
-
 Packages for the simulation of the RB-1 Base
 
 <p align="center">
   <img src="doc/rb1_base.jpeg" height="275" />
 </p>
-
 
 ## Packages
 
@@ -17,7 +15,6 @@ This package contains the configuration files and worlds to launch the Gazebo en
 ### rb1_base_sim_bringup
 
 Launch files that launch the complete simulation of the robot/s.
-
 
 ## Simulating RB-1 Base
 
@@ -46,8 +43,8 @@ catkin build
 source devel/setup.bash
 ```
 
-
 ### 4) Launch RB-1 Base simulation (1 robot by default, up to 3 robots):
+
 - RB-1 Base:
 
 ```bash
@@ -55,6 +52,7 @@ roslaunch rb1_base_sim_bringup rb1_base_complete.launch
 ```
 
 Optional general arguments:
+
 ```xml
 <arg name="launch_rviz" default="true"/>
 <arg
@@ -62,7 +60,9 @@ Optional general arguments:
   default="$(find rb1_base_gazebo)/worlds/rb1_base_office.world"
 />
 ```
+
   Optional robot arguments:
+
 ```xml
 <!--arguments for each robot (example for robot A)-->
 <arg name="id_robot_a" default="robot"/>
@@ -82,23 +82,29 @@ Optional general arguments:
 <arg name="move_base_robot_a" default="true"/>
 <arg name="pad_robot_a" default="true"/>
 ```
+
 - Example to launch simulation with 3 RB-1 Base robots:
-```bash
-roslaunch rb1_base_sim_bringup rb1_base_complete.launch \
+  
+  ```bash
+  roslaunch rb1_base_sim_bringup rb1_base_complete.launch \
   launch_robot_a:=true \
   launch_robot_b:=true \
   launch_robot_c:=true
-```
+  ```
+
 - Example to launch simulation with 1 RB-1 Base robot with navigation and localization:
-```bash
-roslaunch rb1_base_sim_bringup rb1_base_complete.launch \
+  
+  ```bash
+  roslaunch rb1_base_sim_bringup rb1_base_complete.launch \
   launch_robot_a:=true \
   move_base_robot_a:=true \
   amcl_and_mapserver_robot_a:=true
-```
+  ```
+
 - Example to launch simulation with 2 RB-1 Base robot with navigation and localization sharing the same global frame:
-```bash
-roslaunch rb1_base_sim_bringup rb1_base_complete.launch \
+  
+  ```bash
+  roslaunch rb1_base_sim_bringup rb1_base_complete.launch \
   launch_robot_a:=true \
   amcl_and_mapserver_robot_a:=true \
   move_base_robot_a:=true \
@@ -107,10 +113,12 @@ roslaunch rb1_base_sim_bringup rb1_base_complete.launch \
   amcl_and_mapserver_robot_b:=true \
   move_base_robot_b:=true \
   map_frame_b:=/map
-```
+  ```
+
 - Example to launch simulation with 3 RB-1 Base robot with navigation and localization sharing the same global frame:
-```bash
-roslaunch rb1_base_sim_bringup rb1_base_complete.launch \
+  
+  ```bash
+  roslaunch rb1_base_sim_bringup rb1_base_complete.launch \
   launch_robot_a:=true \
   amcl_and_mapserver_robot_a:=true \
   move_base_robot_a:=true \
@@ -123,9 +131,10 @@ roslaunch rb1_base_sim_bringup rb1_base_complete.launch \
   amcl_and_mapserver_robot_c:=true \
   move_base_robot_c:=true \
   map_frame_c:=/map
-```
+  ```
 
-### Comands and data retreving
+### commands and data retrieving
+
 **Enjoy! You can use the topic `${id_robot}/robotnik_base_control/cmd_vel` to control the RB-1 Base robot:**
 
 ```bash
@@ -140,6 +149,7 @@ angular:
 ```
 
 or if you have launched move_base, you can send simple goals using `/${id_robot}/move_base_simple/goal`:
+
 ```bash
 rostopic pub /robot/move_base_simple/goal geometry_msgs/PoseStamped "header:
   seq: 0
@@ -161,12 +171,22 @@ pose:
 
 ## Docker usage
 
-In order to run this simulation you will need nvidia graphical accelation
-
 ### Installation of required files
-- [docker](https://docs.docker.com/engine/install/ubuntu/)
-- [nvidia-docker](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#docker)
+
+#### Intel GPU
+
+- [docker engine](https://docs.docker.com/engine/install/ubuntu/)
+- [docker compose plugin](https://docs.docker.com/compose/install/linux/)
+
+#### Nvidia GPU
+
+- [docker engine](https://docs.docker.com/engine/install/ubuntu/)
+
+- [docker compose plugin](https://docs.docker.com/compose/install/linux/)
+
 - nvidia-drivers
+
+- [nvidia-docker](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#docker)
 
 ### Usage
 
@@ -176,94 +196,53 @@ cd rb1_base_sim
 git checkout noetic-devel
 export ROS_BU_PKG="rb1_base_sim_bringup"
 export ROS_BU_LAUNCH="rb1_base_complete.launch"
+nvidia-smi &>/dev/null \
+&& ln -sf docker-compose-nvidia.yml docker-compose.yml \
+|| ln -sf docker-compose-intel.yml docker-compose.yml
 docker compose up 
-
 ```
+
 #### Docker permission fix
 
-In order to run this simulation it's mandatory to the current linux user to have full docker permission. If the script fails due to that, please execute the following command:
+In order to run this simulation it's mandatory to the current linux user to have full docker permission. If the simulation fails due to that, please execute the following command:
+
 ```bash
 sudo usermod -aG docker $USER
 newgrp docker
 ```
+
 #### Selecting the robot model
 
-You can select the robot, the launch file of package using the optional arguments on launch
-By default the selected robot is `rb1_base`
-
-```bash
-docker/simulation-in-container-run.sh --help
-```
-
-```
-ROBOTNIK AUTOMATION S.L.L. 2021
-
-Simulation of RB1 BASE using docker
-
-Usage:
-docker/simulation-in-container-run.sh [OPTIONS]
-
-Optional arguments:
- --robot -r ROBOT       Select robot to simulate
-                        Valid robots:
-                            multirobot_2 multirobot_3 rb1_base
-                        default: rb1_base
-
- --launch -l            Select launch file
-                        default: rb1_base_complete.launch \
-                                 launch_robot_a:=true \
-                                 move_base_robot_a:=true \
-                                 amcl_and_mapserver_robot_a:=true
-
- --package -p           Select ros package
-                        default: rb1_base_sim_bringup
-
- --ros-port -u PORT     Host ros port
-                        default: 11345
-
- --gazebo-port -g PORT  Host ros port
-                        default: 11345
-
- -h, --help             Shows this help
-
-```
-
-**2 robots simulation**
-```bash
-docker/simulation-in-container-run.sh --robot multirobot_2
-```
-
-**3 robots simulation**
-```bash
-docker/simulation-in-container-run.sh --robot multirobot_3
-```
+If you wish to change the simulation parameters change the environment variable `ROS_BU_LAUNCH` and relaunch the simulation
 
 #### Manual Build
 
-If you wish to build manually the image without the use of the script use one the following commands:
+If you wish to build the image without launching the simulation use the following commands:
 
-**Optiona A**
 ```bash
 cd docker
-docker build -f Dockerfile ..
-```
-**Option B**
-```bash
-docker build -f docker/Dockerfile .
+docker compose build
 ```
 
 #### Notes
 
 - This is docker requires a graphical interface
-- The ros master uri is accesible outside the container, so in the host any ros command should work
-- You could also run a roscore previous to launch the simulation in order to have some processes on the host running
+
+- The `ROS_MASTER_URI` is accessible outside the container, so in the host any ros command should work
+
+- You could also run a `roscore` previous to launch the simulation in order to have some processes on the host running
+
 - if you want to enter on the container use the following command in another terminal
-```bash
-docker container exec -it rb1_base_sim_instance bash
-```
+  
+  ```bash
+  docker container exec -it docker-base-1 bash
+  ```
+
 - In order to exit you have to 2 options
 1. Close `gazebo` and `rviz` and wait a bit
-2. execute in another terminal:
-```bash
-docker container rm --force rb1_base_sim_instance
-```
+
+2. execute in another terminal in the same folder than the `docker-compose.yml`:
+   
+   ```bash
+   docker compose down
+   ```
