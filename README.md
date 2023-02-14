@@ -176,6 +176,7 @@ cd rb1_base_sim
 git checkout melodic-devel
 export ROS_BU_PKG="rb1_base_sim_bringup"
 export ROS_BU_LAUNCH="rb1_base_complete.launch"
+cd docker
 docker compose up
 
 ```
