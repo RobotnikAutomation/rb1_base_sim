@@ -3,7 +3,7 @@
 
 	<!-- arg to config the launch file-->
 	<arg name="launch_rviz" default="true"/>
-	<arg name="gazebo_world" default="$(find rb1_base_gazebo)/worlds/rb1_demo.world"/>
+	<arg name="gazebo_world" default="$(find rb1_base_gazebo)/worlds/demo.world"/>
 
 	<!-- arguments robot a -->
 	<arg name="id_robot_a" default="robot"/>

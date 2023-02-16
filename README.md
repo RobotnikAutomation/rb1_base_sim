@@ -59,7 +59,7 @@ Optional general arguments:
 <arg name="launch_rviz" default="true"/>
 <arg
   name="gazebo_world"
-  default="$(find rb1_base_gazebo)/worlds/rb1_demo.world"
+  default="$(find rb1_base_gazebo)/worlds/demo.world"
 />
 ```
   Optional robot arguments:
