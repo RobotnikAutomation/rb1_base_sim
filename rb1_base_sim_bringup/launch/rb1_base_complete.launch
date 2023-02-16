@@ -3,7 +3,7 @@
 
 	<!-- arg to config the launch file-->
 	<arg name="launch_rviz" default="true"/>
-	<arg name="gazebo_world" default="$(find rb1_base_gazebo)/worlds/rb1_base_office.world"/>
+	<arg name="gazebo_world" default="$(find rb1_base_gazebo)/worlds/rb1_demo.world"/>
 
 	<!-- arguments robot a -->
 	<arg name="id_robot_a" default="robot"/>
@@ -16,7 +16,7 @@
 	<arg name="gmapping_robot_a" default="false"/>
 	<arg name="amcl_and_mapserver_robot_a" default="true"/>
 	<arg name="map_frame_robot_a" default="$(arg id_robot_a)_map"/>
-	<arg name="map_file_robot_a" default="$(find rb1_base_localization)/maps/willow_garage/willow_garage.yaml"/>
+	<arg name="map_file_robot_a" default="$(find rb1_base_localization)/maps/demo/demo.yaml"/>
 	<arg name="move_base_robot_a" default="true"/>
 	<arg name="pad_robot_a" default="false"/>
 
@@ -32,7 +32,7 @@
 	<arg name="gmapping_robot_b" default="false"/>
 	<arg name="amcl_and_mapserver_robot_b" default="false"/>
 	<arg name="map_frame_robot_b" default="$(arg id_robot_b)_map"/>
-	<arg name="map_file_robot_b" default="$(find rb1_base_localization)/maps/willow_garage/willow_garage.yaml"/>
+	<arg name="map_file_robot_b" default="$(find rb1_base_localization)/maps/demo/demo.yaml"/>
 	<arg name="move_base_robot_b" default="false"/>
 	<arg name="pad_robot_b" default="false"/>
 
@@ -47,7 +47,7 @@
 	<arg name="gmapping_robot_c" default="false"/>
 	<arg name="amcl_and_mapserver_robot_c" default="false"/>
 	<arg name="map_frame_robot_c" default="$(arg id_robot_c)_map"/>
-	<arg name="map_file_robot_c" default="$(find rb1_base_localization)/maps/willow_garage/willow_garage.yaml"/>
+	<arg name="map_file_robot_c" default="$(find rb1_base_localization)/maps/demo/demo.yaml"/>
 	<arg name="move_base_robot_c" default="false"/>
 	<arg name="pad_robot_c" default="false"/>
 
