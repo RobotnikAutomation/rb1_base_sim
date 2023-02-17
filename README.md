@@ -174,9 +174,9 @@ In order to run this simulation you will need nvidia graphical accelation
 git clone https://github.com/RobotnikAutomation/rb1_base_sim.git
 cd rb1_base_sim
 git checkout melodic-devel
+cd docker
 export ROS_BU_PKG="rb1_base_sim_bringup"
 export ROS_BU_LAUNCH="rb1_base_complete.launch"
-cd docker
 docker compose up
 
 ```
