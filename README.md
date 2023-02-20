@@ -59,7 +59,7 @@ Optional general arguments:
 <arg name="launch_rviz" default="true"/>
 <arg
   name="gazebo_world"
-  default="$(find rb1_base_gazebo)/worlds/rb1_base_office.world"
+  default="$(find rb1_base_gazebo)/worlds/demo.world"
 />
 ```
   Optional robot arguments:
@@ -77,7 +77,7 @@ Optional general arguments:
 <arg name="map_frame_robot_a" default="$(arg id_robot_a)_map"/>
 <arg
   name="map_file_robot_a"
-  default="$(find rb1_base_localization)/maps/willow_garage/willow_garage.yaml"
+  default="$(find rb1_base_localization)/maps/demo/demo.yaml"
 />
 <arg name="move_base_robot_a" default="true"/>
 <arg name="pad_robot_a" default="true"/>
