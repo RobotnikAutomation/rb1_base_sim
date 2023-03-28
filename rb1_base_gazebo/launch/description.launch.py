@@ -73,11 +73,11 @@ def generate_launch_description():
         source_file=params['controllers_file'],
         param_rewrites={
             'left_wheel_names':
-                ['[\'', params['robot_id'],'/left_wheel_joint', '\']'],
+                ['[\'left_wheel_joint', '\']'],
             'right_wheel_names':
-                ['[\'', params['robot_id'],'/right_wheel_joint','\']'],
+                ['[\'right_wheel_joint','\']'],
             'odom_frame_id': ['odom'],
-            'base_frame_id': ['base_link'],
+            'base_frame_id': ['base_footprint'],
         },
         root_key=[params['robot_id'],],
         convert_types=True,
@@ -90,7 +90,7 @@ def generate_launch_description():
             " ",
             params['robot_description_path'],
             " robot_id:=", params['robot_id'],
-            " prefix:=",   params['robot_id'], "/",
+            " prefix:=",   "\"\"",
             " kinematics:=omni",
             " load_kinematics_file:=false",
             " gpu:=false",
@@ -121,7 +121,7 @@ def generate_launch_description():
             'use_sim_time': params['use_sim_time'],
             'robot_description': robot_description_param,
             'publish_frequency': 100.0,
-            'frame_prefix': ''
+            'frame_prefix': [params['robot_id'], '/'],
         }],
     )
 
