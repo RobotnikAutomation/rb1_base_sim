@@ -1,26 +1,12 @@
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 3.5)
 project(rb1_base_gazebo)
 
+find_package(ament_cmake REQUIRED)
 
-find_package(catkin REQUIRED COMPONENTS
-  gazebo_ros
-  gazebo_ros_control
-  diff_drive_controller
+install(
+  DIRECTORY launch worlds config models
+  DESTINATION share/${PROJECT_NAME}
 )
 
-
-
-catkin_package()
-
-
-include_directories(
-  ${catkin_INCLUDE_DIRS}
-)
-
-install(DIRECTORY launch
-        DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
-
-install(DIRECTORY worlds
-        DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
-
-
+ament_export_dependencies(${THIS_PACKAGE_INCLUDE_DEPENDS})
+ament_package()
