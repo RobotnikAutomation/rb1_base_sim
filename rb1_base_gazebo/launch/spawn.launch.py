@@ -37,19 +37,11 @@ from ament_index_python.packages import get_package_share_directory
 #  WORLD: World to load.
 
 def read_params(ld : launch.LaunchDescription):
-  environment = launch.substitutions.LaunchConfiguration('environment')
   use_sim_time = launch.substitutions.LaunchConfiguration('use_sim_time')
   robot_id = launch.substitutions.LaunchConfiguration('robot_id')
   namespace = launch.substitutions.LaunchConfiguration('namespace')
-  world_name = launch.substitutions.LaunchConfiguration('world_name')
-  world = launch.substitutions.LaunchConfiguration('world')
-
-  ld.add_action(launch.actions.DeclareLaunchArgument(
-    name='environment',
-    description='Read parameters from environment variables',
-    choices=['true', 'false'],
-    default_value='true',
-  ))
+  pos_x = launch.substitutions.LaunchConfiguration('pos_x')
+  pos_y = launch.substitutions.LaunchConfiguration('pos_y')
 
   ld.add_action(launch.actions.DeclareLaunchArgument(
     name='use_sim_time',
@@ -71,47 +63,24 @@ def read_params(ld : launch.LaunchDescription):
   ))
 
   ld.add_action(launch.actions.DeclareLaunchArgument(
-    name='world_name',
-    description='Name of the world to load',
-    default_value='empty',
+    name='pos_x',
+    description='X position of the robot',
+    default_value='0.0',
   ))
 
   ld.add_action(launch.actions.DeclareLaunchArgument(
-    name='world',
-    description='World to load',
-    default_value=[launch_ros.substitutions.FindPackageShare('rb1_base_gazebo'), '/worlds/', world_name, '.world']
+    name='pos_y',
+    description='Y position of the robot',
+    default_value='0.0',
   ))
 
-  ret = {}
-
-  if environment == 'false':
-    ret = {
-      'use_sim_time': use_sim_time,
-      'namespace': namespace,
-      'robot_id': robot_id,
-      'world': world,
-    }
-  else:
-    if 'USE_SIM_TIME' in os.environ:
-      ret['use_sim_time'] = os.environ['USE_SIM_TIME']
-    else:
-      ret['use_sim_time'] = use_sim_time
-    if 'NAMESPACE' in os.environ:
-      ret['namespace'] = os.environ['NAMESPACE']
-    elif 'ROBOT_ID' in os.environ:
-      ret['namespace'] = os.environ['ROBOT_ID']
-    else:
-      ret['namespace'] = namespace
-    if 'ROBOT_ID' in os.environ:
-      ret['robot_id'] = os.environ['ROBOT_ID']
-    else:
-      ret['robot_id'] = robot_id
-    if 'WORLD' in os.environ:
-      ret['world'] = os.environ['WORLD']
-    elif 'WORLD_NAME' in os.environ:
-      ret['world'] = [launch_ros.substitutions.FindPackageShare('rb1_base_gazebo'), '/worlds/', os.environ['WORLD_NAME'], '.world']
-    else:
-      ret['world'] = world
+  ret = {
+    'use_sim_time': use_sim_time,
+    'namespace': namespace,
+    'robot_id': robot_id,
+    'pos_x': pos_x,
+    'pos_y': pos_y,
+  }
 
   return ret
 
@@ -121,45 +90,48 @@ from launch.launch_description_sources import PythonLaunchDescriptionSource
 def generate_launch_description():
   ld = launch.LaunchDescription()
   rb1_base_gazebo = get_package_share_directory('rb1_base_gazebo')
-  gazebo_ros = get_package_share_directory('gazebo_ros')
 
   params = read_params(ld)
 
-  ld.add_action(launch.actions.IncludeLaunchDescription(
+  namespace = launch_ros.actions.PushRosNamespace(namespace=params['namespace'])
+  robot_state_publisher = launch.actions.IncludeLaunchDescription(
     PythonLaunchDescriptionSource(
-      os.path.join(gazebo_ros, 'launch', 'gzserver.launch.py')
-    ),
-    launch_arguments={
-      'verbose': 'true',
-      'world': params['world'],
-      'paused': 'false',
-      'init': 'true',
-      'factory': 'true',
-      'force_system': 'true',
-      'params_file': os.path.join(rb1_base_gazebo, 'config','gazebo.yml'),
-    }.items(),
-  ))
-
-  ld.add_action(launch.actions.IncludeLaunchDescription(
-    PythonLaunchDescriptionSource(
-      os.path.join(gazebo_ros, 'launch', 'gzclient.launch.py')
-    ),
-    launch_arguments={
-      'verbose': 'true',
-      }.items(),
-  ))
-
-  ld.add_action(launch.actions.IncludeLaunchDescription(
-    PythonLaunchDescriptionSource(
-      os.path.join(rb1_base_gazebo, 'launch', 'spawn.launch.py')
+      os.path.join(rb1_base_gazebo, 'launch', 'description.launch.py')
     ),
     launch_arguments={
       'use_sim_time': params['use_sim_time'],
       'robot_id': params['robot_id'],
-      'namespace': params['namespace'],
-      'pos_x': '1.0',
-      'pos_y': '1.0',
-      }.items(),
-  ))
+    }.items(),
+  )
+  spawner = launch_ros.actions.Node(
+    package='gazebo_ros',
+    executable='spawn_entity.py',
+    arguments=[
+      '-entity', params['robot_id'],
+      '-topic', 'robot_description',
+      '-x', params['pos_x'],
+      '-y', params['pos_y'],
+      '-z', '0.10',
+    ],
+    output='screen',
+  )
+  base_controller = launch_ros.actions.Node(
+    package="controller_manager",
+    executable="spawner",
+    arguments=["robotnik_base_control", "--controller-manager", ["/", params['namespace'], "/controller_manager"]],
+  )
+  joint_broadcaster = launch_ros.actions.Node(
+    package="controller_manager",
+    executable="spawner",
+    arguments=["joint_state_broadcaster", "--controller-manager", ["/", params['namespace'], "/controller_manager"]],
+  )
+
+  ld.add_action(launch.actions.GroupAction(actions=[
+    namespace,
+    robot_state_publisher,
+    spawner,
+    base_controller,
+    joint_broadcaster,
+  ]))
 
   return ld
