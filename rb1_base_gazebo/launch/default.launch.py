@@ -130,7 +130,7 @@ def generate_launch_description():
       os.path.join(gazebo_ros, 'launch', 'gzserver.launch.py')
     ),
     launch_arguments={
-      'verbose': 'true',
+      'verbose': 'false',
       'world': params['world'],
       'paused': 'false',
       'init': 'true',
@@ -145,7 +145,7 @@ def generate_launch_description():
       os.path.join(gazebo_ros, 'launch', 'gzclient.launch.py')
     ),
     launch_arguments={
-      'verbose': 'true',
+      'verbose': 'false',
       }.items(),
   ))
 
