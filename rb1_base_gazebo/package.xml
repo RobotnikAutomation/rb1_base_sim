@@ -1,14 +1,16 @@
 <?xml version="1.0"?>
-<package>
+<?xml-model
+    href="http://download.ros.org/schema/package_format3.xsd"
+    schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
   <name>rb1_base_gazebo</name>
   <version>1.12.0</version>
-  <description>The rb1_base_gazebo package</description>
+  <description>
+    The rb1_base_gazebo package.
+  </description>
 
-   <maintainer email="rguzman@robotnik.es">Roberto Guzmán</maintainer>
+  <maintainer email="rguzman@robotnik.es">Roberto Guzmán</maintainer>
   <maintainer email="rnavarro@robotnik.es">Roman Navarro Garcia </maintainer>
-
-
-  <author email="rguzman@robotnik.es">Roberto Guzmán</author>
 
   <license>BSD</license>
 
@@ -16,31 +18,22 @@
   <url type="repository">https://github.com/RobotnikAutomation/rb1_base_sim</url>
   <url type="bugtracker">https://github.com/RobotnikAutomation/rb1_base_sim/issues</url>
 
-  <buildtool_depend>catkin</buildtool_depend>
-  
-  <build_depend>gazebo_ros</build_depend>
-  <build_depend>gazebo_ros_control</build_depend>
-  <build_depend>rb1_base_control</build_depend>
-  <build_depend>rb1_base_description</build_depend>
-  <build_depend>rb1_base_pad</build_depend>
-  <build_depend>std_msgs</build_depend>
-  <build_depend>std_srvs</build_depend>
-  <build_depend>tf</build_depend>
-  <build_depend>diff_drive_controller</build_depend>
- 
+  <author email="rguzman@robotnik.es">Roberto Guzmán</author>
 
-  <run_depend>gazebo_ros</run_depend>
-  <run_depend>gazebo_ros_control</run_depend>
-  <run_depend>rb1_base_control</run_depend>
-  <run_depend>rb1_base_description</run_depend>
-  <run_depend>rb1_base_pad</run_depend>
-  <run_depend>std_msgs</run_depend>
-  <run_depend>std_srvs</run_depend>
-  <run_depend>tf</run_depend>
-  <run_depend>diff_drive_controller</run_depend>
-  <run_depend>rviz</run_depend> 
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <exec_depend>gazebo_ros</exec_depend>
+  <exec_depend>gazebo_ros_control</exec_depend>
+  <exec_depend>rb1_base_control</exec_depend>
+  <exec_depend>rb1_base_description</exec_depend>
+  <exec_depend>rb1_base_pad</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+  <exec_depend>std_srvs</exec_depend>
+  <exec_depend>tf</exec_depend>
+  <exec_depend>diff_drive_controller</exec_depend>
+  <exec_depend>rviz</exec_depend>
 
   <export>
-    
+    <build_type>ament_cmake</build_type>
   </export>
 </package>
