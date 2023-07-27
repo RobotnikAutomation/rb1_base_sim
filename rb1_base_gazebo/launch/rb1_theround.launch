@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<launch>
+
+	<!-- arg to config the launch file-->
+	<arg name="launch_rviz" default="true"/>
+	<arg name="rviz_config" default="$(find rb1_base_gazebo)/rviz/rb1_base.rviz"/>
+	<arg name="launch_robot_a" default="true"/>
+	<arg name="launch_robot_b" default="false"/>
+	<arg name="launch_robot_c" default="false"/>
+	<arg name="gazebo_world" default="$(find rb1_base_gazebo)/worlds/rb1_base.world"/>
+	<arg name="debug" default="false"/>
+
+	<!--params of the different robots-->
+	<!-- robot a -->
+	<arg name="id_robot_a" default="robot"/>
+	<arg name="xacro_robot_a" default="rb1_theround_test.urdf.xacro"/>
+	<arg name="has_elevator_robot_a" default="false"/>
+	<arg name="x_init_pose_robot_a" default="0.0" />
+	<arg name="y_init_pose_robot_a" default="0.0" />
+	<arg name="z_init_pose_robot_a" default="0.0" />
+	<arg name="init_yaw_robot_a" default="0.0" />
+	<arg name="gmapping_robot_a" default="false"/>
+	<arg name="amcl_and_mapserver_robot_a" default="false"/>
+	<arg name="map_file_robot_a" default="$(find rb1_base_localization)/maps/empty/map_empty.yaml"/>
+	<arg name="map_frame_robot_a" default="$(arg id_robot_a)_map"/>
+	<arg name="move_base_robot_a" default="false"/>
+	<arg name="pad_robot_a" default="true"/>
+
+	<!-- robot b -->
+	<arg name="id_robot_b" default="robot_b"/>
+	<arg name="xacro_robot_b" default="rb1_theround_test.urdf.xacro"/>
+	<arg name="has_elevator_robot_b" default="false"/>
+	<arg name="x_init_pose_robot_b" default="0.0" />
+	<arg name="y_init_pose_robot_b" default="1.0" />
+	<arg name="z_init_pose_robot_b" default="0.0" />
+	<arg name="init_yaw_robot_b" default="0.0" />
+	<arg name="gmapping_robot_b" default="false"/>
+	<arg name="amcl_and_mapserver_robot_b" default="false"/>
+	<arg name="map_file_robot_b" default="$(find rb1_base_localization)/maps/empty/map_empty.yaml"/>
+	<arg name="map_frame_robot_b" default="$(arg id_robot_b)_map"/>
+	<arg name="move_base_robot_b" default="false"/>
+	<arg name="pad_robot_b" default="false"/>
+
+	<!-- robot c -->
+	<arg name="id_robot_c" default="robot_c"/>
+	<arg name="xacro_robot_c" default="rb1_theround_test.urdf.xacro"/>
+	<arg name="has_elevator_robot_c" default="false"/>
+	<arg name="x_init_pose_robot_c" default="0.0" />
+	<arg name="y_init_pose_robot_c" default="2.0" />
+	<arg name="z_init_pose_robot_c" default="0.0" />
+	<arg name="init_yaw_robot_c" default="0.0" />
+	<arg name="gmapping_robot_c" default="false"/>
+	<arg name="amcl_and_mapserver_robot_c" default="false"/>
+	<arg name="map_file_robot_c" default="$(find rb1_base_localization)/maps/empty/map_empty.yaml"/>
+	<arg name="map_frame_robot_c" default="$(arg id_robot_c)_map"/>
+	<arg name="move_base_robot_c" default="false"/>
+	<arg name="pad_robot_c" default="false"/>
+
+	<!--BEGIN ROBOT 1-->
+	<include if="$(arg launch_robot_a)" file="$(find rb1_base_gazebo)/launch/rb1_base_one_robot.launch">
+		<arg name="id_robot" value="$(arg id_robot_a)"/>
+		<arg name="xacro_robot" value="$(arg xacro_robot_a)"/>
+		<arg name="has_elevator" value="$(arg has_elevator_robot_a)"/>
+		<arg name="x_init_pose" value="$(arg x_init_pose_robot_a)"/>
+		<arg name="y_init_pose" value="$(arg y_init_pose_robot_a)"/>
+		<arg name="z_init_pose" value="$(arg z_init_pose_robot_a)"/>
+		<arg name="init_yaw" value="$(arg init_yaw_robot_a)"/>
+		<arg name="launch_gmapping" value="$(arg gmapping_robot_a)"/>
+		<arg name="launch_amcl_and_mapserver" value="$(arg amcl_and_mapserver_robot_a)"/>
+		<arg name="map_file" value="$(arg map_file_robot_a)"/>
+		<arg name="global_frame" value="$(arg map_frame_robot_a)"/>
+ 		<arg name="launch_move_base" value="$(arg move_base_robot_a)"/>
+		<arg name="launch_pad" value="$(arg pad_robot_a)"/>
+	</include>
+
+	<!--BEGIN ROBOT 2-->
+	<include if="$(arg launch_robot_b)" file="$(find rb1_base_gazebo)/launch/rb1_base_one_robot.launch">
+		<arg name="id_robot" value="$(arg id_robot_b)"/>
+		<arg name="xacro_robot" value="$(arg xacro_robot_b)"/>
+		<arg name="has_elevator" value="$(arg has_elevator_robot_b)"/>
+		<arg name="x_init_pose" value="$(arg x_init_pose_robot_b)"/>
+		<arg name="y_init_pose" value="$(arg y_init_pose_robot_b)"/>
+		<arg name="z_init_pose" value="$(arg z_init_pose_robot_b)"/>
+		<arg name="init_yaw" value="$(arg init_yaw_robot_b)"/>
+		<arg name="launch_gmapping" value="$(arg gmapping_robot_b)"/>
+		<arg name="launch_amcl_and_mapserver" value="$(arg amcl_and_mapserver_robot_b)"/>
+		<arg name="map_file" value="$(arg map_file_robot_b)"/>
+		<arg name="global_frame" value="$(arg map_frame_robot_b)"/>
+ 		<arg name="launch_move_base" value="$(arg move_base_robot_b)"/>
+		<arg name="launch_pad" value="$(arg pad_robot_b)"/>
+	</include>
+
+	<!--BEGIN ROBOT 3-->
+	<include if="$(arg launch_robot_c)" file="$(find rb1_base_gazebo)/launch/rb1_base_one_robot.launch">
+		<arg name="id_robot" value="$(arg id_robot_c)"/>
+		<arg name="xacro_robot" value="$(arg xacro_robot_c)"/>
+		<arg name="has_elevator" value="$(arg has_elevator_robot_c)"/>
+		<arg name="x_init_pose" value="$(arg x_init_pose_robot_c)"/>
+		<arg name="y_init_pose" value="$(arg y_init_pose_robot_c)"/>
+		<arg name="z_init_pose" value="$(arg z_init_pose_robot_c)"/>
+		<arg name="init_yaw" value="$(arg init_yaw_robot_c)"/>
+		<arg name="launch_gmapping" value="$(arg gmapping_robot_c)"/>
+		<arg name="launch_amcl_and_mapserver" value="$(arg amcl_and_mapserver_robot_c)"/>
+		<arg name="map_file" value="$(arg map_file_robot_c)"/>
+		<arg name="global_frame" value="$(arg map_frame_robot_c)"/>
+ 		<arg name="launch_move_base" value="$(arg move_base_robot_c)"/>
+		<arg name="launch_pad" value="$(arg pad_robot_c)"/>
+	</include>
+
+	<!-- gazebo simulation and rviz visualization-->
+	<include file="$(find rb1_base_gazebo)/launch/gazebo_rviz.launch">
+		<arg name="launch_rviz" value="$(arg launch_rviz)"/>
+		<arg name="world_name" value="$(arg gazebo_world)"/>
+		<arg name="debug" value="$(arg debug)"/>
+		<arg name="rviz_config" value="$(arg rviz_config)"/>
+	</include>
+
+</launch>

@@ -31,7 +31,7 @@
 
 
 		<!-- Spawner model into gazebo -->
-		<node name="urdf_spawner_rb1_model" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-x $(arg x_init_pose) -y $(arg y_init_pose) -z $(arg z_init_pose) -Y $(arg init_yaw) -urdf -param robot_description -model $(arg id_robot)" />
+		<node name="urdf_spawner_rb1_model" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-x $(arg x_init_pose) -y $(arg y_init_pose) -z $(arg z_init_pose) -Y $(arg init_yaw) -urdf -param robot_description -model $(arg id_robot)"/>
 
 		<!-- Robot state publisher -->
 		<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
