@@ -16,7 +16,7 @@
 	<arg name="map_file" default="$(find rb1_base_localization)/maps/empty/empty.yaml"/>
 	<arg name="launch_move_base" default="false"/>
 	<arg name="launch_pad" default="false"/>
-	<arg name="use_ros_planar_move_plugin" default="true"/>
+	<arg name="ros_planar_move_plugin" default="true"/>
 	<arg name="use_gpu_for_simulation" default="$(optenv ROBOT_SIM_GPU false)"/>
 	<arg name="fake_elevator_physics" default="$(optenv ROBOT_SIM_FAKE_ELEVATOR false)"/>
 
@@ -25,9 +25,9 @@
 
 		<!-- Load the URDF into the ROS Parameter Server -->
 		<param unless="$(arg has_elevator)" name="robot_description"
-		command="$(find xacro)/xacro '$(find rb1_base_description)/robots/$(arg xacro_robot)' prefix:=$(arg prefix) ros_planar_move_plugin:=$(arg use_ros_planar_move_plugin) gpu:=$(arg use_gpu_for_simulation) --inorder"/>
+		command="$(find xacro)/xacro '$(find rb1_base_description)/robots/$(arg xacro_robot)' prefix:=$(arg prefix) ros_planar_move_plugin:=$(arg ros_planar_move_plugin) gpu:=$(arg use_gpu_for_simulation) --inorder"/>
 		<param if="$(arg has_elevator)" name="robot_description"
-		command="$(find xacro)/xacro '$(find rb1_base_description)/robots/$(arg xacro_robot_elevator)' prefix:=$(arg prefix) ros_planar_move_plugin:=$(arg use_ros_planar_move_plugin) gpu:=$(arg use_gpu_for_simulation) --inorder"/>
+		command="$(find xacro)/xacro '$(find rb1_base_description)/robots/$(arg xacro_robot_elevator)' prefix:=$(arg prefix) ros_planar_move_plugin:=$(arg ros_planar_move_plugin) gpu:=$(arg use_gpu_for_simulation) --inorder"/>
 
 
 		<!-- Spawner model into gazebo -->
@@ -44,7 +44,7 @@
 			<arg name="id_robot" value="$(arg id_robot)"/>
 			<arg name="sim" value="true"/>
 			<arg name="has_elevator" value="$(arg has_elevator)"/>
-			<arg name="use_ros_planar_move_plugin" value="$(arg use_ros_planar_move_plugin)"/>
+			<arg name="ros_planar_move_plugin" value="$(arg ros_planar_move_plugin)"/>
 			<arg name="fake_elevator_physics" value="$(arg fake_elevator_physics)"/>
 		</include>
 
